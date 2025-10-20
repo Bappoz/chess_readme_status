@@ -1,0 +1,5 @@
+[build]
+    functions = "api/"
+
+[dev]
+    port = 3000 

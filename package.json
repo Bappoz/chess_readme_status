@@ -1,0 +1,24 @@
+{
+  "name": "chess_readme_stats",
+  "version": "1.0.0",
+  "description": "A chess.com api request for creating graphs for github readme style",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "npm test"
+  },
+  "keywords": [
+    "chess",
+    "chess.com",
+    "xadrex",
+    "stats",
+    "github",
+    "readme"
+  ],
+  "author": "Lucas Andrade Zanetti",
+  "license": "MIT",
+  "dependencies": {
+    "dayjs": "^1.11.18",
+    "netlify-cli": "^23.9.1"
+  }
+}
