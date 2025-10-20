@@ -2,7 +2,9 @@ import dayjs from "dayjs";
 
 export default async function handler(request, response) {
   try {
-    const { username, game_type = "rapid" } = request.query; // Default game_type if not provided
+    const url = new URL(request.url);
+    const username = url.searchParams.get("username");
+    const game_type = url.searchParams.get("game_type") || "rapid";
     if (!username) {
       throw new Error("Username not found or invalid");
     }
@@ -27,7 +29,7 @@ export default async function handler(request, response) {
     const timeoutId = setTimeout(() => controller.abort(), 5000); // 5s timeout per fetch
 
     const statsPromise = fetch(statsUrl, {
-      ...userAgent,
+      headers: userAgent, 
       signal: controller.signal,
     });
     const gamePromises = gamesUrls.map((url) =>
@@ -60,26 +62,35 @@ export default async function handler(request, response) {
     }
 
     // Filter by game_type and sort chronologically
-    const filteredGames = allGames.filter(
-      (game) => game.time_class === game_type
-    );
+    const filteredGames = allGames.filter((game) => game.time_class === game_type);
     filteredGames.sort((a, b) => a.end_time - b.end_time);
 
-    response.setHeader("Content-Type", "application/json");
-    response.status(200).json({
+    const reponseBody = {
       message: "Dados coletados com sucesso!",
       username: username,
       stats: statsData,
       totalGamesFetched: allGames.length,
       filteredGamesCount: filteredGames.length,
-      games: filteredGames, // Return filtered/sorted games
+      games: filteredGames, 
+    };
+
+    return new Response(JSON.stringify(reponseBody), {
+        status: 200,
+        headers: { "Content-Type": "application/json",},    
     });
+
   } catch (error) {
     console.error(error);
-    response.setHeader("Content-Type", "application/json");
-    response.status(500).json({
+    const errorBody = {
       error: "Ocorreu um erro no servidor",
       errorMessage: error.message,
+    };
+
+    return new Response(JSON.stringify(errorBody), {
+      status: 500, // O código de erro
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
   }
 }

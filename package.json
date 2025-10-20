@@ -5,7 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "npm test"
+    "test": "npm test",
+    "dev": "netlify dev -o"
   },
   "keywords": [
     "chess",
