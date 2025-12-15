@@ -1,0 +1,49 @@
+<svg width="480" height="240" xmlns="http://www.w3.org/2000/svg">
+  <rect width="480" height="240" fill="#312e2b" rx="8"/>
+  <rect x="1" y="1" width="478" height="238" fill="none" stroke="#b58863" rx="8"/>
+
+  <!-- Header -->
+  <text x="24" y="28" fill="#f0d9b5" font-size="14" font-weight="600" font-family="Segoe UI, Arial, sans-serif">
+    Bullet Rating
+  </text>
+  <text x="456" y="28" fill="#769656" font-size="14" font-weight="600" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">
+    542 (-2)
+  </text>
+
+  <!-- Grid -->
+  
+  <line x1="48" y1="48" x2="456" y2="48" stroke="#4a4642" stroke-width="1"/>
+  <text x="40" y="52" fill="#8b7355" font-size="10" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">573</text>
+  
+  <line x1="48" y1="86" x2="456" y2="86" stroke="#4a4642" stroke-width="1"/>
+  <text x="40" y="90" fill="#8b7355" font-size="10" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">564</text>
+  
+  <line x1="48" y1="124" x2="456" y2="124" stroke="#4a4642" stroke-width="1"/>
+  <text x="40" y="128" fill="#8b7355" font-size="10" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">556</text>
+  
+  <line x1="48" y1="162" x2="456" y2="162" stroke="#4a4642" stroke-width="1"/>
+  <text x="40" y="166" fill="#8b7355" font-size="10" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">548</text>
+  
+  <line x1="48" y1="200" x2="456" y2="200" stroke="#4a4642" stroke-width="1"/>
+  <text x="40" y="204" fill="#8b7355" font-size="10" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">539</text>
+  
+
+  <!-- Area -->
+  <polygon points="48,200 48,178.28571428571445 252,60.666666666666515 456,187.3333333333335 456,200" fill="#769656" opacity="0.15"/>
+
+  <!-- Line -->
+  <polyline points="48,178.28571428571445 252,60.666666666666515 456,187.3333333333335" fill="none" stroke="#769656" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Points -->
+  <circle cx="48" cy="178.28571428571445" r="3" fill="#312e2b" stroke="#769656" stroke-width="2"/>
+  <circle cx="252" cy="60.666666666666515" r="3" fill="#312e2b" stroke="#769656" stroke-width="2"/>
+  <circle cx="456" cy="187.3333333333335" r="3" fill="#312e2b" stroke="#769656" stroke-width="2"/>
+
+  <!-- Footer -->
+  <text x="24" y="228" fill="#8b7355" font-size="10" font-family="Segoe UI, Arial, sans-serif">
+    @bappozl
+  </text>
+  <text x="456" y="228" fill="#8b7355" font-size="10" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">
+    Last 3 games
+  </text>
+</svg>

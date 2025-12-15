@@ -1,0 +1,58 @@
+<svg width="480" height="240" xmlns="http://www.w3.org/2000/svg">
+  <rect width="480" height="240" fill="#312e2b" rx="8"/>
+  <rect x="1" y="1" width="478" height="238" fill="none" stroke="#b58863" rx="8"/>
+
+  <!-- Header -->
+  <text x="24" y="28" fill="#f0d9b5" font-size="14" font-weight="600" font-family="Segoe UI, Arial, sans-serif">
+    Rapid Rating
+  </text>
+  <text x="456" y="28" fill="#f0d9b5" font-size="14" font-weight="600" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">
+    1137 (+84)
+  </text>
+
+  <!-- Grid -->
+  
+  <line x1="48" y1="48" x2="456" y2="48" stroke="#4a4642" stroke-width="1"/>
+  <text x="40" y="52" fill="#8b7355" font-size="10" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">1200</text>
+  
+  <line x1="48" y1="86" x2="456" y2="86" stroke="#4a4642" stroke-width="1"/>
+  <text x="40" y="90" fill="#8b7355" font-size="10" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">1160</text>
+  
+  <line x1="48" y1="124" x2="456" y2="124" stroke="#4a4642" stroke-width="1"/>
+  <text x="40" y="128" fill="#8b7355" font-size="10" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">1120</text>
+  
+  <line x1="48" y1="162" x2="456" y2="162" stroke="#4a4642" stroke-width="1"/>
+  <text x="40" y="166" fill="#8b7355" font-size="10" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">1080</text>
+  
+  <line x1="48" y1="200" x2="456" y2="200" stroke="#4a4642" stroke-width="1"/>
+  <text x="40" y="204" fill="#8b7355" font-size="10" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">1040</text>
+  
+
+  <!-- Area -->
+  <polygon points="48,200 48,187.33333333333326 85.0909090909091,162.7562189054726 122.18181818181819,141.0149253731343 159.27272727272725,119.27363184079601 196.36363636363637,99.42288557213934 233.45454545454544,79.57213930348264 270.5454545454545,60.66666666666674 307.6363636363636,79.57213930348264 344.72727272727275,96.58706467661695 381.8181818181818,78.62686567164185 418.9090909090909,93.75124378109456 456,107.93034825870649 456,200" fill="#f0d9b5" opacity="0.15"/>
+
+  <!-- Line -->
+  <polyline points="48,187.33333333333326 85.0909090909091,162.7562189054726 122.18181818181819,141.0149253731343 159.27272727272725,119.27363184079601 196.36363636363637,99.42288557213934 233.45454545454544,79.57213930348264 270.5454545454545,60.66666666666674 307.6363636363636,79.57213930348264 344.72727272727275,96.58706467661695 381.8181818181818,78.62686567164185 418.9090909090909,93.75124378109456 456,107.93034825870649" fill="none" stroke="#f0d9b5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Points -->
+  <circle cx="48" cy="187.33333333333326" r="3" fill="#312e2b" stroke="#f0d9b5" stroke-width="2"/>
+  <circle cx="85.0909090909091" cy="162.7562189054726" r="3" fill="#312e2b" stroke="#f0d9b5" stroke-width="2"/>
+  <circle cx="122.18181818181819" cy="141.0149253731343" r="3" fill="#312e2b" stroke="#f0d9b5" stroke-width="2"/>
+  <circle cx="159.27272727272725" cy="119.27363184079601" r="3" fill="#312e2b" stroke="#f0d9b5" stroke-width="2"/>
+  <circle cx="196.36363636363637" cy="99.42288557213934" r="3" fill="#312e2b" stroke="#f0d9b5" stroke-width="2"/>
+  <circle cx="233.45454545454544" cy="79.57213930348264" r="3" fill="#312e2b" stroke="#f0d9b5" stroke-width="2"/>
+  <circle cx="270.5454545454545" cy="60.66666666666674" r="3" fill="#312e2b" stroke="#f0d9b5" stroke-width="2"/>
+  <circle cx="307.6363636363636" cy="79.57213930348264" r="3" fill="#312e2b" stroke="#f0d9b5" stroke-width="2"/>
+  <circle cx="344.72727272727275" cy="96.58706467661695" r="3" fill="#312e2b" stroke="#f0d9b5" stroke-width="2"/>
+  <circle cx="381.8181818181818" cy="78.62686567164185" r="3" fill="#312e2b" stroke="#f0d9b5" stroke-width="2"/>
+  <circle cx="418.9090909090909" cy="93.75124378109456" r="3" fill="#312e2b" stroke="#f0d9b5" stroke-width="2"/>
+  <circle cx="456" cy="107.93034825870649" r="3" fill="#312e2b" stroke="#f0d9b5" stroke-width="2"/>
+
+  <!-- Footer -->
+  <text x="24" y="228" fill="#8b7355" font-size="10" font-family="Segoe UI, Arial, sans-serif">
+    @bappozl
+  </text>
+  <text x="456" y="228" fill="#8b7355" font-size="10" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">
+    Last 12 games
+  </text>
+</svg>

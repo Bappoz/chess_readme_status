@@ -1,0 +1,14 @@
+<svg width="480" height="240" xmlns="http://www.w3.org/2000/svg">
+  <rect width="480" height="240" fill="#0c2d48" rx="8"/>
+  <rect x="1" y="1" width="478" height="238" fill="none" stroke="#2471a3" rx="8"/>
+
+  <text x="240" y="100" fill="#ecf0f1" font-size="16" font-weight="600" font-family="Segoe UI, Arial, sans-serif" text-anchor="middle">
+    No Daily Data
+  </text>
+  <text x="240" y="124" fill="#bdc3c7" font-size="12" font-family="Segoe UI, Arial, sans-serif" text-anchor="middle">
+    @bappozl has not played Daily games yet
+  </text>
+  <text x="240" y="148" fill="#85929e" font-size="11" font-family="Segoe UI, Arial, sans-serif" text-anchor="middle">
+    Play some games to see your rating history
+  </text>
+</svg>
