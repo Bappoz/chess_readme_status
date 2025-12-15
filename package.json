@@ -1,25 +1,25 @@
 {
-  "name": "chess_readme_stats",
+  "name": "chess-readme-stats",
   "version": "1.0.0",
-  "description": "A chess.com api request for creating graphs for github readme style",
-  "main": "index.js",
+  "description": "📊 Exiba suas estatísticas do Chess.com no seu README do GitHub com gráficos SVG atualizados automaticamente",
   "type": "module",
+  "main": "scripts/generate-svg.js",
   "scripts": {
-    "test": "npm test",
-    "dev": "netlify dev -o"
+    "generate": "node scripts/generate-svg.js",
+    "test": "node scripts/generate-svg.js"
   },
   "keywords": [
     "chess",
     "chess.com",
-    "xadrex",
-    "stats",
     "github",
-    "readme"
+    "readme",
+    "stats",
+    "svg",
+    "github-actions"
   ],
-  "author": "Lucas Andrade Zanetti",
+  "author": "Bappoz",
   "license": "MIT",
   "dependencies": {
-    "dayjs": "^1.11.18",
-    "netlify-cli": "^23.9.1"
+    "node-fetch": "^3.3.2"
   }
 }
