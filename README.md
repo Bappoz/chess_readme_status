@@ -153,6 +153,60 @@ After running the workflow, these files are generated:
 
 **Themes:** `light`, `midnight`, `chess`, `wood`, `neon`, `matrix`, `ocean`
 
+## Advanced HTML Usage
+
+GitHub READMEs support HTML, allowing you to customize the layout of your stats.
+
+### Centralize Graphics
+
+```html
+<div align="center">
+  <img src="https://raw.githubusercontent.com/YOUR_USERNAME/chess_readme_status/main/assets/chess-stats.svg" alt="Chess Stats" />
+</div>
+```
+
+### Two Graphics Side by Side
+
+```html
+<div align="center">
+  <img src="https://raw.githubusercontent.com/YOUR_USERNAME/chess_readme_status/main/assets/chess-stats-rapid.svg" alt="Rapid" />
+  <img src="https://raw.githubusercontent.com/YOUR_USERNAME/chess_readme_status/main/assets/chess-stats-blitz.svg" alt="Blitz" />
+</div>
+```
+
+### Main Card + Line Chart (Stacked)
+
+```html
+<div align="center">
+  <img src="https://raw.githubusercontent.com/YOUR_USERNAME/chess_readme_status/main/assets/chess-stats-neon.svg" alt="Chess Stats" />
+  <br/>
+  <img src="https://raw.githubusercontent.com/YOUR_USERNAME/chess_readme_status/main/assets/chess-stats-rapid-neon.svg" alt="Rapid Rating" />
+</div>
+```
+
+### Mixed Themes Layout
+
+```html
+<div align="center">
+  <img src="https://raw.githubusercontent.com/YOUR_USERNAME/chess_readme_status/main/assets/chess-stats-dark.svg" alt="Stats" />
+  <br/><br/>
+  <img src="https://raw.githubusercontent.com/YOUR_USERNAME/chess_readme_status/main/assets/chess-stats-rapid-matrix.svg" alt="Rapid" />
+  <img src="https://raw.githubusercontent.com/YOUR_USERNAME/chess_readme_status/main/assets/chess-stats-blitz-neon.svg" alt="Blitz" />
+</div>
+```
+
+### With Links (Click to Open Chess.com Profile)
+
+```html
+<div align="center">
+  <a href="https://www.chess.com/member/YOUR_CHESS_USERNAME">
+    <img src="https://raw.githubusercontent.com/YOUR_USERNAME/chess_readme_status/main/assets/chess-stats.svg" alt="Chess Stats" />
+  </a>
+</div>
+```
+
+**Pro Tip:** Replace `YOUR_USERNAME` with your GitHub username and `YOUR_CHESS_USERNAME` with your Chess.com username.
+
 ## Local Development
 
 ```bash
