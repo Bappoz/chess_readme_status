@@ -1,0 +1,68 @@
+name: 📊 Update Chess.com Stats
+
+on:
+  # Atualiza automaticamente a cada 6 horas (4x por dia)
+  schedule:
+    - cron: "0 */6 * * *"
+
+  # Permite executar manualmente pelo GitHub
+  workflow_dispatch:
+
+  # Executa também quando há push na branch main (para testes)
+  push:
+    branches:
+      - main
+    paths:
+      - "scripts/**"
+      - ".github/workflows/**"
+
+jobs:
+  update-stats:
+    name: Gerar SVG de Estatísticas
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: 📥 Checkout do repositório
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: 📦 Instalar dependências
+        run: npm ci
+
+      - name: 🎨 Gerar SVG com estatísticas
+        env:
+          CHESS_USERNAME: ${{ vars['CHESS_USERNAME'] }}
+          CHESS_THEME: ${{ vars['CHESS_THEME'] }}
+        run: npm run generate
+
+      - name: 📊 Verificar mudanças
+        id: verify-changes
+        run: |
+          git diff --quiet assets/chess-stats.svg || echo "changed=true" >> $GITHUB_OUTPUT
+
+      - name: 💾 Commit e Push
+        if: steps.verify-changes.outputs.changed == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add assets/chess-stats.svg
+          git commit -m "📊 Atualiza estatísticas do Chess.com [skip ci]"
+          git push
+
+      - name: ✅ Finalizado
+        if: steps.verify-changes.outputs.changed == 'true'
+        run: echo "✅ Estatísticas atualizadas com sucesso!"
+
+      - name: ℹ️ Sem mudanças
+        if: steps.verify-changes.outputs.changed != 'true'
+        run: echo "ℹ️ Nenhuma mudança detectada nas estatísticas"
