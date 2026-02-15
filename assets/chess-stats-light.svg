@@ -15,7 +15,7 @@
     <rect width="200" height="48" fill="#f6f8fa" rx="6"/>
     <rect width="4" height="48" fill="#bf5700" rx="2"/>
     <text x="16" y="18" fill="#656d76" font-size="11" font-family="Segoe UI, Arial, sans-serif">RAPID</text>
-    <text x="16" y="36" fill="#1f2328" font-size="18" font-weight="600" font-family="Segoe UI, Arial, sans-serif">1162</text>
+    <text x="16" y="36" fill="#1f2328" font-size="18" font-weight="600" font-family="Segoe UI, Arial, sans-serif">1201</text>
     <text x="188" y="36" fill="#8c959f" font-size="12" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">56%</text>
   </g>
 
@@ -51,24 +51,24 @@
     <rect width="208" height="216" fill="#f6f8fa" rx="6"/>
     
     <text x="16" y="24" fill="#656d76" font-size="11" font-family="Segoe UI, Arial, sans-serif">TOTAL GAMES</text>
-    <text x="16" y="48" fill="#1f2328" font-size="24" font-weight="600" font-family="Segoe UI, Arial, sans-serif">1.424</text>
+    <text x="16" y="48" fill="#1f2328" font-size="24" font-weight="600" font-family="Segoe UI, Arial, sans-serif">1.428</text>
     
     <line x1="16" y1="64" x2="192" y2="64" stroke="#d0d7de"/>
     
     <text x="16" y="88" fill="#656d76" font-size="11" font-family="Segoe UI, Arial, sans-serif">PEAK RATING</text>
-    <text x="16" y="112" fill="#0969da" font-size="24" font-weight="600" font-family="Segoe UI, Arial, sans-serif">1187</text>
+    <text x="16" y="112" fill="#0969da" font-size="24" font-weight="600" font-family="Segoe UI, Arial, sans-serif">1203</text>
     
     <line x1="16" y1="128" x2="192" y2="128" stroke="#d0d7de"/>
     
     <text x="16" y="152" fill="#656d76" font-size="11" font-family="Segoe UI, Arial, sans-serif">BEST RATINGS</text>
     <text x="16" y="172" fill="#8c959f" font-size="11" font-family="Segoe UI, Arial, sans-serif">
-      <tspan fill="#bf5700">R</tspan> 1187
+      <tspan fill="#bf5700">R</tspan> 1203
       <tspan fill="#cf222e">B</tspan> 937
       <tspan fill="#1a7f37">Bu</tspan> 608
     </text>
     
     <text x="16" y="200" fill="#8c959f" font-size="10" font-family="Segoe UI, Arial, sans-serif">
-      Updated Jan 31, 2026
+      Updated Feb 15, 2026
     </text>
   </g>
 </svg>

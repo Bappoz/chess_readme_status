@@ -32,3 +32,6 @@ Thumbs.db
 *.swp
 *.swo
 *~
+
+# Cache
+assets/.cache.json
