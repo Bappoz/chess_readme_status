@@ -1,4 +1,5 @@
 import fs from "node:fs";
+import path from "node:path";
 
 /**
  * Chess.com Stats SVG Generator
@@ -9,6 +10,8 @@ import fs from "node:fs";
 const CHESS_USERNAME = process.env.CHESS_USERNAME || "bappozl";
 const THEME_NAME = process.env.CHESS_THEME || "dark";
 const OUTPUT_DIR = "assets";
+const CACHE_FILE = path.join(OUTPUT_DIR, ".cache.json");
+const CACHE_MAX_AGE = 7 * 24 * 60 * 60 * 1000; // 7 dias
 
 /**
  * Sistema de Temas
@@ -169,42 +172,172 @@ const THEMES = {
 };
 
 /**
+ * Carrega cache de dados anteriores
+ */
+function loadCache() {
+  try {
+    if (fs.existsSync(CACHE_FILE)) {
+      const cacheData = JSON.parse(fs.readFileSync(CACHE_FILE, "utf8"));
+      const cacheAge = Date.now() - cacheData.timestamp;
+
+      if (cacheAge < CACHE_MAX_AGE) {
+        console.log(
+          `  Loaded cache (${Math.round(cacheAge / (1000 * 60 * 60))}h old)`,
+        );
+        return cacheData;
+      } else {
+        console.log(
+          `  Cache too old (${Math.round(cacheAge / (1000 * 60 * 60))}h), ignoring`,
+        );
+      }
+    }
+  } catch (error) {
+    console.warn(`  Failed to load cache: ${error.message}`);
+  }
+  return null;
+}
+
+/**
+ * Salva cache com timestamp
+ */
+function saveCache(data) {
+  try {
+    const cacheData = {
+      timestamp: Date.now(),
+      username: CHESS_USERNAME,
+      ...data,
+    };
+    fs.writeFileSync(CACHE_FILE, JSON.stringify(cacheData, null, 2));
+    console.log(`  Cache saved successfully`);
+  } catch (error) {
+    console.warn(`  Failed to save cache: ${error.message}`);
+  }
+}
+
+/**
+ * Aguarda um tempo com delay exponencial
+ */
+async function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+/**
+ * Fetch com retry automatico e exponential backoff
+ */
+async function fetchWithRetry(url, options = {}, maxRetries = 5) {
+  const baseDelay = 1000; // 1 segundo
+
+  for (let attempt = 0; attempt <= maxRetries; attempt++) {
+    try {
+      console.log(
+        `  Fetching: ${url.split("/").slice(-2).join("/")}${attempt > 0 ? ` (retry ${attempt}/${maxRetries})` : ""}`,
+      );
+
+      const response = await fetch(url, {
+        ...options,
+        headers: {
+          "User-Agent": "ChessReadmeStats/1.0",
+          ...options.headers,
+        },
+      });
+
+      // Rate limit detectado
+      if (response.status === 429) {
+        const retryAfter = response.headers.get("Retry-After");
+        const waitTime = retryAfter
+          ? parseInt(retryAfter) * 1000
+          : baseDelay * Math.pow(2, attempt);
+
+        console.log(
+          `  Rate limited! Waiting ${Math.round(waitTime / 1000)}s...`,
+        );
+        await sleep(waitTime);
+        continue;
+      }
+
+      // Erro do servidor (5xx) - tentar novamente
+      if (response.status >= 500 && response.status < 600) {
+        if (attempt < maxRetries) {
+          const waitTime = baseDelay * Math.pow(2, attempt);
+          console.log(
+            `  Server error ${response.status}. Retrying in ${Math.round(waitTime / 1000)}s...`,
+          );
+          await sleep(waitTime);
+          continue;
+        }
+      }
+
+      // Erro de cliente (4xx) - nao tentar novamente (exceto 429)
+      if (response.status >= 400 && response.status < 500) {
+        throw new Error(
+          `Client error: ${response.status} ${response.statusText}`,
+        );
+      }
+
+      // Sucesso
+      if (response.ok) {
+        return response;
+      }
+
+      throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+    } catch (error) {
+      // Erro de rede ou outro erro
+      if (attempt < maxRetries) {
+        const waitTime = baseDelay * Math.pow(2, attempt);
+        console.log(
+          `  Network error: ${error.message}. Retrying in ${Math.round(waitTime / 1000)}s...`,
+        );
+        await sleep(waitTime);
+        continue;
+      }
+      throw error;
+    }
+  }
+
+  throw new Error(`Failed after ${maxRetries} retries`);
+}
+
+/**
  * Busca estatisticas do jogador no Chess.com
  */
 async function fetchChessStats(username) {
-  const response = await fetch(
-    `https://api.chess.com/pub/player/${username}/stats`,
-    {
-      headers: { "User-Agent": "ChessReadmeStats/1.0" },
-    }
-  );
-  if (!response.ok) throw new Error(`API error: ${response.status}`);
-  return response.json();
+  try {
+    const response = await fetchWithRetry(
+      `https://api.chess.com/pub/player/${username}/stats`,
+    );
+    return await response.json();
+  } catch (error) {
+    console.error(`  Failed to fetch stats: ${error.message}`);
+    throw new Error(`Cannot fetch player stats: ${error.message}`);
+  }
 }
 
 /**
  * Busca arquivos de jogos
  */
 async function fetchGameArchives(username) {
-  const response = await fetch(
-    `https://api.chess.com/pub/player/${username}/games/archives`,
-    {
-      headers: { "User-Agent": "ChessReadmeStats/1.0" },
-    }
-  );
-  if (!response.ok) return { archives: [] };
-  return response.json();
+  try {
+    const response = await fetchWithRetry(
+      `https://api.chess.com/pub/player/${username}/games/archives`,
+    );
+    return await response.json();
+  } catch (error) {
+    console.error(`  Failed to fetch archives: ${error.message}`);
+    return { archives: [] };
+  }
 }
 
 /**
  * Busca jogos de um mes
  */
 async function fetchMonthGames(archiveUrl) {
-  const response = await fetch(archiveUrl, {
-    headers: { "User-Agent": "ChessReadmeStats/1.0" },
-  });
-  if (!response.ok) return { games: [] };
-  return response.json();
+  try {
+    const response = await fetchWithRetry(archiveUrl);
+    return await response.json();
+  } catch (error) {
+    console.error(`  Failed to fetch month games: ${error.message}`);
+    return { games: [] };
+  }
 }
 
 /**
@@ -233,20 +366,47 @@ function extractRatingHistory(games, username, gameType) {
  * Extrai dados das estatisticas
  */
 function extractStats(data) {
-  const getMode = (mode) => ({
-    rating: data[mode]?.last?.rating || 0,
-    best: data[mode]?.best?.rating || 0,
-    wins: data[mode]?.record?.win || 0,
-    losses: data[mode]?.record?.loss || 0,
-    draws: data[mode]?.record?.draw || 0,
-  });
+  if (!data) {
+    console.warn("  Warning: No stats data received");
+    return {
+      rapid: { rating: 0, best: 0, wins: 0, losses: 0, draws: 0 },
+      blitz: { rating: 0, best: 0, wins: 0, losses: 0, draws: 0 },
+      bullet: { rating: 0, best: 0, wins: 0, losses: 0, draws: 0 },
+      daily: { rating: 0, best: 0, wins: 0, losses: 0, draws: 0 },
+    };
+  }
 
-  return {
+  const getMode = (mode) => {
+    const modeData = data[mode];
+    if (!modeData) {
+      console.warn(`  Warning: No data for mode ${mode}`);
+    }
+    return {
+      rating: modeData?.last?.rating || 0,
+      best: modeData?.best?.rating || 0,
+      wins: modeData?.record?.win || 0,
+      losses: modeData?.record?.loss || 0,
+      draws: modeData?.record?.draw || 0,
+    };
+  };
+
+  const stats = {
     rapid: getMode("chess_rapid"),
     blitz: getMode("chess_blitz"),
     bullet: getMode("chess_bullet"),
     daily: getMode("chess_daily"),
   };
+
+  // Validar que pelo menos um modo tem dados
+  const hasAnyData = Object.values(stats).some(
+    (mode) => mode.rating > 0 || mode.best > 0,
+  );
+
+  if (!hasAnyData) {
+    console.warn("  Warning: No rating data found in any game mode");
+  }
+
+  return stats;
 }
 
 /**
@@ -278,22 +438,22 @@ function generateSVG(username, stats, theme) {
   const rapidWinRate = calculateWinRate(
     stats.rapid.wins,
     stats.rapid.losses,
-    stats.rapid.draws
+    stats.rapid.draws,
   );
   const blitzWinRate = calculateWinRate(
     stats.blitz.wins,
     stats.blitz.losses,
-    stats.blitz.draws
+    stats.blitz.draws,
   );
   const bulletWinRate = calculateWinRate(
     stats.bullet.wins,
     stats.bullet.losses,
-    stats.bullet.draws
+    stats.bullet.draws,
   );
   const dailyWinRate = calculateWinRate(
     stats.daily.wins,
     stats.daily.losses,
-    stats.daily.draws
+    stats.daily.draws,
   );
 
   const totalGames =
@@ -314,7 +474,7 @@ function generateSVG(username, stats, theme) {
     stats.rapid.best,
     stats.blitz.best,
     stats.bullet.best,
-    stats.daily.best
+    stats.daily.best,
   );
 
   return `<svg width="480" height="320" xmlns="http://www.w3.org/2000/svg">
@@ -345,8 +505,8 @@ function generateSVG(username, stats, theme) {
     <text x="16" y="36" fill="${
       t.text
     }" font-size="18" font-weight="600" font-family="Segoe UI, Arial, sans-serif">${
-    stats.rapid.rating || "-"
-  }</text>
+      stats.rapid.rating || "-"
+    }</text>
     <text x="188" y="36" fill="${
       t.textMuted
     }" font-size="12" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">${rapidWinRate}%</text>
@@ -362,8 +522,8 @@ function generateSVG(username, stats, theme) {
     <text x="16" y="36" fill="${
       t.text
     }" font-size="18" font-weight="600" font-family="Segoe UI, Arial, sans-serif">${
-    stats.blitz.rating || "-"
-  }</text>
+      stats.blitz.rating || "-"
+    }</text>
     <text x="188" y="36" fill="${
       t.textMuted
     }" font-size="12" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">${blitzWinRate}%</text>
@@ -379,8 +539,8 @@ function generateSVG(username, stats, theme) {
     <text x="16" y="36" fill="${
       t.text
     }" font-size="18" font-weight="600" font-family="Segoe UI, Arial, sans-serif">${
-    stats.bullet.rating || "-"
-  }</text>
+      stats.bullet.rating || "-"
+    }</text>
     <text x="188" y="36" fill="${
       t.textMuted
     }" font-size="12" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">${bulletWinRate}%</text>
@@ -396,8 +556,8 @@ function generateSVG(username, stats, theme) {
     <text x="16" y="36" fill="${
       t.text
     }" font-size="18" font-weight="600" font-family="Segoe UI, Arial, sans-serif">${
-    stats.daily.rating || "-"
-  }</text>
+      stats.daily.rating || "-"
+    }</text>
     <text x="188" y="36" fill="${
       t.textMuted
     }" font-size="12" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">${dailyWinRate}%</text>
@@ -531,14 +691,14 @@ function generateLineChart(username, gameType, history, currentRating, theme) {
     .map(
       (l) => `
   <line x1="${padding.left}" y1="${l.y}" x2="${padding.left + chartW}" y2="${
-        l.y
-      }" stroke="${t.gridLine}" stroke-width="1"/>
+    l.y
+  }" stroke="${t.gridLine}" stroke-width="1"/>
   <text x="${padding.left - 8}" y="${l.y + 4}" fill="${
-        t.textMuted
-      }" font-size="10" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">${
-        l.rating
-      }</text>
-  `
+    t.textMuted
+  }" font-size="10" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">${
+    l.rating
+  }</text>
+  `,
     )
     .join("")}
 
@@ -598,75 +758,194 @@ function generateNoDataSVG(username, modeName, color, theme) {
  * Funcao principal
  */
 async function main() {
-  console.log("Chess.com Stats Generator\n");
+  console.log("=".repeat(60));
+  console.log("Chess.com Stats Generator");
+  console.log("=".repeat(60));
   console.log(`User: ${CHESS_USERNAME}`);
+  console.log(`Theme: ${THEME_NAME}`);
+  console.log(`Date: ${new Date().toISOString()}`);
   console.log("");
+
+  // Validar username
+  if (!CHESS_USERNAME || CHESS_USERNAME.trim() === "") {
+    throw new Error(
+      "CHESS_USERNAME is required. Set it as an environment variable.",
+    );
+  }
 
   // Criar diretorio se nao existir
   if (!fs.existsSync(OUTPUT_DIR)) {
+    console.log("Creating output directory...");
     fs.mkdirSync(OUTPUT_DIR, { recursive: true });
   }
 
-  // Buscar estatisticas
-  console.log("Fetching stats...");
-  const rawStats = await fetchChessStats(CHESS_USERNAME);
-  const stats = extractStats(rawStats);
-
-  console.log(`  Rapid:  ${stats.rapid.rating}`);
-  console.log(`  Blitz:  ${stats.blitz.rating}`);
-  console.log(`  Bullet: ${stats.bullet.rating}`);
-  console.log(`  Daily:  ${stats.daily.rating}`);
+  // Carregar cache como backup
+  console.log("Loading cache...");
+  const cache = loadCache();
   console.log("");
 
-  // Buscar historico de jogos
-  console.log("Fetching game history...");
-  const archives = await fetchGameArchives(CHESS_USERNAME);
-  const recentArchives = archives.archives?.slice(-3) || [];
-
+  let stats;
+  let rawStats;
   let allGames = [];
-  for (const archiveUrl of recentArchives) {
-    const monthData = await fetchMonthGames(archiveUrl);
-    allGames = allGames.concat(monthData.games || []);
-  }
-  console.log(`  Found ${allGames.length} games\n`);
+  let usedCache = false;
 
-  // Extrair historico de cada modo uma vez
+  // Buscar estatisticas com tratamento de erro robusto
+  try {
+    console.log("Fetching player stats...");
+    rawStats = await fetchChessStats(CHESS_USERNAME);
+    stats = extractStats(rawStats);
+
+    console.log("  Current ratings:");
+    console.log(
+      `    Rapid:  ${stats.rapid.rating} (best: ${stats.rapid.best})`,
+    );
+    console.log(
+      `    Blitz:  ${stats.blitz.rating} (best: ${stats.blitz.best})`,
+    );
+    console.log(
+      `    Bullet: ${stats.bullet.rating} (best: ${stats.bullet.best})`,
+    );
+    console.log(
+      `    Daily:  ${stats.daily.rating} (best: ${stats.daily.best})`,
+    );
+    console.log("");
+  } catch (error) {
+    console.error("ERROR: Failed to fetch player stats");
+    console.error(`  ${error.message}`);
+
+    // Tentar usar cache como fallback
+    if (cache && cache.stats) {
+      console.log("  Using cached stats as fallback");
+      stats = cache.stats;
+      usedCache = true;
+      console.log("");
+    } else {
+      console.error("  No cache available, cannot continue");
+      throw error;
+    }
+  }
+
+  // Buscar historico de jogos
+  if (!usedCache) {
+    try {
+      console.log("Fetching game history...");
+      const archives = await fetchGameArchives(CHESS_USERNAME);
+
+      if (!archives.archives || archives.archives.length === 0) {
+        console.warn("  Warning: No game archives found");
+      } else {
+        const recentArchives = archives.archives.slice(-3);
+        console.log(
+          `  Found ${archives.archives.length} archive months, fetching last 3...`,
+        );
+
+        for (const archiveUrl of recentArchives) {
+          const monthData = await fetchMonthGames(archiveUrl);
+          const gamesInMonth = monthData.games?.length || 0;
+          if (gamesInMonth > 0) {
+            allGames = allGames.concat(monthData.games);
+          }
+        }
+        console.log(`  Total games loaded: ${allGames.length}`);
+      }
+      console.log("");
+    } catch (error) {
+      console.error("ERROR: Failed to fetch game history");
+      console.error(`  ${error.message}`);
+
+      if (cache && cache.allGames) {
+        console.log("  Using cached game history as fallback");
+        allGames = cache.allGames;
+      } else {
+        console.log(
+          "  Continuing without game history (charts will show only current ratings)",
+        );
+      }
+      console.log("");
+    }
+  } else if (cache && cache.allGames) {
+    // Se usamos cache para stats, usar cache para games tambem
+    allGames = cache.allGames;
+  }
+
+  // Extrair historico de cada modo
   const modes = ["rapid", "blitz", "bullet", "daily"];
   const histories = {};
+
+  console.log("Processing rating history...");
   for (const mode of modes) {
-    histories[mode] = extractRatingHistory(allGames, CHESS_USERNAME, mode);
+    try {
+      histories[mode] = extractRatingHistory(allGames, CHESS_USERNAME, mode);
+      console.log(`  ${mode}: ${histories[mode].length} data points`);
+    } catch (error) {
+      console.error(`  Error processing ${mode} history: ${error.message}`);
+      histories[mode] = [];
+    }
+  }
+  console.log("");
+
+  // Salvar cache com os dados atualizados (se nao usamos cache)
+  if (!usedCache) {
+    console.log("Saving cache...");
+    saveCache({ stats, allGames });
+    console.log("");
   }
 
   // Gerar SVGs para TODOS os temas
   const themeNames = Object.keys(THEMES);
-  console.log(`Generating ${themeNames.length} themes...\n`);
+  console.log(`Generating SVG files for ${themeNames.length} themes...\n`);
+
+  let generatedCount = 0;
+  let errorCount = 0;
 
   for (const themeName of themeNames) {
-    // SVG principal com tema
-    const suffix = themeName === "dark" ? "" : `-${themeName}`;
+    try {
+      // SVG principal com tema
+      const suffix = themeName === "dark" ? "" : `-${themeName}`;
 
-    const mainSVG = generateSVG(CHESS_USERNAME, stats, themeName);
-    fs.writeFileSync(`${OUTPUT_DIR}/chess-stats${suffix}.svg`, mainSVG);
+      const mainSVG = generateSVG(CHESS_USERNAME, stats, themeName);
+      fs.writeFileSync(`${OUTPUT_DIR}/chess-stats${suffix}.svg`, mainSVG);
+      generatedCount++;
 
-    // Graficos de linha para cada modo
-    for (const mode of modes) {
-      const svg = generateLineChart(
-        CHESS_USERNAME,
-        mode,
-        histories[mode],
-        stats[mode].rating,
-        themeName
-      );
-      fs.writeFileSync(`${OUTPUT_DIR}/chess-stats-${mode}${suffix}.svg`, svg);
+      // Graficos de linha para cada modo
+      for (const mode of modes) {
+        const svg = generateLineChart(
+          CHESS_USERNAME,
+          mode,
+          histories[mode],
+          stats[mode].rating,
+          themeName,
+        );
+        fs.writeFileSync(`${OUTPUT_DIR}/chess-stats-${mode}${suffix}.svg`, svg);
+        generatedCount++;
+      }
+
+      console.log(`  ✓ ${themeName} theme (5 files)`);
+    } catch (error) {
+      console.error(`  ✗ ${themeName} theme failed: ${error.message}`);
+      errorCount++;
     }
-
-    console.log(`  Generated: ${themeName} theme (5 files)`);
   }
 
-  console.log(`\nDone! Generated ${themeNames.length * 5} SVG files.`);
+  console.log("");
+  console.log("=".repeat(60));
+  console.log(`SUCCESS: Generated ${generatedCount} SVG files`);
+  if (errorCount > 0) {
+    console.log(`WARNING: ${errorCount} theme(s) failed`);
+  }
+  console.log("=".repeat(60));
 }
 
 main().catch((err) => {
-  console.error("Error:", err.message);
+  console.error("");
+  console.error("=".repeat(60));
+  console.error("FATAL ERROR:");
+  console.error(`  ${err.message}`);
+  if (err.stack) {
+    console.error("");
+    console.error("Stack trace:");
+    console.error(err.stack);
+  }
+  console.error("=".repeat(60));
   process.exit(1);
 });
