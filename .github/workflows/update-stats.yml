@@ -40,7 +40,12 @@ jobs:
           cache: "npm"
 
       - name: 📦 Instalar dependências
-        run: npm ci || npm install
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci
+          else
+            npm install
+          fi
         timeout-minutes: 5
 
       - name: 🎨 Gerar SVG com estatísticas
