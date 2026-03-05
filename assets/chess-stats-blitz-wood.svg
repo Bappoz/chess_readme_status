@@ -7,49 +7,45 @@
     Blitz Rating
   </text>
   <text x="456" y="28" fill="#ff8a65" font-size="14" font-weight="600" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">
-    697 (-39)
+    697 (+10)
   </text>
 
   <!-- Grid -->
   
   <line x1="48" y1="48" x2="456" y2="48" stroke="#6d4c41" stroke-width="1"/>
-  <text x="40" y="52" fill="#8d6e63" font-size="10" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">775</text>
+  <text x="40" y="52" fill="#8d6e63" font-size="10" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">701</text>
   
   <line x1="48" y1="86" x2="456" y2="86" stroke="#6d4c41" stroke-width="1"/>
-  <text x="40" y="90" fill="#8d6e63" font-size="10" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">743</text>
+  <text x="40" y="90" fill="#8d6e63" font-size="10" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">689</text>
   
   <line x1="48" y1="124" x2="456" y2="124" stroke="#6d4c41" stroke-width="1"/>
-  <text x="40" y="128" fill="#8d6e63" font-size="10" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">712</text>
+  <text x="40" y="128" fill="#8d6e63" font-size="10" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">678</text>
   
   <line x1="48" y1="162" x2="456" y2="162" stroke="#6d4c41" stroke-width="1"/>
-  <text x="40" y="166" fill="#8d6e63" font-size="10" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">680</text>
+  <text x="40" y="166" fill="#8d6e63" font-size="10" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">667</text>
   
   <line x1="48" y1="200" x2="456" y2="200" stroke="#6d4c41" stroke-width="1"/>
-  <text x="40" y="204" fill="#8d6e63" font-size="10" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">649</text>
+  <text x="40" y="204" fill="#8d6e63" font-size="10" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">655</text>
   
 
   <!-- Area -->
-  <polygon points="48,200 48,94.44444444444444 99,60.666666666666686 150,63.07936507936509 201,92.03174603174602 252,153.55555555555554 303,187.33333333333334 354,180.0952380952381 405,172.85714285714286 456,141.4920634920635 456,200" fill="#ff8a65" opacity="0.15"/>
+  <polygon points="48,200 48,93.99999999999994 150,187.33333333333346 252,167.33333333333343 354,147.33333333333337 456,60.66666666666654 456,200" fill="#ff8a65" opacity="0.15"/>
 
   <!-- Line -->
-  <polyline points="48,94.44444444444444 99,60.666666666666686 150,63.07936507936509 201,92.03174603174602 252,153.55555555555554 303,187.33333333333334 354,180.0952380952381 405,172.85714285714286 456,141.4920634920635" fill="none" stroke="#ff8a65" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="48,93.99999999999994 150,187.33333333333346 252,167.33333333333343 354,147.33333333333337 456,60.66666666666654" fill="none" stroke="#ff8a65" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 
   <!-- Points -->
-  <circle cx="48" cy="94.44444444444444" r="3" fill="#3e2723" stroke="#ff8a65" stroke-width="2"/>
-  <circle cx="99" cy="60.666666666666686" r="3" fill="#3e2723" stroke="#ff8a65" stroke-width="2"/>
-  <circle cx="150" cy="63.07936507936509" r="3" fill="#3e2723" stroke="#ff8a65" stroke-width="2"/>
-  <circle cx="201" cy="92.03174603174602" r="3" fill="#3e2723" stroke="#ff8a65" stroke-width="2"/>
-  <circle cx="252" cy="153.55555555555554" r="3" fill="#3e2723" stroke="#ff8a65" stroke-width="2"/>
-  <circle cx="303" cy="187.33333333333334" r="3" fill="#3e2723" stroke="#ff8a65" stroke-width="2"/>
-  <circle cx="354" cy="180.0952380952381" r="3" fill="#3e2723" stroke="#ff8a65" stroke-width="2"/>
-  <circle cx="405" cy="172.85714285714286" r="3" fill="#3e2723" stroke="#ff8a65" stroke-width="2"/>
-  <circle cx="456" cy="141.4920634920635" r="3" fill="#3e2723" stroke="#ff8a65" stroke-width="2"/>
+  <circle cx="48" cy="93.99999999999994" r="3" fill="#3e2723" stroke="#ff8a65" stroke-width="2"/>
+  <circle cx="150" cy="187.33333333333346" r="3" fill="#3e2723" stroke="#ff8a65" stroke-width="2"/>
+  <circle cx="252" cy="167.33333333333343" r="3" fill="#3e2723" stroke="#ff8a65" stroke-width="2"/>
+  <circle cx="354" cy="147.33333333333337" r="3" fill="#3e2723" stroke="#ff8a65" stroke-width="2"/>
+  <circle cx="456" cy="60.66666666666654" r="3" fill="#3e2723" stroke="#ff8a65" stroke-width="2"/>
 
   <!-- Footer -->
   <text x="24" y="228" fill="#8d6e63" font-size="10" font-family="Segoe UI, Arial, sans-serif">
     @bappozl
   </text>
   <text x="456" y="228" fill="#8d6e63" font-size="10" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">
-    Last 9 games
+    Last 5 games
   </text>
 </svg>
