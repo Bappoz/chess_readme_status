@@ -33,8 +33,8 @@
     <rect width="200" height="48" fill="#161b22" rx="6"/>
     <rect width="4" height="48" fill="#3fb950" rx="2"/>
     <text x="16" y="18" fill="#8b949e" font-size="11" font-family="Segoe UI, Arial, sans-serif">BULLET</text>
-    <text x="16" y="36" fill="#e6edf3" font-size="18" font-weight="600" font-family="Segoe UI, Arial, sans-serif">588</text>
-    <text x="188" y="36" fill="#6e7681" font-size="12" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">55%</text>
+    <text x="16" y="36" fill="#e6edf3" font-size="18" font-weight="600" font-family="Segoe UI, Arial, sans-serif">619</text>
+    <text x="188" y="36" fill="#6e7681" font-size="12" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">56%</text>
   </g>
 
   <!-- Daily -->
@@ -51,7 +51,7 @@
     <rect width="208" height="216" fill="#161b22" rx="6"/>
     
     <text x="16" y="24" fill="#8b949e" font-size="11" font-family="Segoe UI, Arial, sans-serif">TOTAL GAMES</text>
-    <text x="16" y="48" fill="#e6edf3" font-size="24" font-weight="600" font-family="Segoe UI, Arial, sans-serif">1,432</text>
+    <text x="16" y="48" fill="#e6edf3" font-size="24" font-weight="600" font-family="Segoe UI, Arial, sans-serif">1,433</text>
     
     <line x1="16" y1="64" x2="192" y2="64" stroke="#30363d"/>
     
@@ -64,7 +64,7 @@
     <text x="16" y="172" fill="#6e7681" font-size="11" font-family="Segoe UI, Arial, sans-serif">
       <tspan fill="#f0883e">R</tspan> 1203
       <tspan fill="#da3633">B</tspan> 937
-      <tspan fill="#3fb950">Bu</tspan> 608
+      <tspan fill="#3fb950">Bu</tspan> 619
     </text>
     
     <text x="16" y="200" fill="#6e7681" font-size="10" font-family="Segoe UI, Arial, sans-serif">
