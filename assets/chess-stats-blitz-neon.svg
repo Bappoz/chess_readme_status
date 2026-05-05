@@ -2,46 +2,13 @@
   <rect width="480" height="240" fill="#0a0a1a" rx="8"/>
   <rect x="1" y="1" width="478" height="238" fill="none" stroke="#00ffff33" rx="8"/>
 
-  <!-- Header -->
-  <text x="24" y="28" fill="#00ffff" font-size="14" font-weight="600" font-family="Segoe UI, Arial, sans-serif">
-    Blitz Rating
+  <text x="240" y="100" fill="#00ffff" font-size="16" font-weight="600" font-family="Segoe UI, Arial, sans-serif" text-anchor="middle">
+    No Blitz Data
   </text>
-  <text x="456" y="28" fill="#ff0066" font-size="14" font-weight="600" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">
-    697 (+0)
+  <text x="240" y="124" fill="#00cccc" font-size="12" font-family="Segoe UI, Arial, sans-serif" text-anchor="middle">
+    @bappozl has not played Blitz games yet
   </text>
-
-  <!-- Grid -->
-  
-  <line x1="48" y1="48" x2="456" y2="48" stroke="#00ffff22" stroke-width="1"/>
-  <text x="40" y="52" fill="#008888" font-size="10" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">707</text>
-  
-  <line x1="48" y1="86" x2="456" y2="86" stroke="#00ffff22" stroke-width="1"/>
-  <text x="40" y="90" fill="#008888" font-size="10" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">702</text>
-  
-  <line x1="48" y1="124" x2="456" y2="124" stroke="#00ffff22" stroke-width="1"/>
-  <text x="40" y="128" fill="#008888" font-size="10" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">697</text>
-  
-  <line x1="48" y1="162" x2="456" y2="162" stroke="#00ffff22" stroke-width="1"/>
-  <text x="40" y="166" fill="#008888" font-size="10" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">692</text>
-  
-  <line x1="48" y1="200" x2="456" y2="200" stroke="#00ffff22" stroke-width="1"/>
-  <text x="40" y="204" fill="#008888" font-size="10" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">687</text>
-  
-
-  <!-- Area -->
-  <polygon points="48,200 48,124 456,200" fill="#ff0066" opacity="0.15"/>
-
-  <!-- Line -->
-  <polyline points="48,124" fill="none" stroke="#ff0066" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-
-  <!-- Points -->
-  <circle cx="48" cy="124" r="3" fill="#0a0a1a" stroke="#ff0066" stroke-width="2"/>
-
-  <!-- Footer -->
-  <text x="24" y="228" fill="#008888" font-size="10" font-family="Segoe UI, Arial, sans-serif">
-    @bappozl
-  </text>
-  <text x="456" y="228" fill="#008888" font-size="10" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">
-    Last 1 games
+  <text x="240" y="148" fill="#008888" font-size="11" font-family="Segoe UI, Arial, sans-serif" text-anchor="middle">
+    Play some games to see your rating history
   </text>
 </svg>

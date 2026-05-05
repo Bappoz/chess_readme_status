@@ -7,7 +7,7 @@
     Rapid Rating
   </text>
   <text x="456" y="28" fill="#f0d9b5" font-size="14" font-weight="600" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">
-    1206 (+24)
+    1188 (+5)
   </text>
 
   <!-- Grid -->
@@ -29,30 +29,27 @@
   
 
   <!-- Area -->
-  <polygon points="48,200 48,113.08045977011494 85.0909090909091,67.21839080459762 122.18181818181819,110.89655172413792 159.27272727272725,71.58620689655166 196.36363636363637,110.89655172413792 233.45454545454544,150.20689655172418 270.5454545454545,187.33333333333343 307.6363636363636,143.65517241379314 344.72727272727275,102.16091954022986 381.8181818181818,139.2873563218391 418.9090909090909,99.97701149425284 456,60.6666666666666 456,200" fill="#f0d9b5" opacity="0.15"/>
+  <polygon points="48,200 48,110.89655172413792 99,150.20689655172418 150,187.33333333333343 201,143.65517241379314 252,102.16091954022986 303,139.2873563218391 354,99.97701149425284 405,60.6666666666666 456,99.97701149425284 456,200" fill="#f0d9b5" opacity="0.15"/>
 
   <!-- Line -->
-  <polyline points="48,113.08045977011494 85.0909090909091,67.21839080459762 122.18181818181819,110.89655172413792 159.27272727272725,71.58620689655166 196.36363636363637,110.89655172413792 233.45454545454544,150.20689655172418 270.5454545454545,187.33333333333343 307.6363636363636,143.65517241379314 344.72727272727275,102.16091954022986 381.8181818181818,139.2873563218391 418.9090909090909,99.97701149425284 456,60.6666666666666" fill="none" stroke="#f0d9b5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="48,110.89655172413792 99,150.20689655172418 150,187.33333333333343 201,143.65517241379314 252,102.16091954022986 303,139.2873563218391 354,99.97701149425284 405,60.6666666666666 456,99.97701149425284" fill="none" stroke="#f0d9b5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 
   <!-- Points -->
-  <circle cx="48" cy="113.08045977011494" r="3" fill="#312e2b" stroke="#f0d9b5" stroke-width="2"/>
-  <circle cx="85.0909090909091" cy="67.21839080459762" r="3" fill="#312e2b" stroke="#f0d9b5" stroke-width="2"/>
-  <circle cx="122.18181818181819" cy="110.89655172413792" r="3" fill="#312e2b" stroke="#f0d9b5" stroke-width="2"/>
-  <circle cx="159.27272727272725" cy="71.58620689655166" r="3" fill="#312e2b" stroke="#f0d9b5" stroke-width="2"/>
-  <circle cx="196.36363636363637" cy="110.89655172413792" r="3" fill="#312e2b" stroke="#f0d9b5" stroke-width="2"/>
-  <circle cx="233.45454545454544" cy="150.20689655172418" r="3" fill="#312e2b" stroke="#f0d9b5" stroke-width="2"/>
-  <circle cx="270.5454545454545" cy="187.33333333333343" r="3" fill="#312e2b" stroke="#f0d9b5" stroke-width="2"/>
-  <circle cx="307.6363636363636" cy="143.65517241379314" r="3" fill="#312e2b" stroke="#f0d9b5" stroke-width="2"/>
-  <circle cx="344.72727272727275" cy="102.16091954022986" r="3" fill="#312e2b" stroke="#f0d9b5" stroke-width="2"/>
-  <circle cx="381.8181818181818" cy="139.2873563218391" r="3" fill="#312e2b" stroke="#f0d9b5" stroke-width="2"/>
-  <circle cx="418.9090909090909" cy="99.97701149425284" r="3" fill="#312e2b" stroke="#f0d9b5" stroke-width="2"/>
-  <circle cx="456" cy="60.6666666666666" r="3" fill="#312e2b" stroke="#f0d9b5" stroke-width="2"/>
+  <circle cx="48" cy="110.89655172413792" r="3" fill="#312e2b" stroke="#f0d9b5" stroke-width="2"/>
+  <circle cx="99" cy="150.20689655172418" r="3" fill="#312e2b" stroke="#f0d9b5" stroke-width="2"/>
+  <circle cx="150" cy="187.33333333333343" r="3" fill="#312e2b" stroke="#f0d9b5" stroke-width="2"/>
+  <circle cx="201" cy="143.65517241379314" r="3" fill="#312e2b" stroke="#f0d9b5" stroke-width="2"/>
+  <circle cx="252" cy="102.16091954022986" r="3" fill="#312e2b" stroke="#f0d9b5" stroke-width="2"/>
+  <circle cx="303" cy="139.2873563218391" r="3" fill="#312e2b" stroke="#f0d9b5" stroke-width="2"/>
+  <circle cx="354" cy="99.97701149425284" r="3" fill="#312e2b" stroke="#f0d9b5" stroke-width="2"/>
+  <circle cx="405" cy="60.6666666666666" r="3" fill="#312e2b" stroke="#f0d9b5" stroke-width="2"/>
+  <circle cx="456" cy="99.97701149425284" r="3" fill="#312e2b" stroke="#f0d9b5" stroke-width="2"/>
 
   <!-- Footer -->
   <text x="24" y="228" fill="#8b7355" font-size="10" font-family="Segoe UI, Arial, sans-serif">
     @bappozl
   </text>
   <text x="456" y="228" fill="#8b7355" font-size="10" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">
-    Last 12 games
+    Last 9 games
   </text>
 </svg>
