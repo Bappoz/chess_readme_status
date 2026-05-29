@@ -29,13 +29,16 @@
   
 
   <!-- Area -->
-  <polygon points="48,200 48,60.666666666666885 456,187.33333333333312 456,200" fill="#cf222e" opacity="0.15"/>
+  <polygon points="48,200 48,60.666666666666885 150,187.33333333333312 252,187.33333333333312 354,187.33333333333312 456,187.33333333333312 456,200" fill="#cf222e" opacity="0.15"/>
 
   <!-- Line -->
-  <polyline points="48,60.666666666666885 456,187.33333333333312" fill="none" stroke="#cf222e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="48,60.666666666666885 150,187.33333333333312 252,187.33333333333312 354,187.33333333333312 456,187.33333333333312" fill="none" stroke="#cf222e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 
   <!-- Points -->
   <circle cx="48" cy="60.666666666666885" r="3" fill="#ffffff" stroke="#cf222e" stroke-width="2"/>
+  <circle cx="150" cy="187.33333333333312" r="3" fill="#ffffff" stroke="#cf222e" stroke-width="2"/>
+  <circle cx="252" cy="187.33333333333312" r="3" fill="#ffffff" stroke="#cf222e" stroke-width="2"/>
+  <circle cx="354" cy="187.33333333333312" r="3" fill="#ffffff" stroke="#cf222e" stroke-width="2"/>
   <circle cx="456" cy="187.33333333333312" r="3" fill="#ffffff" stroke="#cf222e" stroke-width="2"/>
 
   <!-- Footer -->
@@ -43,6 +46,6 @@
     @bappozl
   </text>
   <text x="456" y="228" fill="#8c959f" font-size="10" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">
-    Last 2 games
+    Last 5 games
   </text>
 </svg>
