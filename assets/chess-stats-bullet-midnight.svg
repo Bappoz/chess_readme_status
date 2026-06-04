@@ -7,7 +7,7 @@
     Bullet Rating
   </text>
   <text x="456" y="28" fill="#44ff44" font-size="14" font-weight="600" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">
-    576 (-43)
+    576 (-80)
   </text>
 
   <!-- Grid -->
@@ -29,16 +29,15 @@
   
 
   <!-- Area -->
-  <polygon points="48,200 48,119.25 150,60.666666666666686 252,108.16666666666667 354,147.75 456,187.33333333333334 456,200" fill="#44ff44" opacity="0.15"/>
+  <polygon points="48,200 48,60.666666666666686 184,108.16666666666667 320,147.75 456,187.33333333333334 456,200" fill="#44ff44" opacity="0.15"/>
 
   <!-- Line -->
-  <polyline points="48,119.25 150,60.666666666666686 252,108.16666666666667 354,147.75 456,187.33333333333334" fill="none" stroke="#44ff44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="48,60.666666666666686 184,108.16666666666667 320,147.75 456,187.33333333333334" fill="none" stroke="#44ff44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 
   <!-- Points -->
-  <circle cx="48" cy="119.25" r="3" fill="#000000" stroke="#44ff44" stroke-width="2"/>
-  <circle cx="150" cy="60.666666666666686" r="3" fill="#000000" stroke="#44ff44" stroke-width="2"/>
-  <circle cx="252" cy="108.16666666666667" r="3" fill="#000000" stroke="#44ff44" stroke-width="2"/>
-  <circle cx="354" cy="147.75" r="3" fill="#000000" stroke="#44ff44" stroke-width="2"/>
+  <circle cx="48" cy="60.666666666666686" r="3" fill="#000000" stroke="#44ff44" stroke-width="2"/>
+  <circle cx="184" cy="108.16666666666667" r="3" fill="#000000" stroke="#44ff44" stroke-width="2"/>
+  <circle cx="320" cy="147.75" r="3" fill="#000000" stroke="#44ff44" stroke-width="2"/>
   <circle cx="456" cy="187.33333333333334" r="3" fill="#000000" stroke="#44ff44" stroke-width="2"/>
 
   <!-- Footer -->
@@ -46,6 +45,6 @@
     @bappozl
   </text>
   <text x="456" y="228" fill="#666666" font-size="10" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">
-    Last 5 games
+    Last 4 games
   </text>
 </svg>
