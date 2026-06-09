@@ -7,49 +7,49 @@
     Rapid Rating
   </text>
   <text x="456" y="28" fill="#ffa500" font-size="14" font-weight="600" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">
-    1190 (+20)
+    1202 (+33)
   </text>
 
   <!-- Grid -->
   
   <line x1="48" y1="48" x2="456" y2="48" stroke="#222222" stroke-width="1"/>
-  <text x="40" y="52" fill="#666666" font-size="10" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">1202</text>
+  <text x="40" y="52" fill="#666666" font-size="10" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">1208</text>
   
   <line x1="48" y1="86" x2="456" y2="86" stroke="#222222" stroke-width="1"/>
-  <text x="40" y="90" fill="#666666" font-size="10" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">1186</text>
+  <text x="40" y="90" fill="#666666" font-size="10" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">1190</text>
   
   <line x1="48" y1="124" x2="456" y2="124" stroke="#222222" stroke-width="1"/>
-  <text x="40" y="128" fill="#666666" font-size="10" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">1170</text>
+  <text x="40" y="128" fill="#666666" font-size="10" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">1173</text>
   
   <line x1="48" y1="162" x2="456" y2="162" stroke="#222222" stroke-width="1"/>
-  <text x="40" y="166" fill="#666666" font-size="10" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">1154</text>
+  <text x="40" y="166" fill="#666666" font-size="10" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">1155</text>
   
   <line x1="48" y1="200" x2="456" y2="200" stroke="#222222" stroke-width="1"/>
-  <text x="40" y="204" fill="#666666" font-size="10" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">1138</text>
+  <text x="40" y="204" fill="#666666" font-size="10" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">1137</text>
   
 
   <!-- Area -->
-  <polygon points="48,200 48,124 77.14285714285714,126.34567901234567 106.28571428571428,126.34567901234567 135.42857142857144,163.87654320987644 164.57142857142856,128.69135802469134 193.71428571428572,93.50617283950626 222.85714285714286,60.66666666666683 252,91.16049382716058 281.1428571428571,124 310.2857142857143,156.8395061728394 339.42857142857144,187.33333333333314 368.57142857142856,156.8395061728394 397.7142857142857,128.69135802469134 426.8571428571429,102.88888888888894 456,77.08641975308655 456,200" fill="#ffa500" opacity="0.15"/>
+  <polygon points="48,200 48,131.5141242937853 77.14285714285714,131.5141242937853 106.28571428571428,165.8644067796609 135.42857142857144,133.6610169491525 164.57142857142856,101.45762711864413 193.71428571428572,71.40112994350295 222.85714285714286,99.3107344632769 252,129.36723163841805 281.1428571428571,159.42372881355922 310.2857142857143,187.33333333333317 339.42857142857144,159.42372881355922 368.57142857142856,133.6610169491525 397.7142857142857,110.04519774011303 426.8571428571429,86.42937853107354 456,60.66666666666683 456,200" fill="#ffa500" opacity="0.15"/>
 
   <!-- Line -->
-  <polyline points="48,124 77.14285714285714,126.34567901234567 106.28571428571428,126.34567901234567 135.42857142857144,163.87654320987644 164.57142857142856,128.69135802469134 193.71428571428572,93.50617283950626 222.85714285714286,60.66666666666683 252,91.16049382716058 281.1428571428571,124 310.2857142857143,156.8395061728394 339.42857142857144,187.33333333333314 368.57142857142856,156.8395061728394 397.7142857142857,128.69135802469134 426.8571428571429,102.88888888888894 456,77.08641975308655" fill="none" stroke="#ffa500" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="48,131.5141242937853 77.14285714285714,131.5141242937853 106.28571428571428,165.8644067796609 135.42857142857144,133.6610169491525 164.57142857142856,101.45762711864413 193.71428571428572,71.40112994350295 222.85714285714286,99.3107344632769 252,129.36723163841805 281.1428571428571,159.42372881355922 310.2857142857143,187.33333333333317 339.42857142857144,159.42372881355922 368.57142857142856,133.6610169491525 397.7142857142857,110.04519774011303 426.8571428571429,86.42937853107354 456,60.66666666666683" fill="none" stroke="#ffa500" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 
   <!-- Points -->
-  <circle cx="48" cy="124" r="3" fill="#000000" stroke="#ffa500" stroke-width="2"/>
-  <circle cx="77.14285714285714" cy="126.34567901234567" r="3" fill="#000000" stroke="#ffa500" stroke-width="2"/>
-  <circle cx="106.28571428571428" cy="126.34567901234567" r="3" fill="#000000" stroke="#ffa500" stroke-width="2"/>
-  <circle cx="135.42857142857144" cy="163.87654320987644" r="3" fill="#000000" stroke="#ffa500" stroke-width="2"/>
-  <circle cx="164.57142857142856" cy="128.69135802469134" r="3" fill="#000000" stroke="#ffa500" stroke-width="2"/>
-  <circle cx="193.71428571428572" cy="93.50617283950626" r="3" fill="#000000" stroke="#ffa500" stroke-width="2"/>
-  <circle cx="222.85714285714286" cy="60.66666666666683" r="3" fill="#000000" stroke="#ffa500" stroke-width="2"/>
-  <circle cx="252" cy="91.16049382716058" r="3" fill="#000000" stroke="#ffa500" stroke-width="2"/>
-  <circle cx="281.1428571428571" cy="124" r="3" fill="#000000" stroke="#ffa500" stroke-width="2"/>
-  <circle cx="310.2857142857143" cy="156.8395061728394" r="3" fill="#000000" stroke="#ffa500" stroke-width="2"/>
-  <circle cx="339.42857142857144" cy="187.33333333333314" r="3" fill="#000000" stroke="#ffa500" stroke-width="2"/>
-  <circle cx="368.57142857142856" cy="156.8395061728394" r="3" fill="#000000" stroke="#ffa500" stroke-width="2"/>
-  <circle cx="397.7142857142857" cy="128.69135802469134" r="3" fill="#000000" stroke="#ffa500" stroke-width="2"/>
-  <circle cx="426.8571428571429" cy="102.88888888888894" r="3" fill="#000000" stroke="#ffa500" stroke-width="2"/>
-  <circle cx="456" cy="77.08641975308655" r="3" fill="#000000" stroke="#ffa500" stroke-width="2"/>
+  <circle cx="48" cy="131.5141242937853" r="3" fill="#000000" stroke="#ffa500" stroke-width="2"/>
+  <circle cx="77.14285714285714" cy="131.5141242937853" r="3" fill="#000000" stroke="#ffa500" stroke-width="2"/>
+  <circle cx="106.28571428571428" cy="165.8644067796609" r="3" fill="#000000" stroke="#ffa500" stroke-width="2"/>
+  <circle cx="135.42857142857144" cy="133.6610169491525" r="3" fill="#000000" stroke="#ffa500" stroke-width="2"/>
+  <circle cx="164.57142857142856" cy="101.45762711864413" r="3" fill="#000000" stroke="#ffa500" stroke-width="2"/>
+  <circle cx="193.71428571428572" cy="71.40112994350295" r="3" fill="#000000" stroke="#ffa500" stroke-width="2"/>
+  <circle cx="222.85714285714286" cy="99.3107344632769" r="3" fill="#000000" stroke="#ffa500" stroke-width="2"/>
+  <circle cx="252" cy="129.36723163841805" r="3" fill="#000000" stroke="#ffa500" stroke-width="2"/>
+  <circle cx="281.1428571428571" cy="159.42372881355922" r="3" fill="#000000" stroke="#ffa500" stroke-width="2"/>
+  <circle cx="310.2857142857143" cy="187.33333333333317" r="3" fill="#000000" stroke="#ffa500" stroke-width="2"/>
+  <circle cx="339.42857142857144" cy="159.42372881355922" r="3" fill="#000000" stroke="#ffa500" stroke-width="2"/>
+  <circle cx="368.57142857142856" cy="133.6610169491525" r="3" fill="#000000" stroke="#ffa500" stroke-width="2"/>
+  <circle cx="397.7142857142857" cy="110.04519774011303" r="3" fill="#000000" stroke="#ffa500" stroke-width="2"/>
+  <circle cx="426.8571428571429" cy="86.42937853107354" r="3" fill="#000000" stroke="#ffa500" stroke-width="2"/>
+  <circle cx="456" cy="60.66666666666683" r="3" fill="#000000" stroke="#ffa500" stroke-width="2"/>
 
   <!-- Footer -->
   <text x="24" y="228" fill="#666666" font-size="10" font-family="Segoe UI, Arial, sans-serif">
