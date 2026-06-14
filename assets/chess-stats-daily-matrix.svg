@@ -1,14 +1,7 @@
-<svg width="480" height="240" xmlns="http://www.w3.org/2000/svg">
-  <rect width="480" height="240" fill="#000000" rx="8"/>
-  <rect x="1" y="1" width="478" height="238" fill="none" stroke="#004400" rx="8"/>
-
-  <text x="240" y="100" fill="#00ff00" font-size="16" font-weight="600" font-family="Segoe UI, Arial, sans-serif" text-anchor="middle">
-    No Daily Data
-  </text>
-  <text x="240" y="124" fill="#00cc00" font-size="12" font-family="Segoe UI, Arial, sans-serif" text-anchor="middle">
-    @bappozl has not played Daily games yet
-  </text>
-  <text x="240" y="148" fill="#008800" font-size="11" font-family="Segoe UI, Arial, sans-serif" text-anchor="middle">
-    Play some games to see your rating history
-  </text>
+<svg width="480" height="200" viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="480" height="200" fill="#000000" rx="10"/>
+  <rect x="1" y="1" width="478" height="198" fill="none" stroke="#004400" rx="10" stroke-opacity="0.5"/>
+  <text x="240" y="88" fill="#008800" font-size="10" font-weight="500" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="middle" letter-spacing="1.5">DAILY</text>
+  <text x="240" y="110" fill="#00ff00" font-size="14" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="middle">No rating data yet</text>
+  <text x="240" y="130" fill="#008800" font-size="10" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="middle">Play games to see your history</text>
 </svg>

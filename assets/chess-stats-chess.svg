@@ -1,74 +1,36 @@
-<svg width="480" height="320" xmlns="http://www.w3.org/2000/svg">
-  <rect width="480" height="320" fill="#312e2b" rx="8"/>
-  <rect x="1" y="1" width="478" height="318" fill="none" stroke="#b58863" rx="8"/>
-
-  <!-- Header -->
-  <text x="24" y="36" fill="#f0d9b5" font-size="18" font-weight="600" font-family="Segoe UI, Arial, sans-serif">
-    bappozl
-  </text>
-  <text x="24" y="54" fill="#b58863" font-size="12" font-family="Segoe UI, Arial, sans-serif">
-    Chess.com Stats
-  </text>
-
-  <!-- Rapid -->
-  <g transform="translate(24, 76)">
-    <rect width="200" height="48" fill="#272522" rx="6"/>
-    <rect width="4" height="48" fill="#f0d9b5" rx="2"/>
-    <text x="16" y="18" fill="#b58863" font-size="11" font-family="Segoe UI, Arial, sans-serif">RAPID</text>
-    <text x="16" y="36" fill="#f0d9b5" font-size="18" font-weight="600" font-family="Segoe UI, Arial, sans-serif">1202</text>
-    <text x="188" y="36" fill="#8b7355" font-size="12" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">56%</text>
-  </g>
-
-  <!-- Blitz -->
-  <g transform="translate(24, 132)">
-    <rect width="200" height="48" fill="#272522" rx="6"/>
-    <rect width="4" height="48" fill="#b58863" rx="2"/>
-    <text x="16" y="18" fill="#b58863" font-size="11" font-family="Segoe UI, Arial, sans-serif">BLITZ</text>
-    <text x="16" y="36" fill="#f0d9b5" font-size="18" font-weight="600" font-family="Segoe UI, Arial, sans-serif">648</text>
-    <text x="188" y="36" fill="#8b7355" font-size="12" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">50%</text>
-  </g>
-
-  <!-- Bullet -->
-  <g transform="translate(24, 188)">
-    <rect width="200" height="48" fill="#272522" rx="6"/>
-    <rect width="4" height="48" fill="#769656" rx="2"/>
-    <text x="16" y="18" fill="#b58863" font-size="11" font-family="Segoe UI, Arial, sans-serif">BULLET</text>
-    <text x="16" y="36" fill="#f0d9b5" font-size="18" font-weight="600" font-family="Segoe UI, Arial, sans-serif">576</text>
-    <text x="188" y="36" fill="#8b7355" font-size="12" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">55%</text>
-  </g>
-
-  <!-- Daily -->
-  <g transform="translate(24, 244)">
-    <rect width="200" height="48" fill="#272522" rx="6"/>
-    <rect width="4" height="48" fill="#8b7355" rx="2"/>
-    <text x="16" y="18" fill="#b58863" font-size="11" font-family="Segoe UI, Arial, sans-serif">DAILY</text>
-    <text x="16" y="36" fill="#f0d9b5" font-size="18" font-weight="600" font-family="Segoe UI, Arial, sans-serif">313</text>
-    <text x="188" y="36" fill="#8b7355" font-size="12" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">0%</text>
-  </g>
-
-  <!-- Stats Panel -->
-  <g transform="translate(248, 76)">
-    <rect width="208" height="216" fill="#272522" rx="6"/>
-    
-    <text x="16" y="24" fill="#b58863" font-size="11" font-family="Segoe UI, Arial, sans-serif">TOTAL GAMES</text>
-    <text x="16" y="48" fill="#f0d9b5" font-size="24" font-weight="600" font-family="Segoe UI, Arial, sans-serif">1,469</text>
-    
-    <line x1="16" y1="64" x2="192" y2="64" stroke="#b58863"/>
-    
-    <text x="16" y="88" fill="#b58863" font-size="11" font-family="Segoe UI, Arial, sans-serif">PEAK RATING</text>
-    <text x="16" y="112" fill="#769656" font-size="24" font-weight="600" font-family="Segoe UI, Arial, sans-serif">1206</text>
-    
-    <line x1="16" y1="128" x2="192" y2="128" stroke="#b58863"/>
-    
-    <text x="16" y="152" fill="#b58863" font-size="11" font-family="Segoe UI, Arial, sans-serif">BEST RATINGS</text>
-    <text x="16" y="172" fill="#8b7355" font-size="11" font-family="Segoe UI, Arial, sans-serif">
-      <tspan fill="#f0d9b5">R</tspan> 1206
-      <tspan fill="#b58863">B</tspan> 937
-      <tspan fill="#769656">Bu</tspan> 656
-    </text>
-    
-    <text x="16" y="200" fill="#8b7355" font-size="10" font-family="Segoe UI, Arial, sans-serif">
-      Updated Jun 14, 2026
-    </text>
-  </g>
+<svg width="480" height="310" viewBox="0 0 480 310" xmlns="http://www.w3.org/2000/svg">
+  <rect width="480" height="310" fill="#312e2b" rx="10"/>
+  <rect x="1" y="1" width="478" height="308" fill="none" stroke="#b58863" rx="10" stroke-opacity="0.5"/>
+  <text x="24" y="36" fill="#f0d9b5" font-size="15" font-weight="500" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">bappozl</text>
+  <text x="456" y="36" fill="#769656" font-size="11" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="end" opacity="0.6">chess.com</text>
+  <text x="24" y="54" fill="#8b7355" font-size="10" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">Jun 14, 2026</text>
+  <line x1="24" y1="64" x2="456" y2="64" stroke="#4a4642" stroke-width="1"/>
+  
+  <text x="24" y="88" fill="#f0d9b5" font-size="10" font-weight="500" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" letter-spacing="1.5">RAPID</text>
+  <text x="456" y="88" fill="#f0d9b5" font-size="16" font-weight="600" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="end">1202</text>
+  <rect x="24" y="97" width="432" height="3" rx="1.5" fill="#4a4642"/>
+  <rect x="24" y="97" width="259.6" height="3" rx="1.5" fill="#f0d9b5" opacity="0.85"/>
+  <rect x="259.5" y="96" width="2" height="5" rx="1" fill="#8b7355" opacity="0.45"/>
+  <text x="456" y="114" fill="#8b7355" font-size="10" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="end">56% wins</text>
+  <text x="24" y="140" fill="#b58863" font-size="10" font-weight="500" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" letter-spacing="1.5">BLITZ</text>
+  <text x="456" y="140" fill="#f0d9b5" font-size="16" font-weight="600" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="end">648</text>
+  <rect x="24" y="149" width="432" height="3" rx="1.5" fill="#4a4642"/>
+  <rect x="24" y="149" width="140.0" height="3" rx="1.5" fill="#b58863" opacity="0.85"/>
+  <rect x="201.4" y="148" width="2" height="5" rx="1" fill="#8b7355" opacity="0.45"/>
+  <text x="456" y="166" fill="#8b7355" font-size="10" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="end">50% wins</text>
+  <text x="24" y="192" fill="#769656" font-size="10" font-weight="500" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" letter-spacing="1.5">BULLET</text>
+  <text x="456" y="192" fill="#f0d9b5" font-size="16" font-weight="600" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="end">576</text>
+  <rect x="24" y="201" width="432" height="3" rx="1.5" fill="#4a4642"/>
+  <rect x="24" y="201" width="124.4" height="3" rx="1.5" fill="#769656" opacity="0.85"/>
+  <rect x="140.7" y="200" width="2" height="5" rx="1" fill="#8b7355" opacity="0.45"/>
+  <text x="456" y="218" fill="#8b7355" font-size="10" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="end">55% wins</text>
+  <text x="24" y="244" fill="#8b7355" font-size="10" font-weight="500" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" letter-spacing="1.5">DAILY</text>
+  <text x="456" y="244" fill="#f0d9b5" font-size="16" font-weight="600" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="end">313</text>
+  <rect x="24" y="253" width="432" height="3" rx="1.5" fill="#4a4642"/>
+  <rect x="24" y="253" width="67.6" height="3" rx="1.5" fill="#8b7355" opacity="0.85"/>
+  
+  <text x="456" y="270" fill="#8b7355" font-size="10" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="end">0% wins</text>
+  <line x1="24" y1="284" x2="456" y2="284" stroke="#4a4642" stroke-width="1"/>
+  <text x="24" y="302" fill="#8b7355" font-size="10" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">1,469 games</text>
+  <text x="456" y="302" fill="#8b7355" font-size="10" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="end">Peak <tspan fill="#769656" font-weight="600">1206</tspan></text>
 </svg>
