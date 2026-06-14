@@ -1,61 +1,56 @@
-# Chess.com Stats for GitHub README
+# chess-readme-status
 
-Display your Chess.com statistics on your GitHub profile with automatically updated SVG graphics.
+Chess.com stats for your GitHub profile, auto-updated via Actions — no server required.
 
-![Chess.com Stats](./assets/chess-stats.svg)
+<div align="center">
+  <img src="./assets/chess-stats.svg" alt="Chess Stats" />
+</div>
 
 ## Features
 
-- **Free** - Uses only free GitHub resources
-- **Automatic Updates** - GitHub Actions updates every 6 hours
-- **No Server Required** - Static SVG files, no hosting needed
-- **8 Themes** - All themes generated automatically, just choose the URL
-- **Line Charts** - Rating evolution for Rapid, Blitz, Bullet, and Daily
+- **Free** — uses only GitHub Actions and static SVG files
+- **Auto-updates** — runs every 6 hours
+- **8 themes** — generated automatically, pick by URL
+- **Main card** — horizontal progress bars scaled to 2000, peak rating marker per mode, win rate
+- **Line charts** — smooth Catmull-Rom curves, gradient fill, animated pulse on latest game
 
 ## Quick Start
 
-### 1. Fork this Repository
+### 1. Fork this repository
 
-Click the **Fork** button at the top of this page.
+Click **Fork** at the top of this page.
 
-### 2. Configure Your Username
+### 2. Set your username
 
-Go to **Settings** > **Secrets and variables** > **Actions** > **Variables**
+**Settings** > **Secrets and variables** > **Actions** > **Variables**
 
-Create a variable:
+| Name | Value |
+|---|---|
+| `CHESS_USERNAME` | your Chess.com username |
 
-- **Name:** `CHESS_USERNAME`
-- **Value:** Your Chess.com username
+### 3. Run the workflow
 
-### 3. Run the Workflow
+**Actions** > **Update Chess.com Stats** > **Run workflow**
 
-1. Go to **Actions** tab
-2. Click **Update Chess.com Stats**
-3. Click **Run workflow**
-
-### 4. Add to Your Profile README
-
-Copy one of the URLs below and paste in your README:
-
-## Themes
-
-All 8 themes are generated automatically. Choose your favorite:
-
-### Dark (Default)
+### 4. Add to your profile README
 
 ```markdown
 ![Chess Stats](https://raw.githubusercontent.com/YOUR_USERNAME/chess_readme_status/main/assets/chess-stats.svg)
 ```
 
-![Dark Theme](./assets/chess-stats.svg)
+---
 
-### Light
+## Themes
+
+All 8 themes generate automatically. Reference by URL suffix.
+
+### Dark (default)
 
 ```markdown
-![Chess Stats](https://raw.githubusercontent.com/YOUR_USERNAME/chess_readme_status/main/assets/chess-stats-light.svg)
+![Chess Stats](https://raw.githubusercontent.com/YOUR_USERNAME/chess_readme_status/main/assets/chess-stats.svg)
 ```
 
-![Light Theme](./assets/chess-stats-light.svg)
+<img src="./assets/chess-stats.svg" alt="Dark" />
 
 ### Midnight
 
@@ -63,23 +58,15 @@ All 8 themes are generated automatically. Choose your favorite:
 ![Chess Stats](https://raw.githubusercontent.com/YOUR_USERNAME/chess_readme_status/main/assets/chess-stats-midnight.svg)
 ```
 
-![Midnight Theme](./assets/chess-stats-midnight.svg)
+<img src="./assets/chess-stats-midnight.svg" alt="Midnight" />
 
-### Chess Classic
-
-```markdown
-![Chess Stats](https://raw.githubusercontent.com/YOUR_USERNAME/chess_readme_status/main/assets/chess-stats-chess.svg)
-```
-
-![Chess Theme](./assets/chess-stats-chess.svg)
-
-### Wood
+### Light
 
 ```markdown
-![Chess Stats](https://raw.githubusercontent.com/YOUR_USERNAME/chess_readme_status/main/assets/chess-stats-wood.svg)
+![Chess Stats](https://raw.githubusercontent.com/YOUR_USERNAME/chess_readme_status/main/assets/chess-stats-light.svg)
 ```
 
-![Wood Theme](./assets/chess-stats-wood.svg)
+<img src="./assets/chess-stats-light.svg" alt="Light" />
 
 ### Neon
 
@@ -87,15 +74,7 @@ All 8 themes are generated automatically. Choose your favorite:
 ![Chess Stats](https://raw.githubusercontent.com/YOUR_USERNAME/chess_readme_status/main/assets/chess-stats-neon.svg)
 ```
 
-![Neon Theme](./assets/chess-stats-neon.svg)
-
-### Matrix
-
-```markdown
-![Chess Stats](https://raw.githubusercontent.com/YOUR_USERNAME/chess_readme_status/main/assets/chess-stats-matrix.svg)
-```
-
-![Matrix Theme](./assets/chess-stats-matrix.svg)
+<img src="./assets/chess-stats-neon.svg" alt="Neon" />
 
 ### Ocean
 
@@ -103,61 +82,81 @@ All 8 themes are generated automatically. Choose your favorite:
 ![Chess Stats](https://raw.githubusercontent.com/YOUR_USERNAME/chess_readme_status/main/assets/chess-stats-ocean.svg)
 ```
 
-![Ocean Theme](./assets/chess-stats-ocean.svg)
+<img src="./assets/chess-stats-ocean.svg" alt="Ocean" />
+
+### Chess Classic
+
+```markdown
+![Chess Stats](https://raw.githubusercontent.com/YOUR_USERNAME/chess_readme_status/main/assets/chess-stats-chess.svg)
+```
+
+<img src="./assets/chess-stats-chess.svg" alt="Chess Classic" />
+
+### Wood
+
+```markdown
+![Chess Stats](https://raw.githubusercontent.com/YOUR_USERNAME/chess_readme_status/main/assets/chess-stats-wood.svg)
+```
+
+<img src="./assets/chess-stats-wood.svg" alt="Wood" />
+
+### Matrix
+
+```markdown
+![Chess Stats](https://raw.githubusercontent.com/YOUR_USERNAME/chess_readme_status/main/assets/chess-stats-matrix.svg)
+```
+
+<img src="./assets/chess-stats-matrix.svg" alt="Matrix" />
+
+---
 
 ## Line Charts
 
-Rating history charts are also available for each game mode and theme.
+Rating history per game mode, last 20 games, with smooth curves and animated latest point.
 
-### URL Pattern
+### URL pattern
 
 ```
-chess-stats-{mode}.svg           # Dark theme (default)
-chess-stats-{mode}-{theme}.svg   # Other themes
+chess-stats-{mode}.svg             # dark (default)
+chess-stats-{mode}-{theme}.svg     # other themes
 ```
 
-Where `{mode}` is: `rapid`, `blitz`, `bullet`, or `daily`
+`{mode}`: `rapid` · `blitz` · `bullet` · `daily`
 
-### Examples
+### Example — two charts side by side
 
-```markdown
-<!-- Rapid - Dark theme -->
-
-![Rapid](https://raw.githubusercontent.com/YOUR_USERNAME/chess_readme_status/main/assets/chess-stats-rapid.svg)
-
-<!-- Blitz - Neon theme -->
-
-![Blitz](https://raw.githubusercontent.com/YOUR_USERNAME/chess_readme_status/main/assets/chess-stats-blitz-neon.svg)
-
-<!-- Bullet - Matrix theme -->
-
-![Bullet](https://raw.githubusercontent.com/YOUR_USERNAME/chess_readme_status/main/assets/chess-stats-bullet-matrix.svg)
+```html
+<div align="center">
+  <img src="https://raw.githubusercontent.com/YOUR_USERNAME/chess_readme_status/main/assets/chess-stats-rapid-midnight.svg" alt="Rapid" width="45%" />
+  &nbsp;&nbsp;
+  <img src="https://raw.githubusercontent.com/YOUR_USERNAME/chess_readme_status/main/assets/chess-stats-blitz-midnight.svg" alt="Blitz" width="45%" />
+</div>
 ```
 
-## All Available Files
+<div align="center">
+  <img src="./assets/chess-stats-rapid.svg" alt="Rapid" width="45%" />
+  &nbsp;&nbsp;
+  <img src="./assets/chess-stats-blitz.svg" alt="Blitz" width="45%" />
+</div>
 
-After running the workflow, these files are generated:
+---
 
-| File                             | Description                 |
-| -------------------------------- | --------------------------- |
-| `chess-stats.svg`                | Main card (dark)            |
-| `chess-stats-{theme}.svg`        | Main card (other themes)    |
-| `chess-stats-rapid.svg`          | Rapid chart (dark)          |
-| `chess-stats-rapid-{theme}.svg`  | Rapid chart (other themes)  |
-| `chess-stats-blitz.svg`          | Blitz chart (dark)          |
-| `chess-stats-blitz-{theme}.svg`  | Blitz chart (other themes)  |
-| `chess-stats-bullet.svg`         | Bullet chart (dark)         |
-| `chess-stats-bullet-{theme}.svg` | Bullet chart (other themes) |
-| `chess-stats-daily.svg`          | Daily chart (dark)          |
-| `chess-stats-daily-{theme}.svg`  | Daily chart (other themes)  |
+## All generated files
 
-**Themes:** `light`, `midnight`, `chess`, `wood`, `neon`, `matrix`, `ocean`
+| File | Description |
+|---|---|
+| `chess-stats.svg` | Main card — dark |
+| `chess-stats-{theme}.svg` | Main card — other themes |
+| `chess-stats-{mode}.svg` | Line chart — dark |
+| `chess-stats-{mode}-{theme}.svg` | Line chart — other themes |
 
-## Advanced HTML Usage
+**Themes:** `light` · `midnight` · `chess` · `wood` · `neon` · `matrix` · `ocean`
 
-GitHub READMEs support HTML, allowing you to customize the layout of your stats.
+---
 
-### Centralize Graphics
+## Usage examples
+
+### Centered single card
 
 ```html
 <div align="center">
@@ -165,49 +164,29 @@ GitHub READMEs support HTML, allowing you to customize the layout of your stats.
 </div>
 ```
 
-### Two Graphics Side by Side
+### Card + chart stacked
 
 ```html
 <div align="center">
-  <img src="https://raw.githubusercontent.com/YOUR_USERNAME/chess_readme_status/main/assets/chess-stats-rapid.svg" alt="Rapid" />
-  <img src="https://raw.githubusercontent.com/YOUR_USERNAME/chess_readme_status/main/assets/chess-stats-blitz.svg" alt="Blitz" />
-</div>
-```
-
-### Main Card + Line Chart (Stacked)
-
-```html
-<div align="center">
-  <img src="https://raw.githubusercontent.com/YOUR_USERNAME/chess_readme_status/main/assets/chess-stats-neon.svg" alt="Chess Stats" />
+  <img src="https://raw.githubusercontent.com/YOUR_USERNAME/chess_readme_status/main/assets/chess-stats-midnight.svg" alt="Chess Stats" />
   <br/>
-  <img src="https://raw.githubusercontent.com/YOUR_USERNAME/chess_readme_status/main/assets/chess-stats-rapid-neon.svg" alt="Rapid Rating" />
+  <img src="https://raw.githubusercontent.com/YOUR_USERNAME/chess_readme_status/main/assets/chess-stats-rapid-midnight.svg" alt="Rapid Rating" />
 </div>
 ```
 
-### Mixed Themes Layout
+### Clickable (links to Chess.com profile)
 
 ```html
-<div align="center">
-  <img src="https://raw.githubusercontent.com/YOUR_USERNAME/chess_readme_status/main/assets/chess-stats-dark.svg" alt="Stats" />
-  <br/><br/>
-  <img src="https://raw.githubusercontent.com/YOUR_USERNAME/chess_readme_status/main/assets/chess-stats-rapid-matrix.svg" alt="Rapid" />
-  <img src="https://raw.githubusercontent.com/YOUR_USERNAME/chess_readme_status/main/assets/chess-stats-blitz-neon.svg" alt="Blitz" />
-</div>
+<a href="https://www.chess.com/member/YOUR_CHESS_USERNAME">
+  <img src="https://raw.githubusercontent.com/YOUR_USERNAME/chess_readme_status/main/assets/chess-stats.svg" alt="Chess Stats" />
+</a>
 ```
 
-### With Links (Click to Open Chess.com Profile)
+Replace `YOUR_USERNAME` with your GitHub username and `YOUR_CHESS_USERNAME` with your Chess.com username.
 
-```html
-<div align="center">
-  <a href="https://www.chess.com/member/YOUR_CHESS_USERNAME">
-    <img src="https://raw.githubusercontent.com/YOUR_USERNAME/chess_readme_status/main/assets/chess-stats.svg" alt="Chess Stats" />
-  </a>
-</div>
-```
+---
 
-**Pro Tip:** Replace `YOUR_USERNAME` with your GitHub username and `YOUR_CHESS_USERNAME` with your Chess.com username.
-
-## Local Development
+## Local development
 
 ```bash
 git clone https://github.com/your-username/chess_readme_status.git
@@ -216,17 +195,12 @@ npm install
 CHESS_USERNAME=your_username npm run generate
 ```
 
-### Windows
-
+**Windows:**
 ```powershell
 $env:CHESS_USERNAME="your_username"
 npm run generate
 ```
 
-## Update Frequency
-
-Stats update automatically **every 6 hours** (4 times per day).
-
 ## License
 
-MIT License - See [LICENSE](LICENSE) for details.
+MIT — see [LICENSE](LICENSE)
