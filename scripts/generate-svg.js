@@ -429,306 +429,141 @@ function calculateWinRate(wins, losses, draws) {
   return Math.round((wins / total) * 100);
 }
 
+function catmullRomPath(points) {
+  if (points.length < 2) {
+    return points.length === 1 ? `M ${points[0].x.toFixed(2)} ${points[0].y.toFixed(2)}` : '';
+  }
+  const d = [`M ${points[0].x.toFixed(2)} ${points[0].y.toFixed(2)}`];
+  for (let i = 0; i < points.length - 1; i++) {
+    const p0 = points[Math.max(0, i - 1)];
+    const p1 = points[i];
+    const p2 = points[i + 1];
+    const p3 = points[Math.min(points.length - 1, i + 2)];
+    const cp1x = p1.x + (p2.x - p0.x) / 6;
+    const cp1y = p1.y + (p2.y - p0.y) / 6;
+    const cp2x = p2.x - (p3.x - p1.x) / 6;
+    const cp2y = p2.y - (p3.y - p1.y) / 6;
+    d.push(`C ${cp1x.toFixed(2)} ${cp1y.toFixed(2)} ${cp2x.toFixed(2)} ${cp2y.toFixed(2)} ${p2.x.toFixed(2)} ${p2.y.toFixed(2)}`);
+  }
+  return d.join(' ');
+}
+
 /**
  * Gera o SVG principal com estatisticas
  */
 function generateSVG(username, stats, theme) {
   const t = THEMES[theme] || THEMES.dark;
 
-  const rapidWinRate = calculateWinRate(
-    stats.rapid.wins,
-    stats.rapid.losses,
-    stats.rapid.draws,
-  );
-  const blitzWinRate = calculateWinRate(
-    stats.blitz.wins,
-    stats.blitz.losses,
-    stats.blitz.draws,
-  );
-  const bulletWinRate = calculateWinRate(
-    stats.bullet.wins,
-    stats.bullet.losses,
-    stats.bullet.draws,
-  );
-  const dailyWinRate = calculateWinRate(
-    stats.daily.wins,
-    stats.daily.losses,
-    stats.daily.draws,
-  );
+  const modes = [
+    { label: 'RAPID',  color: t.rapid,  rating: stats.rapid.rating,  best: stats.rapid.best,  wr: calculateWinRate(stats.rapid.wins,  stats.rapid.losses,  stats.rapid.draws)  },
+    { label: 'BLITZ',  color: t.blitz,  rating: stats.blitz.rating,  best: stats.blitz.best,  wr: calculateWinRate(stats.blitz.wins,  stats.blitz.losses,  stats.blitz.draws)  },
+    { label: 'BULLET', color: t.bullet, rating: stats.bullet.rating, best: stats.bullet.best, wr: calculateWinRate(stats.bullet.wins, stats.bullet.losses, stats.bullet.draws) },
+    { label: 'DAILY',  color: t.daily,  rating: stats.daily.rating,  best: stats.daily.best,  wr: calculateWinRate(stats.daily.wins,  stats.daily.losses,  stats.daily.draws)  },
+  ];
 
-  const totalGames =
-    stats.rapid.wins +
-    stats.rapid.losses +
-    stats.rapid.draws +
-    stats.blitz.wins +
-    stats.blitz.losses +
-    stats.blitz.draws +
-    stats.bullet.wins +
-    stats.bullet.losses +
-    stats.bullet.draws +
-    stats.daily.wins +
-    stats.daily.losses +
-    stats.daily.draws;
+  const totalGames = [stats.rapid, stats.blitz, stats.bullet, stats.daily]
+    .reduce((s, m) => s + m.wins + m.losses + m.draws, 0);
+  const peakRating = Math.max(stats.rapid.best, stats.blitz.best, stats.bullet.best, stats.daily.best);
 
-  const maxRating = Math.max(
-    stats.rapid.best,
-    stats.blitz.best,
-    stats.bullet.best,
-    stats.daily.best,
-  );
+  const SCALE = 2000;
+  const BAR_X = 24;
+  const BAR_W = 432;
+  const BAR_H = 3;
 
-  return `<svg width="480" height="320" xmlns="http://www.w3.org/2000/svg">
-  <rect width="480" height="320" fill="${t.background}" rx="8"/>
-  <rect x="1" y="1" width="478" height="318" fill="none" stroke="${
-    t.cardBorder
-  }" rx="8"/>
+  const rows = modes.map((m, i) => {
+    const y = 88 + i * 52;
+    const fw = Math.max(0, Math.min(BAR_W, (m.rating / SCALE) * BAR_W));
+    const bw = Math.max(0, Math.min(BAR_W, (m.best / SCALE) * BAR_W));
+    return `
+  <text x="24" y="${y}" fill="${m.color}" font-size="10" font-weight="500" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" letter-spacing="1.5">${m.label}</text>
+  <text x="456" y="${y}" fill="${t.text}" font-size="16" font-weight="600" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="end">${m.rating || '—'}</text>
+  <rect x="${BAR_X}" y="${y + 9}" width="${BAR_W}" height="${BAR_H}" rx="${BAR_H / 2}" fill="${t.gridLine}"/>
+  ${fw > 0 ? `<rect x="${BAR_X}" y="${y + 9}" width="${fw.toFixed(1)}" height="${BAR_H}" rx="${BAR_H / 2}" fill="${m.color}" opacity="0.85"/>` : ''}
+  ${bw > fw ? `<rect x="${(bw - 1).toFixed(1)}" y="${y + 8}" width="2" height="${BAR_H + 2}" rx="1" fill="${t.textMuted}" opacity="0.45"/>` : ''}
+  <text x="456" y="${y + 26}" fill="${t.textMuted}" font-size="10" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="end">${m.wr}% wins</text>`;
+  }).join('');
 
-  <!-- Header -->
-  <text x="24" y="36" fill="${
-    t.text
-  }" font-size="18" font-weight="600" font-family="Segoe UI, Arial, sans-serif">
-    ${username}
-  </text>
-  <text x="24" y="54" fill="${
-    t.textSecondary
-  }" font-size="12" font-family="Segoe UI, Arial, sans-serif">
-    Chess.com Stats
-  </text>
-
-  <!-- Rapid -->
-  <g transform="translate(24, 76)">
-    <rect width="200" height="48" fill="${t.backgroundAlt}" rx="6"/>
-    <rect width="4" height="48" fill="${t.rapid}" rx="2"/>
-    <text x="16" y="18" fill="${
-      t.textSecondary
-    }" font-size="11" font-family="Segoe UI, Arial, sans-serif">RAPID</text>
-    <text x="16" y="36" fill="${
-      t.text
-    }" font-size="18" font-weight="600" font-family="Segoe UI, Arial, sans-serif">${
-      stats.rapid.rating || "-"
-    }</text>
-    <text x="188" y="36" fill="${
-      t.textMuted
-    }" font-size="12" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">${rapidWinRate}%</text>
-  </g>
-
-  <!-- Blitz -->
-  <g transform="translate(24, 132)">
-    <rect width="200" height="48" fill="${t.backgroundAlt}" rx="6"/>
-    <rect width="4" height="48" fill="${t.blitz}" rx="2"/>
-    <text x="16" y="18" fill="${
-      t.textSecondary
-    }" font-size="11" font-family="Segoe UI, Arial, sans-serif">BLITZ</text>
-    <text x="16" y="36" fill="${
-      t.text
-    }" font-size="18" font-weight="600" font-family="Segoe UI, Arial, sans-serif">${
-      stats.blitz.rating || "-"
-    }</text>
-    <text x="188" y="36" fill="${
-      t.textMuted
-    }" font-size="12" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">${blitzWinRate}%</text>
-  </g>
-
-  <!-- Bullet -->
-  <g transform="translate(24, 188)">
-    <rect width="200" height="48" fill="${t.backgroundAlt}" rx="6"/>
-    <rect width="4" height="48" fill="${t.bullet}" rx="2"/>
-    <text x="16" y="18" fill="${
-      t.textSecondary
-    }" font-size="11" font-family="Segoe UI, Arial, sans-serif">BULLET</text>
-    <text x="16" y="36" fill="${
-      t.text
-    }" font-size="18" font-weight="600" font-family="Segoe UI, Arial, sans-serif">${
-      stats.bullet.rating || "-"
-    }</text>
-    <text x="188" y="36" fill="${
-      t.textMuted
-    }" font-size="12" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">${bulletWinRate}%</text>
-  </g>
-
-  <!-- Daily -->
-  <g transform="translate(24, 244)">
-    <rect width="200" height="48" fill="${t.backgroundAlt}" rx="6"/>
-    <rect width="4" height="48" fill="${t.daily}" rx="2"/>
-    <text x="16" y="18" fill="${
-      t.textSecondary
-    }" font-size="11" font-family="Segoe UI, Arial, sans-serif">DAILY</text>
-    <text x="16" y="36" fill="${
-      t.text
-    }" font-size="18" font-weight="600" font-family="Segoe UI, Arial, sans-serif">${
-      stats.daily.rating || "-"
-    }</text>
-    <text x="188" y="36" fill="${
-      t.textMuted
-    }" font-size="12" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">${dailyWinRate}%</text>
-  </g>
-
-  <!-- Stats Panel -->
-  <g transform="translate(248, 76)">
-    <rect width="208" height="216" fill="${t.backgroundAlt}" rx="6"/>
-    
-    <text x="16" y="24" fill="${
-      t.textSecondary
-    }" font-size="11" font-family="Segoe UI, Arial, sans-serif">TOTAL GAMES</text>
-    <text x="16" y="48" fill="${
-      t.text
-    }" font-size="24" font-weight="600" font-family="Segoe UI, Arial, sans-serif">${totalGames.toLocaleString()}</text>
-    
-    <line x1="16" y1="64" x2="192" y2="64" stroke="${t.cardBorder}"/>
-    
-    <text x="16" y="88" fill="${
-      t.textSecondary
-    }" font-size="11" font-family="Segoe UI, Arial, sans-serif">PEAK RATING</text>
-    <text x="16" y="112" fill="${
-      t.accent
-    }" font-size="24" font-weight="600" font-family="Segoe UI, Arial, sans-serif">${maxRating}</text>
-    
-    <line x1="16" y1="128" x2="192" y2="128" stroke="${t.cardBorder}"/>
-    
-    <text x="16" y="152" fill="${
-      t.textSecondary
-    }" font-size="11" font-family="Segoe UI, Arial, sans-serif">BEST RATINGS</text>
-    <text x="16" y="172" fill="${
-      t.textMuted
-    }" font-size="11" font-family="Segoe UI, Arial, sans-serif">
-      <tspan fill="${t.rapid}">R</tspan> ${stats.rapid.best}
-      <tspan fill="${t.blitz}">B</tspan> ${stats.blitz.best}
-      <tspan fill="${t.bullet}">Bu</tspan> ${stats.bullet.best}
-    </text>
-    
-    <text x="16" y="200" fill="${
-      t.textMuted
-    }" font-size="10" font-family="Segoe UI, Arial, sans-serif">
-      Updated ${formatDate()}
-    </text>
-  </g>
+  return `<svg width="480" height="310" viewBox="0 0 480 310" xmlns="http://www.w3.org/2000/svg">
+  <rect width="480" height="310" fill="${t.background}" rx="10"/>
+  <rect x="1" y="1" width="478" height="308" fill="none" stroke="${t.cardBorder}" rx="10" stroke-opacity="0.5"/>
+  <text x="24" y="36" fill="${t.text}" font-size="15" font-weight="500" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">${username}</text>
+  <text x="456" y="36" fill="${t.accent}" font-size="11" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="end" opacity="0.6">chess.com</text>
+  <text x="24" y="54" fill="${t.textMuted}" font-size="10" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">${formatDate()}</text>
+  <line x1="24" y1="64" x2="456" y2="64" stroke="${t.gridLine}" stroke-width="1"/>
+  ${rows}
+  <line x1="24" y1="284" x2="456" y2="284" stroke="${t.gridLine}" stroke-width="1"/>
+  <text x="24" y="302" fill="${t.textMuted}" font-size="10" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">${totalGames.toLocaleString()} games</text>
+  <text x="456" y="302" fill="${t.textMuted}" font-size="10" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="end">Peak <tspan fill="${t.accent}" font-weight="600">${peakRating}</tspan></text>
 </svg>`;
 }
 
 /**
- * Gera grafico de linha
+ * Gera grafico de linha com curva suave
  */
 function generateLineChart(username, gameType, history, currentRating, theme) {
   const t = THEMES[theme] || THEMES.dark;
-  const modeColors = {
-    rapid: t.rapid,
-    blitz: t.blitz,
-    bullet: t.bullet,
-    daily: t.daily,
-  };
-  const modeNames = {
-    rapid: "Rapid",
-    blitz: "Blitz",
-    bullet: "Bullet",
-    daily: "Daily",
-  };
-
+  const modeColors = { rapid: t.rapid, blitz: t.blitz, bullet: t.bullet, daily: t.daily };
+  const modeNames = { rapid: 'Rapid', blitz: 'Blitz', bullet: 'Bullet', daily: 'Daily' };
   const color = modeColors[gameType] || t.accent;
   const modeName = modeNames[gameType] || gameType;
 
-  if (history.length === 0) {
-    return generateNoDataSVG(username, modeName, color, theme);
-  }
+  if (history.length === 0) return generateNoDataSVG(username, modeName, color, theme);
 
-  // Ultimos 15 jogos para manter grafico focado em performance recente
-  const dataPoints = history.slice(-15);
-  const ratings = dataPoints.map((d) => d.rating);
-  const minRating = Math.min(...ratings);
-  const maxRating = Math.max(...ratings);
-  const range = maxRating - minRating || 100;
-  const yMin = Math.max(0, minRating - range * 0.1);
-  const yMax = maxRating + range * 0.1;
+  const dataPoints = history.slice(-20);
+  const ratings = dataPoints.map(d => d.rating);
+  const minR = Math.min(...ratings);
+  const maxR = Math.max(...ratings);
+  const range = maxR - minR || 50;
 
-  const width = 480;
-  const height = 240;
-  const padding = { top: 48, right: 24, bottom: 40, left: 48 };
-  const chartW = width - padding.left - padding.right;
-  const chartH = height - padding.top - padding.bottom;
+  const W = 480, H = 200;
+  const pad = { top: 48, right: 24, bottom: 28, left: 52 };
+  const cW = W - pad.left - pad.right;
+  const cH = H - pad.top - pad.bottom;
+  const yMin = minR - range * 0.15;
+  const yMax = maxR + range * 0.15;
 
-  const points = dataPoints
-    .map((p, i) => {
-      const x = padding.left + (i / (dataPoints.length - 1 || 1)) * chartW;
-      const y =
-        padding.top + chartH - ((p.rating - yMin) / (yMax - yMin)) * chartH;
-      return `${x},${y}`;
-    })
-    .join(" ");
+  const pts = dataPoints.map((p, i) => ({
+    x: pad.left + (dataPoints.length > 1 ? (i / (dataPoints.length - 1)) * cW : cW / 2),
+    y: pad.top + cH - ((p.rating - yMin) / (yMax - yMin)) * cH,
+  }));
 
-  const areaPoints = `${padding.left},${padding.top + chartH} ${points} ${
-    padding.left + chartW
-  },${padding.top + chartH}`;
+  const linePath = catmullRomPath(pts);
+  const last = pts[pts.length - 1];
+  const first = pts[0];
+  const areaPath = `${linePath} L ${last.x.toFixed(2)},${(pad.top + cH).toFixed(2)} L ${first.x.toFixed(2)},${(pad.top + cH).toFixed(2)} Z`;
 
-  const gridLines = Array.from({ length: 5 }, (_, i) => {
-    const y = padding.top + (chartH / 4) * i;
-    const rating = Math.round(yMax - ((yMax - yMin) / 4) * i);
-    return { y, rating };
-  });
+  const change = dataPoints[dataPoints.length - 1].rating - dataPoints[0].rating;
+  const changeStr = (change >= 0 ? '+' : '') + change;
+  const changeColor = change >= 0 ? t.success : t.blitz;
 
-  const change =
-    dataPoints[dataPoints.length - 1].rating - dataPoints[0].rating;
-  const changeSign = change >= 0 ? "+" : "";
+  const grid = [0, 1 / 3, 2 / 3, 1].map(f => ({
+    y: pad.top + cH * f,
+    r: Math.round(yMax - (yMax - yMin) * f),
+  }));
 
-  return `<svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">
-  <rect width="${width}" height="${height}" fill="${t.background}" rx="8"/>
-  <rect x="1" y="1" width="${width - 2}" height="${
-    height - 2
-  }" fill="none" stroke="${t.cardBorder}" rx="8"/>
-
-  <!-- Header -->
-  <text x="24" y="28" fill="${
-    t.text
-  }" font-size="14" font-weight="600" font-family="Segoe UI, Arial, sans-serif">
-    ${modeName} Rating
-  </text>
-  <text x="${
-    width - 24
-  }" y="28" fill="${color}" font-size="14" font-weight="600" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">
-    ${currentRating} (${changeSign}${change})
-  </text>
-
-  <!-- Grid -->
-  ${gridLines
-    .map(
-      (l) => `
-  <line x1="${padding.left}" y1="${l.y}" x2="${padding.left + chartW}" y2="${
-    l.y
-  }" stroke="${t.gridLine}" stroke-width="1"/>
-  <text x="${padding.left - 8}" y="${l.y + 4}" fill="${
-    t.textMuted
-  }" font-size="10" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">${
-    l.rating
-  }</text>
-  `,
-    )
-    .join("")}
-
-  <!-- Area -->
-  <polygon points="${areaPoints}" fill="${color}" opacity="0.15"/>
-
-  <!-- Line -->
-  <polyline points="${points}" fill="none" stroke="${color}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-
-  <!-- Points -->
-  ${dataPoints
-    .map((p, i) => {
-      const x = padding.left + (i / (dataPoints.length - 1 || 1)) * chartW;
-      const y =
-        padding.top + chartH - ((p.rating - yMin) / (yMax - yMin)) * chartH;
-      return `<circle cx="${x}" cy="${y}" r="3" fill="${t.background}" stroke="${color}" stroke-width="2"/>`;
-    })
-    .join("\n  ")}
-
-  <!-- Footer -->
-  <text x="24" y="${height - 12}" fill="${
-    t.textMuted
-  }" font-size="10" font-family="Segoe UI, Arial, sans-serif">
-    @${username}
-  </text>
-  <text x="${width - 24}" y="${height - 12}" fill="${
-    t.textMuted
-  }" font-size="10" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">
-    Last ${dataPoints.length} games
-  </text>
+  return `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="ag" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="${color}" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="${color}" stop-opacity="0"/>
+    </linearGradient>
+    <clipPath id="cc"><rect x="${pad.left}" y="${pad.top}" width="${cW}" height="${cH}"/></clipPath>
+  </defs>
+  <style>@keyframes p{0%,100%{r:4;opacity:.5}50%{r:9;opacity:0}}.pr{animation:p 2.5s ease-in-out infinite}</style>
+  <rect width="${W}" height="${H}" fill="${t.background}" rx="10"/>
+  <rect x="1" y="1" width="${W - 2}" height="${H - 2}" fill="none" stroke="${t.cardBorder}" rx="10" stroke-opacity="0.5"/>
+  <text x="24" y="22" fill="${t.textSecondary}" font-size="10" font-weight="500" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" letter-spacing="1.5">${modeName.toUpperCase()} RATING</text>
+  <text x="${W - 24}" y="22" fill="${t.text}" font-size="18" font-weight="600" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="end">${currentRating}</text>
+  <text x="${W - 24}" y="38" fill="${changeColor}" font-size="11" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="end">${changeStr}</text>
+  ${grid.map(l => `
+  <line x1="${pad.left}" y1="${l.y.toFixed(1)}" x2="${pad.left + cW}" y2="${l.y.toFixed(1)}" stroke="${t.gridLine}" stroke-width="1" stroke-dasharray="3,6"/>
+  <text x="${pad.left - 8}" y="${(l.y + 3.5).toFixed(1)}" fill="${t.textMuted}" font-size="9" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="end">${l.r}</text>`).join('')}
+  <path d="${areaPath}" fill="url(#ag)" clip-path="url(#cc)"/>
+  <path d="${linePath}" fill="none" stroke="${color}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" clip-path="url(#cc)"/>
+  <circle cx="${last.x.toFixed(1)}" cy="${last.y.toFixed(1)}" r="4" fill="none" stroke="${color}" stroke-width="1" class="pr"/>
+  <circle cx="${last.x.toFixed(1)}" cy="${last.y.toFixed(1)}" r="2.5" fill="${t.background}" stroke="${color}" stroke-width="1.5"/>
+  <text x="24" y="${H - 8}" fill="${t.textMuted}" font-size="9" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">@${username}</text>
+  <text x="${W - 24}" y="${H - 8}" fill="${t.textMuted}" font-size="9" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="end">last ${dataPoints.length} games</text>
 </svg>`;
 }
 
@@ -737,20 +572,12 @@ function generateLineChart(username, gameType, history, currentRating, theme) {
  */
 function generateNoDataSVG(username, modeName, color, theme) {
   const t = THEMES[theme] || THEMES.dark;
-
-  return `<svg width="480" height="240" xmlns="http://www.w3.org/2000/svg">
-  <rect width="480" height="240" fill="${t.background}" rx="8"/>
-  <rect x="1" y="1" width="478" height="238" fill="none" stroke="${t.cardBorder}" rx="8"/>
-
-  <text x="240" y="100" fill="${t.text}" font-size="16" font-weight="600" font-family="Segoe UI, Arial, sans-serif" text-anchor="middle">
-    No ${modeName} Data
-  </text>
-  <text x="240" y="124" fill="${t.textSecondary}" font-size="12" font-family="Segoe UI, Arial, sans-serif" text-anchor="middle">
-    @${username} has not played ${modeName} games yet
-  </text>
-  <text x="240" y="148" fill="${t.textMuted}" font-size="11" font-family="Segoe UI, Arial, sans-serif" text-anchor="middle">
-    Play some games to see your rating history
-  </text>
+  return `<svg width="480" height="200" viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="480" height="200" fill="${t.background}" rx="10"/>
+  <rect x="1" y="1" width="478" height="198" fill="none" stroke="${t.cardBorder}" rx="10" stroke-opacity="0.5"/>
+  <text x="240" y="88" fill="${t.textMuted}" font-size="10" font-weight="500" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="middle" letter-spacing="1.5">${modeName.toUpperCase()}</text>
+  <text x="240" y="110" fill="${t.text}" font-size="14" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="middle">No rating data yet</text>
+  <text x="240" y="130" fill="${t.textMuted}" font-size="10" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="middle">Play games to see your history</text>
 </svg>`;
 }
 
