@@ -10,21 +10,21 @@
   <rect width="480" height="200" fill="#ffffff" rx="10"/>
   <rect x="1" y="1" width="478" height="198" fill="none" stroke="#d0d7de" rx="10" stroke-opacity="0.5"/>
   <text x="24" y="22" fill="#656d76" font-size="10" font-weight="500" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" letter-spacing="1.5">BULLET RATING</text>
-  <text x="456" y="22" fill="#1f2328" font-size="18" font-weight="600" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="end">576</text>
-  <text x="456" y="38" fill="#cf222e" font-size="11" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="end">-80</text>
+  <text x="456" y="22" fill="#1f2328" font-size="18" font-weight="600" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="end">549</text>
+  <text x="456" y="38" fill="#cf222e" font-size="11" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="end">-107</text>
   
   <line x1="52" y1="48.0" x2="456" y2="48.0" stroke="#d0d7de" stroke-width="1" stroke-dasharray="3,6"/>
-  <text x="44" y="51.5" fill="#8c959f" font-size="9" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="end">668</text>
+  <text x="44" y="51.5" fill="#8c959f" font-size="9" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="end">672</text>
   <line x1="52" y1="89.3" x2="456" y2="89.3" stroke="#d0d7de" stroke-width="1" stroke-dasharray="3,6"/>
-  <text x="44" y="92.8" fill="#8c959f" font-size="9" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="end">633</text>
+  <text x="44" y="92.8" fill="#8c959f" font-size="9" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="end">626</text>
   <line x1="52" y1="130.7" x2="456" y2="130.7" stroke="#d0d7de" stroke-width="1" stroke-dasharray="3,6"/>
-  <text x="44" y="134.2" fill="#8c959f" font-size="9" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="end">599</text>
+  <text x="44" y="134.2" fill="#8c959f" font-size="9" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="end">579</text>
   <line x1="52" y1="172.0" x2="456" y2="172.0" stroke="#d0d7de" stroke-width="1" stroke-dasharray="3,6"/>
-  <text x="44" y="175.5" fill="#8c959f" font-size="9" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="end">564</text>
-  <path d="M 52.00 62.31 C 74.44 68.27 141.78 87.15 186.67 98.08 C 231.56 109.01 276.44 117.95 321.33 127.88 C 366.22 137.82 433.56 152.72 456.00 157.69 L 456.00,172.00 L 52.00,172.00 Z" fill="url(#ag)" clip-path="url(#cc)"/>
-  <path d="M 52.00 62.31 C 74.44 68.27 141.78 87.15 186.67 98.08 C 231.56 109.01 276.44 117.95 321.33 127.88 C 366.22 137.82 433.56 152.72 456.00 157.69" fill="none" stroke="#1a7f37" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" clip-path="url(#cc)"/>
+  <text x="44" y="175.5" fill="#8c959f" font-size="9" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="end">533</text>
+  <path d="M 52.00 62.31 C 68.83 66.76 119.33 80.88 153.00 89.05 C 186.67 97.22 220.33 103.91 254.00 111.34 C 287.67 118.77 321.33 125.90 355.00 133.62 C 388.67 141.35 439.17 153.68 456.00 157.69 L 456.00,172.00 L 52.00,172.00 Z" fill="url(#ag)" clip-path="url(#cc)"/>
+  <path d="M 52.00 62.31 C 68.83 66.76 119.33 80.88 153.00 89.05 C 186.67 97.22 220.33 103.91 254.00 111.34 C 287.67 118.77 321.33 125.90 355.00 133.62 C 388.67 141.35 439.17 153.68 456.00 157.69" fill="none" stroke="#1a7f37" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" clip-path="url(#cc)"/>
   <circle cx="456.0" cy="157.7" r="4" fill="none" stroke="#1a7f37" stroke-width="1" class="pr"/>
   <circle cx="456.0" cy="157.7" r="2.5" fill="#ffffff" stroke="#1a7f37" stroke-width="1.5"/>
   <text x="24" y="192" fill="#8c959f" font-size="9" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">@bappozl</text>
-  <text x="456" y="192" fill="#8c959f" font-size="9" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="end">last 4 games</text>
+  <text x="456" y="192" fill="#8c959f" font-size="9" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="end">last 5 games</text>
 </svg>
