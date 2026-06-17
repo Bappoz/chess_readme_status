@@ -3,7 +3,7 @@
   <rect x="1" y="1" width="478" height="308" fill="none" stroke="#b58863" rx="10" stroke-opacity="0.5"/>
   <text x="24" y="36" fill="#f0d9b5" font-size="15" font-weight="500" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">bappozl</text>
   <text x="456" y="36" fill="#769656" font-size="11" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="end" opacity="0.6">chess.com</text>
-  <text x="24" y="54" fill="#8b7355" font-size="10" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">Jun 16, 2026</text>
+  <text x="24" y="54" fill="#8b7355" font-size="10" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">Jun 17, 2026</text>
   <line x1="24" y1="64" x2="456" y2="64" stroke="#4a4642" stroke-width="1"/>
   
   <text x="24" y="88" fill="#f0d9b5" font-size="10" font-weight="500" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" letter-spacing="1.5">RAPID</text>
@@ -13,11 +13,11 @@
   <rect x="259.5" y="96" width="2" height="5" rx="1" fill="#8b7355" opacity="0.45"/>
   <text x="456" y="114" fill="#8b7355" font-size="10" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="end">56% wins</text>
   <text x="24" y="140" fill="#b58863" font-size="10" font-weight="500" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" letter-spacing="1.5">BLITZ</text>
-  <text x="456" y="140" fill="#f0d9b5" font-size="16" font-weight="600" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="end">648</text>
+  <text x="456" y="140" fill="#f0d9b5" font-size="16" font-weight="600" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="end">669</text>
   <rect x="24" y="149" width="432" height="3" rx="1.5" fill="#4a4642"/>
-  <rect x="24" y="149" width="140.0" height="3" rx="1.5" fill="#b58863" opacity="0.85"/>
+  <rect x="24" y="149" width="144.5" height="3" rx="1.5" fill="#b58863" opacity="0.85"/>
   <rect x="201.4" y="148" width="2" height="5" rx="1" fill="#8b7355" opacity="0.45"/>
-  <text x="456" y="166" fill="#8b7355" font-size="10" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="end">50% wins</text>
+  <text x="456" y="166" fill="#8b7355" font-size="10" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="end">51% wins</text>
   <text x="24" y="192" fill="#769656" font-size="10" font-weight="500" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" letter-spacing="1.5">BULLET</text>
   <text x="456" y="192" fill="#f0d9b5" font-size="16" font-weight="600" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="end">549</text>
   <rect x="24" y="201" width="432" height="3" rx="1.5" fill="#4a4642"/>
@@ -31,6 +31,6 @@
   
   <text x="456" y="270" fill="#8b7355" font-size="10" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="end">0% wins</text>
   <line x1="24" y1="284" x2="456" y2="284" stroke="#4a4642" stroke-width="1"/>
-  <text x="24" y="302" fill="#8b7355" font-size="10" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">1,471 games</text>
+  <text x="24" y="302" fill="#8b7355" font-size="10" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">1,474 games</text>
   <text x="456" y="302" fill="#8b7355" font-size="10" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="end">Peak <tspan fill="#769656" font-weight="600">1206</tspan></text>
 </svg>
