@@ -2,10 +2,6 @@
 
 Chess.com stats for your GitHub profile, auto-updated via Actions — no server required.
 
-<div align="center">
-  <img src="./assets/chess-stats.svg" alt="Chess Stats" />
-</div>
-
 ## Features
 
 - **Free** — GitHub Actions + static SVG, no server
