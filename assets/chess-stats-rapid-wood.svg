@@ -1,30 +1,20 @@
-<svg width="480" height="200" viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="ag" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#ffab91" stop-opacity="0.2"/>
-      <stop offset="100%" stop-color="#ffab91" stop-opacity="0"/>
-    </linearGradient>
-    <clipPath id="cc"><rect x="52" y="48" width="404" height="124"/></clipPath>
-  </defs>
-  <style>@keyframes p{0%,100%{r:4;opacity:.5}50%{r:9;opacity:0}}.pr{animation:p 2.5s ease-in-out infinite}</style>
-  <rect width="480" height="200" fill="#3e2723" rx="10"/>
-  <rect x="1" y="1" width="478" height="198" fill="none" stroke="#6d4c41" rx="10" stroke-opacity="0.5"/>
-  <text x="24" y="22" fill="#bcaaa4" font-size="10" font-weight="500" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" letter-spacing="1.5">RAPID RATING</text>
-  <text x="456" y="22" fill="#efebe9" font-size="18" font-weight="600" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="end">1214</text>
-  <text x="456" y="38" fill="#a5d6a7" font-size="11" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="end">+61</text>
-  
-  <line x1="52" y1="48.0" x2="456" y2="48.0" stroke="#6d4c41" stroke-width="1" stroke-dasharray="3,6"/>
-  <text x="44" y="51.5" fill="#8d6e63" font-size="9" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="end">1225</text>
-  <line x1="52" y1="89.3" x2="456" y2="89.3" stroke="#6d4c41" stroke-width="1" stroke-dasharray="3,6"/>
-  <text x="44" y="92.8" fill="#8d6e63" font-size="9" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="end">1194</text>
-  <line x1="52" y1="130.7" x2="456" y2="130.7" stroke="#6d4c41" stroke-width="1" stroke-dasharray="3,6"/>
-  <text x="44" y="134.2" fill="#8d6e63" font-size="9" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="end">1163</text>
-  <line x1="52" y1="172.0" x2="456" y2="172.0" stroke="#6d4c41" stroke-width="1" stroke-dasharray="3,6"/>
-  <text x="44" y="175.5" fill="#8d6e63" font-size="9" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="end">1132</text>
-  <path d="M 52.00 144.26 C 55.54 140.90 66.18 130.82 73.26 124.11 C 80.35 117.39 87.44 110.45 94.53 103.95 C 101.61 97.46 108.70 85.37 115.79 85.15 C 122.88 84.92 129.96 96.57 137.05 102.61 C 144.14 108.66 151.23 115.15 158.32 121.42 C 165.40 127.69 172.49 134.18 179.58 140.23 C 186.67 146.27 193.75 157.69 200.84 157.69 C 207.93 157.69 215.02 145.83 222.11 140.23 C 229.19 134.63 236.28 129.26 243.37 124.11 C 250.46 118.96 257.54 114.25 264.63 109.33 C 271.72 104.40 278.81 99.70 285.89 94.55 C 292.98 89.40 300.07 78.65 307.16 78.43 C 314.25 78.21 321.33 88.06 328.42 93.21 C 335.51 98.36 342.60 109.33 349.68 109.33 C 356.77 109.33 363.86 93.21 370.95 93.21 C 378.04 93.21 385.12 109.33 392.21 109.33 C 399.30 109.33 406.39 98.58 413.47 93.21 C 420.56 87.83 427.65 82.24 434.74 77.09 C 441.82 71.94 452.46 64.77 456.00 62.31 L 456.00,172.00 L 52.00,172.00 Z" fill="url(#ag)" clip-path="url(#cc)"/>
-  <path d="M 52.00 144.26 C 55.54 140.90 66.18 130.82 73.26 124.11 C 80.35 117.39 87.44 110.45 94.53 103.95 C 101.61 97.46 108.70 85.37 115.79 85.15 C 122.88 84.92 129.96 96.57 137.05 102.61 C 144.14 108.66 151.23 115.15 158.32 121.42 C 165.40 127.69 172.49 134.18 179.58 140.23 C 186.67 146.27 193.75 157.69 200.84 157.69 C 207.93 157.69 215.02 145.83 222.11 140.23 C 229.19 134.63 236.28 129.26 243.37 124.11 C 250.46 118.96 257.54 114.25 264.63 109.33 C 271.72 104.40 278.81 99.70 285.89 94.55 C 292.98 89.40 300.07 78.65 307.16 78.43 C 314.25 78.21 321.33 88.06 328.42 93.21 C 335.51 98.36 342.60 109.33 349.68 109.33 C 356.77 109.33 363.86 93.21 370.95 93.21 C 378.04 93.21 385.12 109.33 392.21 109.33 C 399.30 109.33 406.39 98.58 413.47 93.21 C 420.56 87.83 427.65 82.24 434.74 77.09 C 441.82 71.94 452.46 64.77 456.00 62.31" fill="none" stroke="#ffab91" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" clip-path="url(#cc)"/>
-  <circle cx="456.0" cy="62.3" r="4" fill="none" stroke="#ffab91" stroke-width="1" class="pr"/>
-  <circle cx="456.0" cy="62.3" r="2.5" fill="#3e2723" stroke="#ffab91" stroke-width="1.5"/>
-  <text x="24" y="192" fill="#8d6e63" font-size="9" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">@bappozl</text>
-  <text x="456" y="192" fill="#8d6e63" font-size="9" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="end">last 20 games</text>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 470 210" width="470" height="210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="RAPID rating history">
+<defs>
+<linearGradient id="wC2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2c1e14"/><stop offset="1" stop-color="#1c120b"/></linearGradient>
+</defs>
+<style>text{fill:#f1e6d2}.bg{fill:#241811}.acc{fill:#e7bd6b}.ln{stroke:#e7bd6b}.area{fill:#e7bd6b;opacity:.12}.peak{stroke:#e7bd6b;opacity:.32}.chip{fill:#e7bd6b;opacity:.14}.down{fill:#d98a5a}.sq{fill:#fff;opacity:.045}svg{font-family:'Space Grotesk',system-ui,sans-serif}.lbl{font-weight:600;font-size:11px;letter-spacing:.16em}.big{font-weight:700;font-size:34px;letter-spacing:-.02em}.mid{font-weight:600;font-size:14px}.mut{font-weight:500;font-size:11px;opacity:.5}.ser{font-family:'Instrument Serif',serif;font-weight:400;letter-spacing:0}.mono{font-family:'JetBrains Mono',monospace}.ln{fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}.thin{stroke-width:1.6}.draw{stroke-dasharray:1200;stroke-dashoffset:1200;animation:draw 2.3s cubic-bezier(.6,.05,.2,1) forwards .25s}.dot{animation:pulse 2s ease-in-out infinite}.glow{animation:glow 3.4s ease-in-out infinite}.float{animation:float 6.5s ease-in-out infinite}.shim{animation:shim 3s ease-in-out infinite}@keyframes draw{to{stroke-dashoffset:0}}@keyframes pulse{0%,100%{r:4.5;opacity:1}50%{r:8;opacity:.45}}@keyframes glow{0%,100%{opacity:.14}50%{opacity:.34}}@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}@keyframes shim{0%,100%{opacity:.5}50%{opacity:1}}</style>
+<rect width="470" height="210" rx="20" fill="url(#wC2)"/>
+<rect class="sq" x="24" y="150" width="26" height="26"/><rect class="sq" x="76" y="150" width="26" height="26"/><rect class="sq" x="50" y="176" width="26" height="26"/>
+<text class="acc ser" x="30" y="42" style="font-size:22px">♛</text>
+<text class="mut" x="58" y="30">RAPID</text>
+<text class="mid" x="58" y="47">Rating history</text>
+<text class="big ser" x="446" y="44" text-anchor="end" style="font-size:38px">1214</text>
+<text class="acc mid" x="446" y="62" text-anchor="end">▲ +61</text>
+<line class="peak" x1="44" y1="52" x2="446" y2="52" stroke-dasharray="4 5"/>
+<text class="mut" x="245" y="46" text-anchor="middle" style="font-size:9px;letter-spacing:.1em">PEAK 1214</text>
+<polygon class="area" points="44.0,162.8 65.2,142.6 86.3,122.4 107.5,103.6 128.6,121.1 149.8,139.9 170.9,158.8 192.1,176.3 213.3,158.8 234.4,142.6 255.6,127.8 276.7,113.0 297.9,96.9 319.1,111.7 340.2,127.8 361.4,111.7 382.5,127.8 403.7,111.7 424.8,95.5 446.0,80.7 446.0,182 44.0,182"/>
+<polyline class="ln draw" points="44.0,162.8 65.2,142.6 86.3,122.4 107.5,103.6 128.6,121.1 149.8,139.9 170.9,158.8 192.1,176.3 213.3,158.8 234.4,142.6 255.6,127.8 276.7,113.0 297.9,96.9 319.1,111.7 340.2,127.8 361.4,111.7 382.5,127.8 403.7,111.7 424.8,95.5 446.0,80.7"/>
+<circle class="acc dot" cx="446.0" cy="80.7" r="4.5"/>
+<text class="mut" x="24" y="200">Peak 1214 · 56% win · 644 games · last 20</text>
 </svg>
