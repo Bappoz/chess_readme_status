@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 840 200" width="840" height="200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Chess.com stats summary">
+
+<style>text{fill:#cfd8d1}.bg{fill:#0a0d0c}.acc{fill:#48d1ae}.ln{stroke:#48d1ae}.area{fill:#48d1ae;opacity:.1}.peak{stroke:#48d1ae;opacity:.32}.chip{fill:#48d1ae;opacity:.14}.down{fill:#e0715a}.grid{stroke:#1a221f;stroke-width:1}svg{font-family:'Space Grotesk',system-ui,sans-serif}.lbl{font-weight:600;font-size:11px;letter-spacing:.16em}.big{font-weight:700;font-size:34px;letter-spacing:-.02em}.mid{font-weight:600;font-size:14px}.mut{font-weight:500;font-size:11px;opacity:.5}.ser{font-family:'Instrument Serif',serif;font-weight:400;letter-spacing:0}.mono{font-family:'JetBrains Mono',monospace}.ln{fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}.thin{stroke-width:1.6}.draw{stroke-dasharray:1200;stroke-dashoffset:1200;animation:draw 2.3s cubic-bezier(.6,.05,.2,1) forwards .25s}.dot{animation:pulse 2s ease-in-out infinite}.glow{animation:glow 3.4s ease-in-out infinite}.float{animation:float 6.5s ease-in-out infinite}.shim{animation:shim 3s ease-in-out infinite}@keyframes draw{to{stroke-dashoffset:0}}@keyframes pulse{0%,100%{r:4.5;opacity:1}50%{r:8;opacity:.45}}@keyframes glow{0%,100%{opacity:.14}50%{opacity:.34}}@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}@keyframes shim{0%,100%{opacity:.5}50%{opacity:1}}</style>
+<rect class="bg" width="840" height="200" rx="20"/>
+<line class="grid" x1="30" y1="68" x2="810" y2="68"/><line class="grid" x1="30" y1="120" x2="810" y2="120"/><line class="grid" x1="30" y1="172" x2="810" y2="172"/>
+<text class="mut" x="30" y="36">CHESS.COM · @bappozl</text>
+<text class="mut" x="810" y="36" text-anchor="end">1481 games · updated every 6h</text>
+<line class="peak" x1="30" y1="52" x2="810" y2="52" stroke-dasharray="0"/>
+<g>
+<text class="mut" x="40" y="86">BLITZ</text>
+<text class="big" x="40" y="122" style="font-size:32px">686</text>
+<text class="down mid" x="40" y="146">▼ -67</text>
+<polyline class="ln thin draw" points="40.0,180.8 59.4,173.9 78.9,167.4 98.3,173.6 117.7,167.4 137.1,161.5 156.6,166.7 176.0,161.2"/>
+</g>
+<line class="peak" x1="215" y1="70" x2="215" y2="176" stroke-dasharray="0"/>
+<g>
+<text class="mut" x="240" y="86">RAPID</text>
+<text class="big" x="240" y="122" style="font-size:32px">1214</text>
+<text class="acc mid" x="240" y="146">▲ +61</text>
+<polyline class="ln thin draw" points="240.0,167.9 259.4,174.1 278.9,180.8 298.3,174.1 317.7,180.8 337.1,174.1 356.6,167.4 376.0,161.2"/>
+</g>
+<line class="peak" x1="415" y1="70" x2="415" y2="176" stroke-dasharray="0"/>
+<g>
+<text class="mut" x="440" y="86">BULLET</text>
+<text class="big" x="440" y="122" style="font-size:32px">549</text>
+<text class="down mid" x="440" y="146">▼ -107</text>
+<polyline class="ln thin draw" points="440.0,161.2 474.0,166.7 508.0,171.3 542.0,175.9 576.0,180.8"/>
+</g>
+<line class="peak" x1="615" y1="70" x2="615" y2="176" stroke-dasharray="0"/>
+<g>
+<text class="mut" x="640" y="86">DAILY</text>
+<text class="big" x="640" y="122" style="font-size:32px">313</text>
+<text class="mut mid" x="640" y="146">—</text>
+
+</g>
+
+</svg>

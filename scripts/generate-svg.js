@@ -1,194 +1,485 @@
 import fs from "node:fs";
 import path from "node:path";
 
-/**
- * Chess.com Stats SVG Generator
- * Gera graficos SVG com estatisticas do Chess.com
- * Sistema de temas personalizaveis
- */
-
 const CHESS_USERNAME = process.env.CHESS_USERNAME || "bappozl";
-const THEME_NAME = process.env.CHESS_THEME || "dark";
 const OUTPUT_DIR = "assets";
 const CACHE_FILE = path.join(OUTPUT_DIR, ".cache.json");
-const CACHE_MAX_AGE = 7 * 24 * 60 * 60 * 1000; // 7 dias
+const CACHE_MAX_AGE = 7 * 24 * 60 * 60 * 1000;
 
-/**
- * Sistema de Temas
- * Cada tema define cores para todos os elementos do SVG
- */
-const THEMES = {
-  // Tema escuro elegante (padrao)
-  dark: {
-    name: "Dark",
-    background: "#0d1117",
-    backgroundAlt: "#161b22",
-    card: "#21262d",
-    cardBorder: "#30363d",
-    text: "#e6edf3",
-    textSecondary: "#8b949e",
-    textMuted: "#6e7681",
-    accent: "#58a6ff",
-    rapid: "#f0883e",
-    blitz: "#da3633",
-    bullet: "#3fb950",
-    daily: "#a371f7",
-    success: "#3fb950",
-    gridLine: "#30363d",
-  },
+// ─── Design config ──────────────────────────────────────────────────────────
 
-  // Tema claro minimalista
-  light: {
-    name: "Light",
-    background: "#ffffff",
-    backgroundAlt: "#f6f8fa",
-    card: "#ffffff",
-    cardBorder: "#d0d7de",
-    text: "#1f2328",
-    textSecondary: "#656d76",
-    textMuted: "#8c959f",
-    accent: "#0969da",
-    rapid: "#bf5700",
-    blitz: "#cf222e",
-    bullet: "#1a7f37",
-    daily: "#8250df",
-    success: "#1a7f37",
-    gridLine: "#d0d7de",
-  },
+const MODE_PIECES = { blitz: "♞", rapid: "♛", bullet: "♟", daily: "♚" };
+const MODE_LABELS = { blitz: "BLITZ", rapid: "RAPID", bullet: "BULLET", daily: "DAILY" };
 
-  // Tema preto total
-  midnight: {
-    name: "Midnight",
-    background: "#000000",
-    backgroundAlt: "#0a0a0a",
-    card: "#111111",
-    cardBorder: "#222222",
-    text: "#ffffff",
-    textSecondary: "#a0a0a0",
-    textMuted: "#666666",
-    accent: "#ffffff",
-    rapid: "#ffa500",
-    blitz: "#ff4444",
-    bullet: "#44ff44",
-    daily: "#aa88ff",
-    success: "#44ff44",
-    gridLine: "#222222",
-  },
-
-  // Tema xadrez classico
-  chess: {
-    name: "Chess Classic",
-    background: "#312e2b",
-    backgroundAlt: "#272522",
-    card: "#3d3a36",
-    cardBorder: "#b58863",
-    text: "#f0d9b5",
-    textSecondary: "#b58863",
-    textMuted: "#8b7355",
-    accent: "#769656",
-    rapid: "#f0d9b5",
-    blitz: "#b58863",
-    bullet: "#769656",
-    daily: "#8b7355",
-    success: "#769656",
-    gridLine: "#4a4642",
-  },
-
-  // Tema madeira
-  wood: {
-    name: "Wood",
-    background: "#3e2723",
-    backgroundAlt: "#4e342e",
-    card: "#5d4037",
-    cardBorder: "#6d4c41",
-    text: "#efebe9",
-    textSecondary: "#bcaaa4",
-    textMuted: "#8d6e63",
-    accent: "#d7ccc8",
-    rapid: "#ffab91",
-    blitz: "#ff8a65",
-    bullet: "#a5d6a7",
-    daily: "#ce93d8",
-    success: "#a5d6a7",
-    gridLine: "#6d4c41",
-  },
-
-  // Tema futuristico
-  neon: {
-    name: "Neon",
-    background: "#0a0a1a",
-    backgroundAlt: "#12122a",
-    card: "#1a1a2e",
-    cardBorder: "#00ffff33",
-    text: "#00ffff",
-    textSecondary: "#00cccc",
-    textMuted: "#008888",
-    accent: "#ff00ff",
-    rapid: "#ffff00",
-    blitz: "#ff0066",
-    bullet: "#00ff66",
-    daily: "#cc66ff",
-    success: "#00ff66",
-    gridLine: "#00ffff22",
-  },
-
-  // Tema verde matrix
-  matrix: {
-    name: "Matrix",
-    background: "#000000",
-    backgroundAlt: "#001100",
-    card: "#002200",
-    cardBorder: "#004400",
-    text: "#00ff00",
-    textSecondary: "#00cc00",
-    textMuted: "#008800",
-    accent: "#00ff00",
-    rapid: "#88ff88",
-    blitz: "#00ff00",
-    bullet: "#44ff44",
-    daily: "#22cc22",
-    success: "#00ff00",
-    gridLine: "#003300",
-  },
-
-  // Tema oceano
-  ocean: {
-    name: "Ocean",
-    background: "#0c2d48",
-    backgroundAlt: "#145374",
-    card: "#1a5276",
-    cardBorder: "#2471a3",
-    text: "#ecf0f1",
-    textSecondary: "#bdc3c7",
-    textMuted: "#85929e",
-    accent: "#5dade2",
-    rapid: "#f39c12",
-    blitz: "#e74c3c",
-    bullet: "#2ecc71",
-    daily: "#9b59b6",
-    success: "#2ecc71",
-    gridLine: "#2471a3",
-  },
+const STYLES = {
+  premium:           { text:"#e9eaec", bg:"#111317", acc:"#8ac054", down:"#d9694a", areaOp:".13", peakOp:".3",  chipOp:".14", extra:"" },
+  editorial:         { text:"#f3efe6", bg:"#141210", acc:"#d8a24a", down:"#c56a4a", areaOp:".05", peakOp:".28", chipOp:".14", extra:".rule{stroke:#3a352c}" },
+  wood:              { text:"#f1e6d2", bg:"#241811", acc:"#e7bd6b", down:"#d98a5a", areaOp:".12", peakOp:".32", chipOp:".14", extra:".sq{fill:#fff;opacity:.045}" },
+  tech:              { text:"#cfd8d1", bg:"#0a0d0c", acc:"#48d1ae", down:"#e0715a", areaOp:".1",  peakOp:".32", chipOp:".14", extra:".grid{stroke:#1a221f;stroke-width:1}" },
+  glass:             { text:"#e7eaf6", bg:"#0c1225", acc:"#8098ff", down:"#e0715a", areaOp:".14", peakOp:".3",  chipOp:".14", extra:".panel{fill:#fff;opacity:.045}.stroke{stroke:#fff;opacity:.08;fill:none}" },
+  piece:             { text:"#eef1f3", bg:"#0d0f13", acc:"#9bd35e", down:"#d9694a", areaOp:".12", peakOp:".3",  chipOp:".14", extra:"" },
+  light:             { text:"#1b1e1b", bg:"#f4f6f1", acc:"#5f8f37", down:"#c1573a", areaOp:".12", peakOp:".35", chipOp:".13", extra:"" },
+  "light-editorial": { text:"#241f16", bg:"#f8f2e6", acc:"#a9762a", down:"#b26038", areaOp:".07", peakOp:".3",  chipOp:".14", extra:".rule{stroke:#e0d5bf}" },
 };
 
-/**
- * Carrega cache de dados anteriores
- */
+// ─── SVG utilities ──────────────────────────────────────────────────────────
+
+function buildCSS(styleName) {
+  const s = STYLES[styleName] || STYLES.premium;
+  return [
+    `text{fill:${s.text}}`,
+    `.bg{fill:${s.bg}}`,
+    `.acc{fill:${s.acc}}`,
+    `.ln{stroke:${s.acc}}`,
+    `.area{fill:${s.acc};opacity:${s.areaOp}}`,
+    `.peak{stroke:${s.acc};opacity:${s.peakOp}}`,
+    `.chip{fill:${s.acc};opacity:${s.chipOp}}`,
+    `.down{fill:${s.down}}`,
+    s.extra,
+    `svg{font-family:'Space Grotesk',system-ui,sans-serif}`,
+    `.lbl{font-weight:600;font-size:11px;letter-spacing:.16em}`,
+    `.big{font-weight:700;font-size:34px;letter-spacing:-.02em}`,
+    `.mid{font-weight:600;font-size:14px}`,
+    `.mut{font-weight:500;font-size:11px;opacity:.5}`,
+    `.ser{font-family:'Instrument Serif',serif;font-weight:400;letter-spacing:0}`,
+    `.mono{font-family:'JetBrains Mono',monospace}`,
+    `.ln{fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}`,
+    `.thin{stroke-width:1.6}`,
+    `.draw{stroke-dasharray:1200;stroke-dashoffset:1200;animation:draw 2.3s cubic-bezier(.6,.05,.2,1) forwards .25s}`,
+    `.dot{animation:pulse 2s ease-in-out infinite}`,
+    `.glow{animation:glow 3.4s ease-in-out infinite}`,
+    `.float{animation:float 6.5s ease-in-out infinite}`,
+    `.shim{animation:shim 3s ease-in-out infinite}`,
+    `@keyframes draw{to{stroke-dashoffset:0}}`,
+    `@keyframes pulse{0%,100%{r:4.5;opacity:1}50%{r:8;opacity:.45}}`,
+    `@keyframes glow{0%,100%{opacity:.14}50%{opacity:.34}}`,
+    `@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}`,
+    `@keyframes shim{0%,100%{opacity:.5}50%{opacity:1}}`,
+  ].join("");
+}
+
+function chartPoints(history, x0, x1, yTop, yBottom) {
+  if (history.length === 0) return [];
+  const n = history.length;
+  const ratings = history.map((h) => h.rating);
+  const mn = Math.min(...ratings);
+  const mx = Math.max(...ratings);
+  const range = mx - mn || 1;
+  const pad = range * 0.06;
+  const yMin = mn - pad, yMax = mx + pad, yRange = yMax - yMin;
+  return history.map((h, i) => ({
+    x: x0 + (n > 1 ? i / (n - 1) : 0.5) * (x1 - x0),
+    y: yBottom - ((h.rating - yMin) / yRange) * (yBottom - yTop),
+  }));
+}
+
+function pline(pts) {
+  return pts.map((p) => `${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(" ");
+}
+
+function areaPts(pts, yBase) {
+  if (pts.length < 2) return "";
+  return `${pline(pts)} ${pts[pts.length - 1].x.toFixed(1)},${yBase} ${pts[0].x.toFixed(1)},${yBase}`;
+}
+
+function trendOf(history, currentRating) {
+  const last20 = history.slice(-20);
+  if (last20.length < 2) return { str: "—", cls: "mut" };
+  const diff = currentRating - last20[0].rating;
+  return {
+    str: diff > 0 ? `▲ +${diff}` : diff < 0 ? `▼ ${diff}` : `= ${diff}`,
+    cls: diff >= 0 ? "acc" : "down",
+  };
+}
+
+function winPct(wins, losses, draws) {
+  const t = wins + losses + draws;
+  return t > 0 ? Math.round((wins / t) * 100) : 0;
+}
+
+// ─── renderHero ─────────────────────────────────────────────────────────────
+
+function renderHero(data, mode, styleName) {
+  const css = buildCSS(styleName);
+  const piece = MODE_PIECES[mode];
+  const label = MODE_LABELS[mode];
+  const { rating, best, wins, losses, draws, history } = data;
+  const total = wins + losses + draws;
+  const wp = winPct(wins, losses, draws);
+  const tr = trendOf(history, rating);
+  const r = rating || "—";
+  const b = best || "—";
+
+  if (styleName === "editorial" || styleName === "light-editorial") {
+    return `<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 340 210" width="340" height="210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${label} hero">
+<style>${css}</style>
+<rect class="bg" width="340" height="210" rx="20"/>
+<text class="mut" x="30" y="52" style="letter-spacing:.24em">${label} RATING</text>
+<text class="acc ser" x="26" y="140" style="font-size:104px">${r}</text>
+<line class="rule" x1="30" y1="162" x2="310" y2="162"/>
+<text class="mid" x="30" y="188">Peak ${b}</text>
+<text class="${tr.cls} mid" x="310" y="188" text-anchor="end">${tr.str}</text>
+</svg>`;
+  }
+
+  if (styleName === "wood") {
+    const miniPts = chartPoints(history.slice(-10), 196, 322, 165, 194);
+    const miniLine = miniPts.length > 1 ? `<polyline class="ln draw" points="${pline(miniPts)}"/>` : "";
+    return `<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 340 210" width="340" height="210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${label} hero">
+<defs>
+<filter id="bC" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="16"/></filter>
+<linearGradient id="wC" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2c1e14"/><stop offset="1" stop-color="#1c120b"/></linearGradient>
+</defs>
+<style>${css}</style>
+<rect width="340" height="210" rx="20" fill="url(#wC)"/>
+<rect class="sq" x="0" y="140" width="34" height="34"/><rect class="sq" x="68" y="140" width="34" height="34"/>
+<rect class="sq" x="34" y="174" width="34" height="34"/><rect class="sq" x="102" y="174" width="34" height="34"/>
+<ellipse class="acc glow" cx="92" cy="112" rx="60" ry="60" filter="url(#bC)"/>
+<text class="acc float ser" x="92" y="166" text-anchor="middle" style="font-size:150px">${piece}</text>
+<text class="mut" x="196" y="50">${label}</text>
+<text class="big ser" x="196" y="98" style="font-size:52px">${r}</text>
+<text class="${tr.cls} mid" x="196" y="122">${tr.str}</text>
+<text class="mut" x="196" y="150">${total} games · ${wp}% win</text>
+${miniLine}
+</svg>`;
+  }
+
+  if (styleName === "tech") {
+    const techPts = chartPoints(history.slice(-10), 26, 314, 170, 190);
+    const techLine = techPts.length > 1 ? `<polyline class="ln thin draw" points="${pline(techPts)}"/>` : "";
+    const step = Math.max(1, Math.floor(techPts.length / 4));
+    const nodes = techPts
+      .filter((_, i) => i > 0 && i < techPts.length - 1 && i % step === 0)
+      .map((p) => `<circle class="acc" cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="2.5"/>`)
+      .join("");
+    const last = techPts[techPts.length - 1];
+    return `<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 340 210" width="340" height="210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${label} hero">
+<style>${css}</style>
+<rect class="bg" width="340" height="210" rx="20"/>
+<line class="grid" x1="0" y1="70" x2="340" y2="70"/><line class="grid" x1="0" y1="140" x2="340" y2="140"/>
+<line class="grid" x1="113" y1="0" x2="113" y2="210"/><line class="grid" x1="226" y1="0" x2="226" y2="210"/>
+<text class="mut mono" x="26" y="44">${mode}.rating</text>
+<circle class="acc dot" cx="120" cy="40" r="4"/>
+<text class="big mono acc shim" x="26" y="104" style="font-size:52px">${r}</text>
+<text class="${tr.cls} mid mono" x="26" y="134">${tr.str} · win ${wp}%</text>
+${techLine}${nodes}${last ? `<circle class="acc dot" cx="${last.x.toFixed(1)}" cy="${last.y.toFixed(1)}" r="4"/>` : ""}
+<text class="mut mono" x="314" y="200" text-anchor="end">n=${total}</text>
+</svg>`;
+  }
+
+  if (styleName === "glass") {
+    return `<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 340 210" width="340" height="210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${label} hero">
+<defs>
+<filter id="bE" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="20"/></filter>
+<radialGradient id="gE" cx="30%" cy="0%" r="90%"><stop offset="0" stop-color="#1b2550"/><stop offset="1" stop-color="#0c1225"/></radialGradient>
+</defs>
+<style>${css}</style>
+<rect width="340" height="210" rx="20" fill="url(#gE)"/>
+<ellipse class="acc glow" cx="150" cy="96" rx="90" ry="60" filter="url(#bE)"/>
+<rect class="panel" x="18" y="120" width="304" height="72" rx="14"/>
+<rect class="stroke" x="18" y="120" width="304" height="72" rx="14"/>
+<text class="mut" x="30" y="52">${label} RATING</text>
+<text class="big" x="30" y="102" style="font-size:50px">${r}</text>
+<text class="${tr.cls} mid" x="222" y="102">${tr.str}</text>
+<text class="mut" x="34" y="150">PEAK</text><text class="mid" x="34" y="176">${b}</text>
+<text class="mut" x="170" y="150">WIN</text><text class="mid" x="170" y="176">${wp}%</text>
+<text class="mut" x="290" y="150" text-anchor="end">GAMES</text><text class="mid" x="290" y="176" text-anchor="end">${total}</text>
+</svg>`;
+  }
+
+  if (styleName === "piece") {
+    return `<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 380 210" width="380" height="210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${label} hero">
+<defs>
+<filter id="bF" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="22"/></filter>
+<linearGradient id="pF" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c7ef92"/><stop offset="1" stop-color="#79b843"/></linearGradient>
+</defs>
+<style>${css}</style>
+<rect class="bg" width="380" height="210" rx="20"/>
+<ellipse class="acc glow" cx="120" cy="120" rx="96" ry="88" filter="url(#bF)"/>
+<text class="float ser" x="120" y="196" text-anchor="middle" style="font-size:210px" fill="url(#pF)">${piece}</text>
+<text class="mut" x="238" y="58">${label}</text>
+<text class="big" x="238" y="104" style="font-size:52px">${r}</text>
+<text class="${tr.cls} mid" x="238" y="130">${tr.str}</text>
+<line class="peak" x1="238" y1="150" x2="352" y2="150" stroke-dasharray="4 5"/>
+<text class="mut" x="238" y="176">Peak ${b} · ${wp}% win</text>
+<text class="mut" x="238" y="194">${total} games</text>
+</svg>`;
+  }
+
+  // premium / light (1A / 1H)
+  const miniPts = chartPoints(history.slice(-10), 196, 322, 165, 194);
+  const miniLine = miniPts.length > 1 ? `<polyline class="ln draw" points="${pline(miniPts)}"/>` : "";
+  const fid = styleName === "light" ? "bL" : "bA";
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 340 210" width="340" height="210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${label} hero">
+<defs><filter id="${fid}" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="17"/></filter></defs>
+<style>${css}</style>
+<rect class="bg" width="340" height="210" rx="20"/>
+<ellipse class="acc glow" cx="94" cy="118" rx="66" ry="66" filter="url(#${fid})"/>
+<text class="acc float ser" x="94" y="170" text-anchor="middle" style="font-size:152px">${piece}</text>
+<text class="mut" x="196" y="50">${label}</text>
+<text class="big" x="196" y="94" style="font-size:46px">${r}</text>
+<text class="${tr.cls} mid" x="196" y="120">${tr.str}</text>
+<text class="mut" x="196" y="150">${total} games · ${wp}% win</text>
+${miniLine}
+</svg>`;
+}
+
+// ─── renderLine ─────────────────────────────────────────────────────────────
+
+function renderLine(data, mode, styleName) {
+  const css = buildCSS(styleName);
+  const piece = MODE_PIECES[mode];
+  const label = MODE_LABELS[mode];
+  const { rating, best, wins, losses, draws, history } = data;
+  const total = wins + losses + draws;
+  const wp = winPct(wins, losses, draws);
+  const last20 = history.slice(-20);
+  const tr = trendOf(history, rating);
+  const r = rating || "—";
+  const b = best || "—";
+
+  if (styleName === "editorial" || styleName === "light-editorial") {
+    const pts = chartPoints(last20, 44, 446, 112, 190);
+    const lastPt = pts[pts.length - 1];
+    return `<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 470 210" width="470" height="210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${label} rating history">
+<style>${css}</style>
+<rect class="bg" width="470" height="210" rx="20"/>
+<text class="mut" x="30" y="40" style="letter-spacing:.22em">${label} · RATING HISTORY</text>
+<text class="acc ser" x="30" y="86" style="font-size:52px">${r}</text>
+<text class="${tr.cls} mid" x="140" y="84">${tr.str}</text>
+<line class="rule" x1="30" y1="104" x2="440" y2="104"/>
+${pts.length > 1 ? `<polyline class="ln thin draw" points="${pline(pts)}"/>` : ""}
+${lastPt ? `<circle class="acc dot" cx="${lastPt.x.toFixed(1)}" cy="${lastPt.y.toFixed(1)}" r="3.5"/>` : ""}
+<text class="mut" x="30" y="200">${wp}% win · ${total} games · last ${last20.length} games</text>
+</svg>`;
+  }
+
+  if (styleName === "wood") {
+    const pts = chartPoints(last20, 44, 446, 75, 182);
+    const lastPt = pts[pts.length - 1];
+    return `<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 470 210" width="470" height="210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${label} rating history">
+<defs>
+<linearGradient id="wC2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2c1e14"/><stop offset="1" stop-color="#1c120b"/></linearGradient>
+</defs>
+<style>${css}</style>
+<rect width="470" height="210" rx="20" fill="url(#wC2)"/>
+<rect class="sq" x="24" y="150" width="26" height="26"/><rect class="sq" x="76" y="150" width="26" height="26"/><rect class="sq" x="50" y="176" width="26" height="26"/>
+<text class="acc ser" x="30" y="42" style="font-size:22px">${piece}</text>
+<text class="mut" x="58" y="30">${label}</text>
+<text class="mid" x="58" y="47">Rating history</text>
+<text class="big ser" x="446" y="44" text-anchor="end" style="font-size:38px">${r}</text>
+<text class="${tr.cls} mid" x="446" y="62" text-anchor="end">${tr.str}</text>
+<line class="peak" x1="44" y1="52" x2="446" y2="52" stroke-dasharray="4 5"/>
+<text class="mut" x="245" y="46" text-anchor="middle" style="font-size:9px;letter-spacing:.1em">PEAK ${b}</text>
+${pts.length > 1 ? `<polygon class="area" points="${areaPts(pts, 182)}"/>` : ""}
+${pts.length > 1 ? `<polyline class="ln draw" points="${pline(pts)}"/>` : ""}
+${lastPt ? `<circle class="acc dot" cx="${lastPt.x.toFixed(1)}" cy="${lastPt.y.toFixed(1)}" r="4.5"/>` : ""}
+<text class="mut" x="24" y="200">Peak ${b} · ${wp}% win · ${total} games · last ${last20.length}</text>
+</svg>`;
+  }
+
+  if (styleName === "tech") {
+    const pts = chartPoints(last20, 44, 446, 60, 180);
+    const lastPt = pts[pts.length - 1];
+    const step = Math.max(1, Math.floor(pts.length / 4));
+    const nodes = pts
+      .filter((_, i) => i > 0 && i < pts.length - 1 && i % step === 0)
+      .map((p) => `<circle class="acc" cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="2.6"/>`)
+      .join("");
+    return `<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 470 210" width="470" height="210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${label} rating history">
+<style>${css}</style>
+<rect class="bg" width="470" height="210" rx="20"/>
+<line class="grid" x1="44" y1="60" x2="446" y2="60"/><line class="grid" x1="44" y1="100" x2="446" y2="100"/>
+<line class="grid" x1="44" y1="140" x2="446" y2="140"/><line class="grid" x1="44" y1="180" x2="446" y2="180"/>
+<line class="grid" x1="44" y1="52" x2="44" y2="188"/><line class="grid" x1="245" y1="52" x2="245" y2="188"/><line class="grid" x1="446" y1="52" x2="446" y2="188"/>
+<text class="mut mono" x="24" y="30">${mode.toUpperCase()}.RATING</text>
+<text class="big mono" x="446" y="34" text-anchor="end" style="font-size:28px">${r}</text>
+<text class="${tr.cls} mono mid" x="446" y="52" text-anchor="end">${tr.str}</text>
+${pts.length > 1 ? `<polyline class="ln draw" points="${pline(pts)}"/>` : ""}
+${nodes}
+${lastPt ? `<circle class="acc dot" cx="${lastPt.x.toFixed(1)}" cy="${lastPt.y.toFixed(1)}" r="4.5"/>` : ""}
+<text class="mut mono" x="44" y="202">a1</text><text class="mut mono" x="245" y="202" text-anchor="middle">d4</text><text class="mut mono" x="446" y="202" text-anchor="end">h8</text>
+</svg>`;
+  }
+
+  if (styleName === "glass") {
+    const pts = chartPoints(last20, 44, 446, 82, 180);
+    const lastPt = pts[pts.length - 1];
+    return `<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 470 210" width="470" height="210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${label} rating history">
+<defs>
+<filter id="bE2" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="18"/></filter>
+<radialGradient id="gE2" cx="80%" cy="10%" r="90%"><stop offset="0" stop-color="#1b2550"/><stop offset="1" stop-color="#0c1225"/></radialGradient>
+</defs>
+<style>${css}</style>
+<rect width="470" height="210" rx="20" fill="url(#gE2)"/>
+<ellipse class="acc glow" cx="410" cy="80" rx="80" ry="60" filter="url(#bE2)"/>
+<text class="mut" x="26" y="34">${label} · RATING HISTORY</text>
+<text class="big" x="446" y="40" text-anchor="end" style="font-size:30px">${r}</text>
+<text class="${tr.cls} mid" x="446" y="58" text-anchor="end">${tr.str}</text>
+<rect class="panel" x="18" y="66" width="434" height="128" rx="14"/>
+<rect class="stroke" x="18" y="66" width="434" height="128" rx="14"/>
+<line class="peak" x1="44" y1="82" x2="446" y2="82" stroke-dasharray="4 5"/>
+<text class="mut" x="44" y="78" style="font-size:9px">PEAK ${b}</text>
+${pts.length > 1 ? `<polygon class="area" points="${areaPts(pts, 182)}"/>` : ""}
+${pts.length > 1 ? `<polyline class="ln draw" points="${pline(pts)}"/>` : ""}
+${lastPt ? `<circle class="acc dot" cx="${lastPt.x.toFixed(1)}" cy="${lastPt.y.toFixed(1)}" r="4.5"/>` : ""}
+</svg>`;
+  }
+
+  if (styleName === "piece") {
+    const pts = chartPoints(last20, 150, 446, 110, 182);
+    const lastPt = pts[pts.length - 1];
+    return `<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 470 210" width="470" height="210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${label} rating history">
+<defs><filter id="bF2" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="16"/></filter></defs>
+<style>${css}</style>
+<rect class="bg" width="470" height="210" rx="20"/>
+<ellipse class="acc glow" cx="60" cy="150" rx="60" ry="60" filter="url(#bF2)"/>
+<text class="acc float ser" x="58" y="188" text-anchor="middle" style="font-size:120px">${piece}</text>
+<text class="mut" x="150" y="40">${label} RATING</text>
+<text class="big" x="150" y="80" style="font-size:38px">${r}</text>
+<text class="${tr.cls} mid" x="270" y="80">${tr.str}</text>
+${pts.length > 1 ? `<polygon class="area" points="${areaPts(pts, 182)}"/>` : ""}
+${pts.length > 1 ? `<polyline class="ln draw" points="${pline(pts)}"/>` : ""}
+${lastPt ? `<circle class="acc dot" cx="${lastPt.x.toFixed(1)}" cy="${lastPt.y.toFixed(1)}" r="4.5"/>` : ""}
+<text class="mut" x="150" y="202">Peak ${b} · ${wp}% win · ${total} games</text>
+</svg>`;
+  }
+
+  // premium / light (1A / 1H)
+  const pts = chartPoints(last20, 44, 446, 75, 182);
+  const lastPt = pts[pts.length - 1];
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 470 210" width="470" height="210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${label} rating history">
+<style>${css}</style>
+<rect class="bg" width="470" height="210" rx="20"/>
+<rect class="chip" x="24" y="20" width="30" height="30" rx="9"/>
+<text class="acc ser" x="39" y="42" text-anchor="middle" style="font-size:19px">${piece}</text>
+<text class="mut" x="66" y="30">${label}</text>
+<text class="mid" x="66" y="47">Rating history</text>
+<text class="big" x="446" y="42" text-anchor="end">${r}</text>
+<text class="${tr.cls} mid" x="446" y="61" text-anchor="end">${tr.str}</text>
+<line class="peak" x1="44" y1="52" x2="446" y2="52" stroke-dasharray="4 5"/>
+<text class="mut" x="245" y="46" text-anchor="middle" style="font-size:9px;letter-spacing:.1em">PEAK ${b}</text>
+${pts.length > 1 ? `<polygon class="area" points="${areaPts(pts, 182)}"/>` : ""}
+${pts.length > 1 ? `<polyline class="ln draw" points="${pline(pts)}"/>` : ""}
+${lastPt ? `<circle class="acc dot" cx="${lastPt.x.toFixed(1)}" cy="${lastPt.y.toFixed(1)}" r="4.5"/>` : ""}
+<text class="mut" x="24" y="200">Peak ${b} · ${wp}% win · ${total} games · last ${last20.length}</text>
+</svg>`;
+}
+
+// ─── renderSummary ───────────────────────────────────────────────────────────
+
+function renderSummary(allData, styleName, username) {
+  const css = buildCSS(styleName);
+  const isEd = styleName === "editorial" || styleName === "light-editorial";
+  const modes = ["blitz", "rapid", "bullet", "daily"];
+
+  const totalGames = modes.reduce((s, m) => {
+    const d = allData[m];
+    return s + d.wins + d.losses + d.draws;
+  }, 0);
+
+  const secs = [
+    { mode: "blitz",  x0: 40,  x1: 176, lx: 40,  divX: 215 },
+    { mode: "rapid",  x0: 240, x1: 376, lx: 240, divX: 415 },
+    { mode: "bullet", x0: 440, x1: 576, lx: 440, divX: 615 },
+    { mode: "daily",  x0: 640, x1: 776, lx: 640, divX: null },
+  ];
+
+  const bodyParts = secs.map(({ mode, x0, x1, lx, divX }) => {
+    const d = allData[mode];
+    const tr = trendOf(d.history, d.rating);
+    const miniPts = chartPoints(d.history.slice(-8), x0, x1, 160, 182);
+    const miniLine = miniPts.length > 1 ? `<polyline class="ln thin draw" points="${pline(miniPts)}"/>` : "";
+    const rating = d.rating || "—";
+    const divEl = divX
+      ? isEd
+        ? `<line class="rule" x1="${divX}" y1="70" x2="${divX}" y2="168"/>`
+        : `<line class="peak" x1="${divX}" y1="70" x2="${divX}" y2="176" stroke-dasharray="0"/>`
+      : "";
+
+    const section = isEd
+      ? `<g>
+<text class="mut" x="${lx}" y="84">${MODE_LABELS[mode]}</text>
+<text class="acc ser" x="${lx}" y="128" style="font-size:44px">${rating}</text>
+<text class="${tr.cls} mid" x="${lx}" y="152">${tr.str}</text>
+${miniLine}
+</g>`
+      : `<g>
+<text class="mut" x="${lx}" y="86">${MODE_LABELS[mode]}</text>
+<text class="big" x="${lx}" y="122" style="font-size:32px">${rating}</text>
+<text class="${tr.cls} mid" x="${lx}" y="146">${tr.str}</text>
+${miniLine}
+</g>`;
+
+    return section + "\n" + divEl;
+  }).join("\n");
+
+  // Style-specific bg / decoration
+  let defs = "";
+  let bgEl = `<rect class="bg" width="840" height="200" rx="20"/>`;
+  let decorations = "";
+
+  if (styleName === "wood") {
+    defs = `<defs><linearGradient id="wCS" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2c1e14"/><stop offset="1" stop-color="#1c120b"/></linearGradient></defs>`;
+    bgEl = `<rect width="840" height="200" rx="20" fill="url(#wCS)"/>`;
+    decorations = `<rect class="sq" x="0" y="140" width="26" height="26"/><rect class="sq" x="52" y="140" width="26" height="26"/><rect class="sq" x="26" y="166" width="26" height="26"/>`;
+  } else if (styleName === "glass") {
+    defs = `<defs><radialGradient id="gCS" cx="50%" cy="0%" r="90%"><stop offset="0" stop-color="#1b2550"/><stop offset="1" stop-color="#0c1225"/></radialGradient></defs>`;
+    bgEl = `<rect width="840" height="200" rx="20" fill="url(#gCS)"/>`;
+  } else if (styleName === "tech") {
+    decorations = `<line class="grid" x1="30" y1="68" x2="810" y2="68"/><line class="grid" x1="30" y1="120" x2="810" y2="120"/><line class="grid" x1="30" y1="172" x2="810" y2="172"/>`;
+  }
+
+  if (isEd) {
+    return `<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 840 200" width="840" height="200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Chess.com stats summary">
+${defs}
+<style>${css}</style>
+${bgEl}
+${decorations}
+<text class="mut" x="30" y="36" style="letter-spacing:.22em">CHESS.COM · @${username} · ${totalGames} GAMES</text>
+<line class="rule" x1="30" y1="50" x2="810" y2="50"/>
+${bodyParts}
+</svg>`;
+  }
+
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 840 200" width="840" height="200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Chess.com stats summary">
+${defs}
+<style>${css}</style>
+${bgEl}
+${decorations}
+<text class="mut" x="30" y="36">CHESS.COM · @${username}</text>
+<text class="mut" x="810" y="36" text-anchor="end">${totalGames} games · updated every 6h</text>
+<line class="peak" x1="30" y1="52" x2="810" y2="52" stroke-dasharray="0"/>
+${bodyParts}
+</svg>`;
+}
+
+// ─── Data fetching (unchanged) ───────────────────────────────────────────────
+
 function loadCache() {
   try {
     if (fs.existsSync(CACHE_FILE)) {
       const cacheData = JSON.parse(fs.readFileSync(CACHE_FILE, "utf8"));
       const cacheAge = Date.now() - cacheData.timestamp;
-
       if (cacheAge < CACHE_MAX_AGE) {
-        console.log(
-          `  Loaded cache (${Math.round(cacheAge / (1000 * 60 * 60))}h old)`,
-        );
+        console.log(`  Loaded cache (${Math.round(cacheAge / (1000 * 60 * 60))}h old)`);
         return cacheData;
       } else {
-        console.log(
-          `  Cache too old (${Math.round(cacheAge / (1000 * 60 * 60))}h), ignoring`,
-        );
+        console.log(`  Cache too old (${Math.round(cacheAge / (1000 * 60 * 60))}h), ignoring`);
       }
     }
   } catch (error) {
@@ -197,582 +488,203 @@ function loadCache() {
   return null;
 }
 
-/**
- * Salva cache com timestamp
- */
 function saveCache(data) {
   try {
-    const cacheData = {
-      timestamp: Date.now(),
-      username: CHESS_USERNAME,
-      ...data,
-    };
-    fs.writeFileSync(CACHE_FILE, JSON.stringify(cacheData, null, 2));
+    fs.writeFileSync(CACHE_FILE, JSON.stringify({ timestamp: Date.now(), username: CHESS_USERNAME, ...data }, null, 2));
     console.log(`  Cache saved successfully`);
   } catch (error) {
     console.warn(`  Failed to save cache: ${error.message}`);
   }
 }
 
-/**
- * Aguarda um tempo com delay exponencial
- */
 async function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-/**
- * Fetch com retry automatico e exponential backoff
- */
 async function fetchWithRetry(url, options = {}, maxRetries = 5) {
-  const baseDelay = 1000; // 1 segundo
-
+  const baseDelay = 1000;
   for (let attempt = 0; attempt <= maxRetries; attempt++) {
     try {
-      console.log(
-        `  Fetching: ${url.split("/").slice(-2).join("/")}${attempt > 0 ? ` (retry ${attempt}/${maxRetries})` : ""}`,
-      );
-
-      const response = await fetch(url, {
-        ...options,
-        headers: {
-          "User-Agent": "ChessReadmeStats/1.0",
-          ...options.headers,
-        },
-      });
-
-      // Rate limit detectado
+      console.log(`  Fetching: ${url.split("/").slice(-2).join("/")}${attempt > 0 ? ` (retry ${attempt}/${maxRetries})` : ""}`);
+      const response = await fetch(url, { ...options, headers: { "User-Agent": "ChessReadmeStats/1.0", ...options.headers } });
       if (response.status === 429) {
         const retryAfter = response.headers.get("Retry-After");
-        const waitTime = retryAfter
-          ? parseInt(retryAfter) * 1000
-          : baseDelay * Math.pow(2, attempt);
-
-        console.log(
-          `  Rate limited! Waiting ${Math.round(waitTime / 1000)}s...`,
-        );
+        const waitTime = retryAfter ? parseInt(retryAfter) * 1000 : baseDelay * Math.pow(2, attempt);
+        console.log(`  Rate limited! Waiting ${Math.round(waitTime / 1000)}s...`);
         await sleep(waitTime);
         continue;
       }
-
-      // Erro do servidor (5xx) - tentar novamente
       if (response.status >= 500 && response.status < 600) {
-        if (attempt < maxRetries) {
-          const waitTime = baseDelay * Math.pow(2, attempt);
-          console.log(
-            `  Server error ${response.status}. Retrying in ${Math.round(waitTime / 1000)}s...`,
-          );
-          await sleep(waitTime);
-          continue;
-        }
+        if (attempt < maxRetries) { await sleep(baseDelay * Math.pow(2, attempt)); continue; }
       }
-
-      // Erro de cliente (4xx) - nao tentar novamente (exceto 429)
       if (response.status >= 400 && response.status < 500) {
-        throw new Error(
-          `Client error: ${response.status} ${response.statusText}`,
-        );
+        throw new Error(`Client error: ${response.status} ${response.statusText}`);
       }
-
-      // Sucesso
-      if (response.ok) {
-        return response;
-      }
-
+      if (response.ok) return response;
       throw new Error(`HTTP ${response.status}: ${response.statusText}`);
     } catch (error) {
-      // Erro de rede ou outro erro
-      if (attempt < maxRetries) {
-        const waitTime = baseDelay * Math.pow(2, attempt);
-        console.log(
-          `  Network error: ${error.message}. Retrying in ${Math.round(waitTime / 1000)}s...`,
-        );
-        await sleep(waitTime);
-        continue;
-      }
+      if (attempt < maxRetries) { await sleep(baseDelay * Math.pow(2, attempt)); continue; }
       throw error;
     }
   }
-
   throw new Error(`Failed after ${maxRetries} retries`);
 }
 
-/**
- * Busca estatisticas do jogador no Chess.com
- */
 async function fetchChessStats(username) {
-  try {
-    const response = await fetchWithRetry(
-      `https://api.chess.com/pub/player/${username}/stats`,
-    );
-    return await response.json();
-  } catch (error) {
-    console.error(`  Failed to fetch stats: ${error.message}`);
-    throw new Error(`Cannot fetch player stats: ${error.message}`);
-  }
+  const response = await fetchWithRetry(`https://api.chess.com/pub/player/${username}/stats`);
+  return response.json();
 }
 
-/**
- * Busca arquivos de jogos
- */
 async function fetchGameArchives(username) {
   try {
-    const response = await fetchWithRetry(
-      `https://api.chess.com/pub/player/${username}/games/archives`,
-    );
-    return await response.json();
+    const response = await fetchWithRetry(`https://api.chess.com/pub/player/${username}/games/archives`);
+    return response.json();
   } catch (error) {
     console.error(`  Failed to fetch archives: ${error.message}`);
     return { archives: [] };
   }
 }
 
-/**
- * Busca jogos de um mes
- */
 async function fetchMonthGames(archiveUrl) {
   try {
     const response = await fetchWithRetry(archiveUrl);
-    return await response.json();
+    return response.json();
   } catch (error) {
     console.error(`  Failed to fetch month games: ${error.message}`);
     return { games: [] };
   }
 }
 
-/**
- * Extrai historico de ratings
- */
 function extractRatingHistory(games, username, gameType) {
   const history = [];
   const lowerUsername = username.toLowerCase();
-
   for (const game of games) {
     if (game.time_class !== gameType) continue;
-
-    const date = new Date(game.end_time * 1000);
     const isWhite = game.white.username.toLowerCase() === lowerUsername;
     const player = isWhite ? game.white : game.black;
-
     if (player.rating) {
-      history.push({ date, rating: player.rating });
+      history.push({ date: new Date(game.end_time * 1000), rating: player.rating });
     }
   }
-
   return history.sort((a, b) => a.date - b.date);
 }
 
-/**
- * Extrai dados das estatisticas
- */
 function extractStats(data) {
-  if (!data) {
-    console.warn("  Warning: No stats data received");
-    return {
-      rapid: { rating: 0, best: 0, wins: 0, losses: 0, draws: 0 },
-      blitz: { rating: 0, best: 0, wins: 0, losses: 0, draws: 0 },
-      bullet: { rating: 0, best: 0, wins: 0, losses: 0, draws: 0 },
-      daily: { rating: 0, best: 0, wins: 0, losses: 0, draws: 0 },
-    };
-  }
-
   const getMode = (mode) => {
-    const modeData = data[mode];
-    if (!modeData) {
-      console.warn(`  Warning: No data for mode ${mode}`);
-    }
-    return {
-      rating: modeData?.last?.rating || 0,
-      best: modeData?.best?.rating || 0,
-      wins: modeData?.record?.win || 0,
-      losses: modeData?.record?.loss || 0,
-      draws: modeData?.record?.draw || 0,
-    };
+    const m = data?.[mode];
+    return { rating: m?.last?.rating || 0, best: m?.best?.rating || 0, wins: m?.record?.win || 0, losses: m?.record?.loss || 0, draws: m?.record?.draw || 0 };
   };
-
-  const stats = {
-    rapid: getMode("chess_rapid"),
-    blitz: getMode("chess_blitz"),
-    bullet: getMode("chess_bullet"),
-    daily: getMode("chess_daily"),
-  };
-
-  // Validar que pelo menos um modo tem dados
-  const hasAnyData = Object.values(stats).some(
-    (mode) => mode.rating > 0 || mode.best > 0,
-  );
-
-  if (!hasAnyData) {
-    console.warn("  Warning: No rating data found in any game mode");
-  }
-
-  return stats;
+  return { rapid: getMode("chess_rapid"), blitz: getMode("chess_blitz"), bullet: getMode("chess_bullet"), daily: getMode("chess_daily") };
 }
 
-/**
- * Formata data
- */
-function formatDate() {
-  return new Date().toLocaleDateString("en-US", {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-  });
-}
+// ─── Main ────────────────────────────────────────────────────────────────────
 
-/**
- * Calcula win rate
- */
-function calculateWinRate(wins, losses, draws) {
-  const total = wins + losses + draws;
-  if (total === 0) return 0;
-  return Math.round((wins / total) * 100);
-}
-
-function catmullRomPath(points) {
-  if (points.length < 2) {
-    return points.length === 1 ? `M ${points[0].x.toFixed(2)} ${points[0].y.toFixed(2)}` : '';
-  }
-  const d = [`M ${points[0].x.toFixed(2)} ${points[0].y.toFixed(2)}`];
-  for (let i = 0; i < points.length - 1; i++) {
-    const p0 = points[Math.max(0, i - 1)];
-    const p1 = points[i];
-    const p2 = points[i + 1];
-    const p3 = points[Math.min(points.length - 1, i + 2)];
-    const cp1x = p1.x + (p2.x - p0.x) / 6;
-    const cp1y = p1.y + (p2.y - p0.y) / 6;
-    const cp2x = p2.x - (p3.x - p1.x) / 6;
-    const cp2y = p2.y - (p3.y - p1.y) / 6;
-    d.push(`C ${cp1x.toFixed(2)} ${cp1y.toFixed(2)} ${cp2x.toFixed(2)} ${cp2y.toFixed(2)} ${p2.x.toFixed(2)} ${p2.y.toFixed(2)}`);
-  }
-  return d.join(' ');
-}
-
-/**
- * Gera o SVG principal com estatisticas
- */
-function generateSVG(username, stats, theme) {
-  const t = THEMES[theme] || THEMES.dark;
-
-  const modes = [
-    { label: 'RAPID',  color: t.rapid,  rating: stats.rapid.rating,  best: stats.rapid.best,  wr: calculateWinRate(stats.rapid.wins,  stats.rapid.losses,  stats.rapid.draws)  },
-    { label: 'BLITZ',  color: t.blitz,  rating: stats.blitz.rating,  best: stats.blitz.best,  wr: calculateWinRate(stats.blitz.wins,  stats.blitz.losses,  stats.blitz.draws)  },
-    { label: 'BULLET', color: t.bullet, rating: stats.bullet.rating, best: stats.bullet.best, wr: calculateWinRate(stats.bullet.wins, stats.bullet.losses, stats.bullet.draws) },
-    { label: 'DAILY',  color: t.daily,  rating: stats.daily.rating,  best: stats.daily.best,  wr: calculateWinRate(stats.daily.wins,  stats.daily.losses,  stats.daily.draws)  },
-  ];
-
-  const totalGames = [stats.rapid, stats.blitz, stats.bullet, stats.daily]
-    .reduce((s, m) => s + m.wins + m.losses + m.draws, 0);
-  const peakRating = Math.max(stats.rapid.best, stats.blitz.best, stats.bullet.best, stats.daily.best);
-
-  const SCALE = 2000;
-  const BAR_X = 24;
-  const BAR_W = 432;
-  const BAR_H = 3;
-
-  const rows = modes.map((m, i) => {
-    const y = 88 + i * 52;
-    const fw = Math.max(0, Math.min(BAR_W, (m.rating / SCALE) * BAR_W));
-    const bw = Math.max(0, Math.min(BAR_W, (m.best / SCALE) * BAR_W));
-    return `
-  <text x="24" y="${y}" fill="${m.color}" font-size="10" font-weight="500" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" letter-spacing="1.5">${m.label}</text>
-  <text x="456" y="${y}" fill="${t.text}" font-size="16" font-weight="600" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="end">${m.rating || '—'}</text>
-  <rect x="${BAR_X}" y="${y + 9}" width="${BAR_W}" height="${BAR_H}" rx="${BAR_H / 2}" fill="${t.gridLine}"/>
-  ${fw > 0 ? `<rect x="${BAR_X}" y="${y + 9}" width="${fw.toFixed(1)}" height="${BAR_H}" rx="${BAR_H / 2}" fill="${m.color}" opacity="0.85"/>` : ''}
-  ${bw > fw ? `<rect x="${(bw - 1).toFixed(1)}" y="${y + 8}" width="2" height="${BAR_H + 2}" rx="1" fill="${t.textMuted}" opacity="0.45"/>` : ''}
-  <text x="456" y="${y + 26}" fill="${t.textMuted}" font-size="10" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="end">${m.wr}% wins</text>`;
-  }).join('');
-
-  return `<svg width="480" height="310" viewBox="0 0 480 310" xmlns="http://www.w3.org/2000/svg">
-  <rect width="480" height="310" fill="${t.background}" rx="10"/>
-  <rect x="1" y="1" width="478" height="308" fill="none" stroke="${t.cardBorder}" rx="10" stroke-opacity="0.5"/>
-  <text x="24" y="36" fill="${t.text}" font-size="15" font-weight="500" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">${username}</text>
-  <text x="456" y="36" fill="${t.accent}" font-size="11" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="end" opacity="0.6">chess.com</text>
-  <text x="24" y="54" fill="${t.textMuted}" font-size="10" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">${formatDate()}</text>
-  <line x1="24" y1="64" x2="456" y2="64" stroke="${t.gridLine}" stroke-width="1"/>
-  ${rows}
-  <line x1="24" y1="284" x2="456" y2="284" stroke="${t.gridLine}" stroke-width="1"/>
-  <text x="24" y="302" fill="${t.textMuted}" font-size="10" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">${totalGames.toLocaleString()} games</text>
-  <text x="456" y="302" fill="${t.textMuted}" font-size="10" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="end">Peak <tspan fill="${t.accent}" font-weight="600">${peakRating}</tspan></text>
-</svg>`;
-}
-
-/**
- * Gera grafico de linha com curva suave
- */
-function generateLineChart(username, gameType, history, currentRating, theme) {
-  const t = THEMES[theme] || THEMES.dark;
-  const modeColors = { rapid: t.rapid, blitz: t.blitz, bullet: t.bullet, daily: t.daily };
-  const modeNames = { rapid: 'Rapid', blitz: 'Blitz', bullet: 'Bullet', daily: 'Daily' };
-  const color = modeColors[gameType] || t.accent;
-  const modeName = modeNames[gameType] || gameType;
-
-  if (history.length === 0) return generateNoDataSVG(username, modeName, color, theme);
-
-  const dataPoints = history.slice(-20);
-  const ratings = dataPoints.map(d => d.rating);
-  const minR = Math.min(...ratings);
-  const maxR = Math.max(...ratings);
-  const range = maxR - minR || 50;
-
-  const W = 480, H = 200;
-  const pad = { top: 48, right: 24, bottom: 28, left: 52 };
-  const cW = W - pad.left - pad.right;
-  const cH = H - pad.top - pad.bottom;
-  const yMin = minR - range * 0.15;
-  const yMax = maxR + range * 0.15;
-
-  const pts = dataPoints.map((p, i) => ({
-    x: pad.left + (dataPoints.length > 1 ? (i / (dataPoints.length - 1)) * cW : cW / 2),
-    y: pad.top + cH - ((p.rating - yMin) / (yMax - yMin)) * cH,
-  }));
-
-  const linePath = catmullRomPath(pts);
-  const last = pts[pts.length - 1];
-  const first = pts[0];
-  const areaPath = `${linePath} L ${last.x.toFixed(2)},${(pad.top + cH).toFixed(2)} L ${first.x.toFixed(2)},${(pad.top + cH).toFixed(2)} Z`;
-
-  const change = dataPoints[dataPoints.length - 1].rating - dataPoints[0].rating;
-  const changeStr = (change >= 0 ? '+' : '') + change;
-  const changeColor = change >= 0 ? t.success : t.blitz;
-
-  const grid = [0, 1 / 3, 2 / 3, 1].map(f => ({
-    y: pad.top + cH * f,
-    r: Math.round(yMax - (yMax - yMin) * f),
-  }));
-
-  return `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="ag" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="${color}" stop-opacity="0.2"/>
-      <stop offset="100%" stop-color="${color}" stop-opacity="0"/>
-    </linearGradient>
-    <clipPath id="cc"><rect x="${pad.left}" y="${pad.top}" width="${cW}" height="${cH}"/></clipPath>
-  </defs>
-  <style>@keyframes p{0%,100%{r:4;opacity:.5}50%{r:9;opacity:0}}.pr{animation:p 2.5s ease-in-out infinite}</style>
-  <rect width="${W}" height="${H}" fill="${t.background}" rx="10"/>
-  <rect x="1" y="1" width="${W - 2}" height="${H - 2}" fill="none" stroke="${t.cardBorder}" rx="10" stroke-opacity="0.5"/>
-  <text x="24" y="22" fill="${t.textSecondary}" font-size="10" font-weight="500" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" letter-spacing="1.5">${modeName.toUpperCase()} RATING</text>
-  <text x="${W - 24}" y="22" fill="${t.text}" font-size="18" font-weight="600" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="end">${currentRating}</text>
-  <text x="${W - 24}" y="38" fill="${changeColor}" font-size="11" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="end">${changeStr}</text>
-  ${grid.map(l => `
-  <line x1="${pad.left}" y1="${l.y.toFixed(1)}" x2="${pad.left + cW}" y2="${l.y.toFixed(1)}" stroke="${t.gridLine}" stroke-width="1" stroke-dasharray="3,6"/>
-  <text x="${pad.left - 8}" y="${(l.y + 3.5).toFixed(1)}" fill="${t.textMuted}" font-size="9" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="end">${l.r}</text>`).join('')}
-  <path d="${areaPath}" fill="url(#ag)" clip-path="url(#cc)"/>
-  <path d="${linePath}" fill="none" stroke="${color}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" clip-path="url(#cc)"/>
-  <circle cx="${last.x.toFixed(1)}" cy="${last.y.toFixed(1)}" r="4" fill="none" stroke="${color}" stroke-width="1" class="pr"/>
-  <circle cx="${last.x.toFixed(1)}" cy="${last.y.toFixed(1)}" r="2.5" fill="${t.background}" stroke="${color}" stroke-width="1.5"/>
-  <text x="24" y="${H - 8}" fill="${t.textMuted}" font-size="9" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">@${username}</text>
-  <text x="${W - 24}" y="${H - 8}" fill="${t.textMuted}" font-size="9" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="end">last ${dataPoints.length} games</text>
-</svg>`;
-}
-
-/**
- * Gera SVG quando nao ha dados
- */
-function generateNoDataSVG(username, modeName, color, theme) {
-  const t = THEMES[theme] || THEMES.dark;
-  return `<svg width="480" height="200" viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg">
-  <rect width="480" height="200" fill="${t.background}" rx="10"/>
-  <rect x="1" y="1" width="478" height="198" fill="none" stroke="${t.cardBorder}" rx="10" stroke-opacity="0.5"/>
-  <text x="240" y="88" fill="${t.textMuted}" font-size="10" font-weight="500" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="middle" letter-spacing="1.5">${modeName.toUpperCase()}</text>
-  <text x="240" y="110" fill="${t.text}" font-size="14" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="middle">No rating data yet</text>
-  <text x="240" y="130" fill="${t.textMuted}" font-size="10" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="middle">Play games to see your history</text>
-</svg>`;
-}
-
-/**
- * Funcao principal
- */
 async function main() {
   console.log("=".repeat(60));
   console.log("Chess.com Stats Generator");
   console.log("=".repeat(60));
   console.log(`User: ${CHESS_USERNAME}`);
-  console.log(`Theme: ${THEME_NAME}`);
   console.log(`Date: ${new Date().toISOString()}`);
   console.log("");
 
-  // Validar username
-  if (!CHESS_USERNAME || CHESS_USERNAME.trim() === "") {
-    throw new Error(
-      "CHESS_USERNAME is required. Set it as an environment variable.",
-    );
-  }
+  if (!CHESS_USERNAME?.trim()) throw new Error("CHESS_USERNAME is required.");
 
-  // Criar diretorio se nao existir
-  if (!fs.existsSync(OUTPUT_DIR)) {
-    console.log("Creating output directory...");
-    fs.mkdirSync(OUTPUT_DIR, { recursive: true });
-  }
+  if (!fs.existsSync(OUTPUT_DIR)) fs.mkdirSync(OUTPUT_DIR, { recursive: true });
 
-  // Carregar cache como backup
   console.log("Loading cache...");
   const cache = loadCache();
   console.log("");
 
-  let stats;
-  let rawStats;
-  let allGames = [];
-  let usedCache = false;
+  let stats, allGames = [], usedCache = false;
 
-  // Buscar estatisticas com tratamento de erro robusto
   try {
     console.log("Fetching player stats...");
-    rawStats = await fetchChessStats(CHESS_USERNAME);
+    const rawStats = await fetchChessStats(CHESS_USERNAME);
     stats = extractStats(rawStats);
-
-    console.log("  Current ratings:");
-    console.log(
-      `    Rapid:  ${stats.rapid.rating} (best: ${stats.rapid.best})`,
-    );
-    console.log(
-      `    Blitz:  ${stats.blitz.rating} (best: ${stats.blitz.best})`,
-    );
-    console.log(
-      `    Bullet: ${stats.bullet.rating} (best: ${stats.bullet.best})`,
-    );
-    console.log(
-      `    Daily:  ${stats.daily.rating} (best: ${stats.daily.best})`,
-    );
+    console.log(`  Rapid: ${stats.rapid.rating}  Blitz: ${stats.blitz.rating}  Bullet: ${stats.bullet.rating}  Daily: ${stats.daily.rating}`);
     console.log("");
   } catch (error) {
-    console.error("ERROR: Failed to fetch player stats");
-    console.error(`  ${error.message}`);
-
-    // Tentar usar cache como fallback
-    if (cache && cache.stats) {
-      console.log("  Using cached stats as fallback");
-      stats = cache.stats;
-      usedCache = true;
-      console.log("");
-    } else {
-      console.error("  No cache available, cannot continue");
-      throw error;
-    }
+    console.error(`ERROR: Failed to fetch player stats — ${error.message}`);
+    if (cache?.stats) { stats = cache.stats; usedCache = true; console.log("  Using cached stats\n"); }
+    else throw error;
   }
 
-  // Buscar historico de jogos
   if (!usedCache) {
     try {
       console.log("Fetching game history...");
       const archives = await fetchGameArchives(CHESS_USERNAME);
-
-      if (!archives.archives || archives.archives.length === 0) {
-        console.warn("  Warning: No game archives found");
-      } else {
-        const recentArchives = archives.archives.slice(-3);
-        console.log(
-          `  Found ${archives.archives.length} archive months, fetching last 3...`,
-        );
-
-        for (const archiveUrl of recentArchives) {
-          const monthData = await fetchMonthGames(archiveUrl);
-          const gamesInMonth = monthData.games?.length || 0;
-          if (gamesInMonth > 0) {
-            allGames = allGames.concat(monthData.games);
-          }
-        }
-        console.log(`  Total games loaded: ${allGames.length}`);
+      const recentArchives = (archives.archives || []).slice(-3);
+      console.log(`  Fetching last ${recentArchives.length} archive months...`);
+      for (const url of recentArchives) {
+        const monthData = await fetchMonthGames(url);
+        if (monthData.games?.length) allGames = allGames.concat(monthData.games);
       }
-      console.log("");
+      console.log(`  Total games loaded: ${allGames.length}\n`);
     } catch (error) {
-      console.error("ERROR: Failed to fetch game history");
-      console.error(`  ${error.message}`);
-
-      if (cache && cache.allGames) {
-        console.log("  Using cached game history as fallback");
-        allGames = cache.allGames;
-      } else {
-        console.log(
-          "  Continuing without game history (charts will show only current ratings)",
-        );
-      }
-      console.log("");
+      console.error(`ERROR: Failed to fetch game history — ${error.message}`);
+      if (cache?.allGames) { allGames = cache.allGames; console.log("  Using cached game history\n"); }
     }
-  } else if (cache && cache.allGames) {
-    // Se usamos cache para stats, usar cache para games tambem
+  } else if (cache?.allGames) {
     allGames = cache.allGames;
   }
 
-  // Extrair historico de cada modo
-  const modes = ["rapid", "blitz", "bullet", "daily"];
+  const modes = ["blitz", "rapid", "bullet", "daily"];
+  const gameTypes = { blitz: "blitz", rapid: "rapid", bullet: "bullet", daily: "daily" };
   const histories = {};
-
   console.log("Processing rating history...");
   for (const mode of modes) {
-    try {
-      histories[mode] = extractRatingHistory(allGames, CHESS_USERNAME, mode);
-      console.log(`  ${mode}: ${histories[mode].length} data points`);
-    } catch (error) {
-      console.error(`  Error processing ${mode} history: ${error.message}`);
-      histories[mode] = [];
-    }
+    histories[mode] = extractRatingHistory(allGames, CHESS_USERNAME, gameTypes[mode]);
+    console.log(`  ${mode}: ${histories[mode].length} data points`);
   }
   console.log("");
 
-  // Salvar cache com os dados atualizados (se nao usamos cache)
   if (!usedCache) {
     console.log("Saving cache...");
     saveCache({ stats, allGames });
     console.log("");
   }
 
-  // Gerar SVGs para TODOS os temas
-  const themeNames = Object.keys(THEMES);
-  console.log(`Generating SVG files for ${themeNames.length} themes...\n`);
+  // Build unified data object
+  const allData = {};
+  for (const mode of modes) {
+    allData[mode] = { ...stats[mode], history: histories[mode] };
+  }
 
-  let generatedCount = 0;
-  let errorCount = 0;
+  // Generate SVGs for all styles × all card types
+  const styleNames = Object.keys(STYLES);
+  console.log(`Generating SVGs for ${styleNames.length} styles × ${modes.length * 2 + 1} card types...\n`);
 
-  for (const themeName of themeNames) {
+  let count = 0;
+  for (const styleName of styleNames) {
+    const suffix = styleName === "premium" ? "" : `-${styleName}`;
     try {
-      // SVG principal com tema
-      const suffix = themeName === "dark" ? "" : `-${themeName}`;
+      // Summary card (replaces old main card)
+      fs.writeFileSync(`${OUTPUT_DIR}/chess-stats${suffix}.svg`, renderSummary(allData, styleName, CHESS_USERNAME));
+      count++;
 
-      const mainSVG = generateSVG(CHESS_USERNAME, stats, themeName);
-      fs.writeFileSync(`${OUTPUT_DIR}/chess-stats${suffix}.svg`, mainSVG);
-      generatedCount++;
-
-      // Graficos de linha para cada modo
       for (const mode of modes) {
-        const svg = generateLineChart(
-          CHESS_USERNAME,
-          mode,
-          histories[mode],
-          stats[mode].rating,
-          themeName,
-        );
-        fs.writeFileSync(`${OUTPUT_DIR}/chess-stats-${mode}${suffix}.svg`, svg);
-        generatedCount++;
+        // Line chart (replaces old per-mode line charts)
+        fs.writeFileSync(`${OUTPUT_DIR}/chess-stats-${mode}${suffix}.svg`, renderLine(allData[mode], mode, styleName));
+        // Hero card (new card type)
+        fs.writeFileSync(`${OUTPUT_DIR}/chess-stats-${mode}-hero${suffix}.svg`, renderHero(allData[mode], mode, styleName));
+        count += 2;
       }
-
-      console.log(`  ✓ ${themeName} theme (5 files)`);
+      console.log(`  ✓ ${styleName} (9 files)`);
     } catch (error) {
-      console.error(`  ✗ ${themeName} theme failed: ${error.message}`);
-      errorCount++;
+      console.error(`  ✗ ${styleName} failed: ${error.message}`);
     }
   }
 
   console.log("");
   console.log("=".repeat(60));
-  console.log(`SUCCESS: Generated ${generatedCount} SVG files`);
-  if (errorCount > 0) {
-    console.log(`WARNING: ${errorCount} theme(s) failed`);
-  }
+  console.log(`SUCCESS: Generated ${count} SVG files`);
   console.log("=".repeat(60));
 }
 
 main().catch((err) => {
-  console.error("");
-  console.error("=".repeat(60));
-  console.error("FATAL ERROR:");
-  console.error(`  ${err.message}`);
-  if (err.stack) {
-    console.error("");
-    console.error("Stack trace:");
-    console.error(err.stack);
-  }
+  console.error("\n" + "=".repeat(60));
+  console.error("FATAL ERROR:", err.message);
+  if (err.stack) console.error(err.stack);
   console.error("=".repeat(60));
   process.exit(1);
 });

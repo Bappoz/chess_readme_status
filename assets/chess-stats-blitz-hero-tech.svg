@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 340 210" width="340" height="210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="BLITZ hero">
+<style>text{fill:#cfd8d1}.bg{fill:#0a0d0c}.acc{fill:#48d1ae}.ln{stroke:#48d1ae}.area{fill:#48d1ae;opacity:.1}.peak{stroke:#48d1ae;opacity:.32}.chip{fill:#48d1ae;opacity:.14}.down{fill:#e0715a}.grid{stroke:#1a221f;stroke-width:1}svg{font-family:'Space Grotesk',system-ui,sans-serif}.lbl{font-weight:600;font-size:11px;letter-spacing:.16em}.big{font-weight:700;font-size:34px;letter-spacing:-.02em}.mid{font-weight:600;font-size:14px}.mut{font-weight:500;font-size:11px;opacity:.5}.ser{font-family:'Instrument Serif',serif;font-weight:400;letter-spacing:0}.mono{font-family:'JetBrains Mono',monospace}.ln{fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}.thin{stroke-width:1.6}.draw{stroke-dasharray:1200;stroke-dashoffset:1200;animation:draw 2.3s cubic-bezier(.6,.05,.2,1) forwards .25s}.dot{animation:pulse 2s ease-in-out infinite}.glow{animation:glow 3.4s ease-in-out infinite}.float{animation:float 6.5s ease-in-out infinite}.shim{animation:shim 3s ease-in-out infinite}@keyframes draw{to{stroke-dashoffset:0}}@keyframes pulse{0%,100%{r:4.5;opacity:1}50%{r:8;opacity:.45}}@keyframes glow{0%,100%{opacity:.14}50%{opacity:.34}}@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}@keyframes shim{0%,100%{opacity:.5}50%{opacity:1}}</style>
+<rect class="bg" width="340" height="210" rx="20"/>
+<line class="grid" x1="0" y1="70" x2="340" y2="70"/><line class="grid" x1="0" y1="140" x2="340" y2="140"/>
+<line class="grid" x1="113" y1="0" x2="113" y2="210"/><line class="grid" x1="226" y1="0" x2="226" y2="210"/>
+<text class="mut mono" x="26" y="44">blitz.rating</text>
+<circle class="acc dot" cx="120" cy="40" r="4"/>
+<text class="big mono acc shim" x="26" y="104" style="font-size:52px">686</text>
+<text class="down mid mono" x="26" y="134">▼ -67 · win 51%</text>
+<polyline class="ln thin draw" points="26.0,188.9 58.0,188.9 90.0,184.1 122.0,179.6 154.0,175.2 186.0,179.3 218.0,175.2 250.0,171.3 282.0,174.8 314.0,171.1"/><circle class="acc" cx="90.0" cy="184.1" r="2.5"/><circle class="acc" cx="154.0" cy="175.2" r="2.5"/><circle class="acc" cx="218.0" cy="175.2" r="2.5"/><circle class="acc" cx="282.0" cy="174.8" r="2.5"/><circle class="acc dot" cx="314.0" cy="171.1" r="4"/>
+<text class="mut mono" x="314" y="200" text-anchor="end">n=624</text>
+</svg>

@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg viewBox="0 0 470 210" width="470" height="210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="DAILY rating history">
+<svg viewBox="0 0 340 210" width="340" height="210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="DAILY hero">
 <defs>
-<linearGradient id="wC2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2c1e14"/><stop offset="1" stop-color="#1c120b"/></linearGradient>
+<filter id="bC" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="16"/></filter>
+<linearGradient id="wC" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2c1e14"/><stop offset="1" stop-color="#1c120b"/></linearGradient>
 </defs>
 <style>text{fill:#f1e6d2}.bg{fill:#241811}.acc{fill:#e7bd6b}.ln{stroke:#e7bd6b}.area{fill:#e7bd6b;opacity:.12}.peak{stroke:#e7bd6b;opacity:.32}.chip{fill:#e7bd6b;opacity:.14}.down{fill:#d98a5a}.sq{fill:#fff;opacity:.045}svg{font-family:'Space Grotesk',system-ui,sans-serif}.lbl{font-weight:600;font-size:11px;letter-spacing:.16em}.big{font-weight:700;font-size:34px;letter-spacing:-.02em}.mid{font-weight:600;font-size:14px}.mut{font-weight:500;font-size:11px;opacity:.5}.ser{font-family:'Instrument Serif',serif;font-weight:400;letter-spacing:0}.mono{font-family:'JetBrains Mono',monospace}.ln{fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}.thin{stroke-width:1.6}.draw{stroke-dasharray:1200;stroke-dashoffset:1200;animation:draw 2.3s cubic-bezier(.6,.05,.2,1) forwards .25s}.dot{animation:pulse 2s ease-in-out infinite}.glow{animation:glow 3.4s ease-in-out infinite}.float{animation:float 6.5s ease-in-out infinite}.shim{animation:shim 3s ease-in-out infinite}@keyframes draw{to{stroke-dashoffset:0}}@keyframes pulse{0%,100%{r:4.5;opacity:1}50%{r:8;opacity:.45}}@keyframes glow{0%,100%{opacity:.14}50%{opacity:.34}}@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}@keyframes shim{0%,100%{opacity:.5}50%{opacity:1}}</style>
-<rect width="470" height="210" rx="20" fill="url(#wC2)"/>
-<rect class="sq" x="24" y="150" width="26" height="26"/><rect class="sq" x="76" y="150" width="26" height="26"/><rect class="sq" x="50" y="176" width="26" height="26"/>
-<text class="acc ser" x="30" y="42" style="font-size:22px">♚</text>
-<text class="mut" x="58" y="30">DAILY</text>
-<text class="mid" x="58" y="47">Rating history</text>
-<text class="big ser" x="446" y="44" text-anchor="end" style="font-size:38px">313</text>
-<text class="mut mid" x="446" y="62" text-anchor="end">—</text>
-<line class="peak" x1="44" y1="52" x2="446" y2="52" stroke-dasharray="4 5"/>
-<text class="mut" x="245" y="46" text-anchor="middle" style="font-size:9px;letter-spacing:.1em">PEAK —</text>
+<rect width="340" height="210" rx="20" fill="url(#wC)"/>
+<rect class="sq" x="0" y="140" width="34" height="34"/><rect class="sq" x="68" y="140" width="34" height="34"/>
+<rect class="sq" x="34" y="174" width="34" height="34"/><rect class="sq" x="102" y="174" width="34" height="34"/>
+<ellipse class="acc glow" cx="92" cy="112" rx="60" ry="60" filter="url(#bC)"/>
+<text class="acc float ser" x="92" y="166" text-anchor="middle" style="font-size:150px">♚</text>
+<text class="mut" x="196" y="50">DAILY</text>
+<text class="big ser" x="196" y="98" style="font-size:52px">313</text>
+<text class="mut mid" x="196" y="122">—</text>
+<text class="mut" x="196" y="150">1 games · 0% win</text>
 
-
-
-<text class="mut" x="24" y="200">Peak — · 0% win · 1 games · last 0</text>
 </svg>
