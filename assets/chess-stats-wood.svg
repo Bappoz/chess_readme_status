@@ -5,7 +5,7 @@
 <rect width="840" height="200" rx="20" fill="url(#wCS)"/>
 <rect class="sq" x="0" y="140" width="26" height="26"/><rect class="sq" x="52" y="140" width="26" height="26"/><rect class="sq" x="26" y="166" width="26" height="26"/>
 <text class="mut" x="30" y="36">CHESS.COM · @bappozl</text>
-<text class="mut" x="810" y="36" text-anchor="end">1481 games · updated every 6h</text>
+<text class="mut" x="810" y="36" text-anchor="end">1482 games · updated every 6h</text>
 <line class="peak" x1="30" y1="52" x2="810" y2="52" stroke-dasharray="0"/>
 <g>
 <text class="mut" x="40" y="86">BLITZ</text>
@@ -16,9 +16,9 @@
 <line class="peak" x1="215" y1="70" x2="215" y2="176" stroke-dasharray="0"/>
 <g>
 <text class="mut" x="240" y="86">RAPID</text>
-<text class="big" x="240" y="122" style="font-size:32px">1214</text>
-<text class="acc mid" x="240" y="146">▲ +61</text>
-<polyline class="ln thin draw" points="240.0,167.9 259.4,174.1 278.9,180.8 298.3,174.1 317.7,180.8 337.1,174.1 356.6,167.4 376.0,161.2"/>
+<text class="big" x="240" y="122" style="font-size:32px">1225</text>
+<text class="acc mid" x="240" y="146">▲ +57</text>
+<polyline class="ln thin draw" points="240.0,175.7 259.4,180.8 278.9,175.7 298.3,180.8 317.7,175.7 337.1,170.6 356.6,165.9 376.0,161.2"/>
 </g>
 <line class="peak" x1="415" y1="70" x2="415" y2="176" stroke-dasharray="0"/>
 <g>
