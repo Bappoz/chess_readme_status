@@ -6,12 +6,12 @@
 <text class="acc ser" x="39" y="42" text-anchor="middle" style="font-size:19px">♛</text>
 <text class="mut" x="66" y="30">RAPID</text>
 <text class="mid" x="66" y="47">Rating history</text>
-<text class="big" x="446" y="42" text-anchor="end">1225</text>
-<text class="acc mid" x="446" y="61" text-anchor="end">▲ +28</text>
+<text class="big" x="446" y="42" text-anchor="end">1235</text>
+<text class="acc mid" x="446" y="61" text-anchor="end">▲ +51</text>
 <line class="peak" x1="44" y1="52" x2="446" y2="52" stroke-dasharray="4 5"/>
-<text class="mut" x="245" y="46" text-anchor="middle" style="font-size:9px;letter-spacing:.1em">PEAK 1225</text>
-<polygon class="area" points="44.0,113.4 65.2,128.5 86.3,144.8 107.5,161.1 128.6,176.3 149.8,161.1 170.9,147.1 192.1,134.3 213.3,121.5 234.4,107.5 255.6,120.3 276.7,134.3 297.9,120.3 319.1,134.3 340.2,120.3 361.4,106.4 382.5,93.5 403.7,80.7 424.8,93.5 446.0,80.7 446.0,182 44.0,182"/>
-<polyline class="ln draw" points="44.0,113.4 65.2,128.5 86.3,144.8 107.5,161.1 128.6,176.3 149.8,161.1 170.9,147.1 192.1,134.3 213.3,121.5 234.4,107.5 255.6,120.3 276.7,134.3 297.9,120.3 319.1,134.3 340.2,120.3 361.4,106.4 382.5,93.5 403.7,80.7 424.8,93.5 446.0,80.7"/>
+<text class="mut" x="245" y="46" text-anchor="middle" style="font-size:9px;letter-spacing:.1em">PEAK 1235</text>
+<polygon class="area" points="44.0,133.7 65.2,148.2 86.3,162.8 107.5,176.3 128.6,162.8 149.8,150.3 170.9,138.9 192.1,127.5 213.3,115.0 234.4,126.4 255.6,138.9 276.7,126.4 297.9,138.9 319.1,126.4 340.2,114.0 361.4,102.5 382.5,91.1 403.7,102.5 424.8,91.1 446.0,80.7 446.0,182 44.0,182"/>
+<polyline class="ln draw" points="44.0,133.7 65.2,148.2 86.3,162.8 107.5,176.3 128.6,162.8 149.8,150.3 170.9,138.9 192.1,127.5 213.3,115.0 234.4,126.4 255.6,138.9 276.7,126.4 297.9,138.9 319.1,126.4 340.2,114.0 361.4,102.5 382.5,91.1 403.7,102.5 424.8,91.1 446.0,80.7"/>
 <circle class="acc dot" cx="446.0" cy="80.7" r="4.5"/>
-<text class="mut" x="24" y="200">Peak 1225 · 56% win · 647 games · last 20</text>
+<text class="mut" x="24" y="200">Peak 1235 · 56% win · 648 games · last 20</text>
 </svg>

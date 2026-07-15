@@ -8,13 +8,13 @@
 <rect width="470" height="210" rx="20" fill="url(#gE2)"/>
 <ellipse class="acc glow" cx="410" cy="80" rx="80" ry="60" filter="url(#bE2)"/>
 <text class="mut" x="26" y="34">BULLET · RATING HISTORY</text>
-<text class="big" x="446" y="40" text-anchor="end" style="font-size:30px">549</text>
-<text class="down mid" x="446" y="58" text-anchor="end">▼ -107</text>
+<text class="big" x="446" y="40" text-anchor="end" style="font-size:30px">574</text>
+<text class="down mid" x="446" y="58" text-anchor="end">▼ -82</text>
 <rect class="panel" x="18" y="66" width="434" height="128" rx="14"/>
 <rect class="stroke" x="18" y="66" width="434" height="128" rx="14"/>
 <line class="peak" x1="44" y1="82" x2="446" y2="82" stroke-dasharray="4 5"/>
 <text class="mut" x="44" y="78" style="font-size:9px">PEAK 656</text>
-<polygon class="area" points="44.0,87.2 144.5,111.8 245.0,132.2 345.5,152.7 446.0,174.8 446.0,182 44.0,182"/>
-<polyline class="ln draw" points="44.0,87.2 144.5,111.8 245.0,132.2 345.5,152.7 446.0,174.8"/>
-<circle class="acc dot" cx="446.0" cy="174.8" r="4.5"/>
+<polygon class="area" points="44.0,87.2 101.4,111.8 158.9,132.2 216.3,152.7 273.7,174.8 331.1,152.7 388.6,133.0 446.0,154.3 446.0,182 44.0,182"/>
+<polyline class="ln draw" points="44.0,87.2 101.4,111.8 158.9,132.2 216.3,152.7 273.7,174.8 331.1,152.7 388.6,133.0 446.0,154.3"/>
+<circle class="acc dot" cx="446.0" cy="154.3" r="4.5"/>
 </svg>

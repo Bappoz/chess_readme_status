@@ -6,10 +6,10 @@
 <ellipse class="acc glow" cx="60" cy="150" rx="60" ry="60" filter="url(#bF2)"/>
 <text class="acc float ser" x="58" y="188" text-anchor="middle" style="font-size:120px">♟</text>
 <text class="mut" x="150" y="40">BULLET RATING</text>
-<text class="big" x="150" y="80" style="font-size:38px">549</text>
-<text class="down mid" x="270" y="80">▼ -107</text>
-<polygon class="area" points="150.0,113.9 224.0,131.9 298.0,146.9 372.0,161.9 446.0,178.1 446.0,182 150.0,182"/>
-<polyline class="ln draw" points="150.0,113.9 224.0,131.9 298.0,146.9 372.0,161.9 446.0,178.1"/>
-<circle class="acc dot" cx="446.0" cy="178.1" r="4.5"/>
-<text class="mut" x="150" y="202">Peak 656 · 55% win · 212 games</text>
+<text class="big" x="150" y="80" style="font-size:38px">574</text>
+<text class="down mid" x="270" y="80">▼ -82</text>
+<polygon class="area" points="150.0,113.9 192.3,131.9 234.6,146.9 276.9,161.9 319.1,178.1 361.4,161.9 403.7,147.5 446.0,163.1 446.0,182 150.0,182"/>
+<polyline class="ln draw" points="150.0,113.9 192.3,131.9 234.6,146.9 276.9,161.9 319.1,178.1 361.4,161.9 403.7,147.5 446.0,163.1"/>
+<circle class="acc dot" cx="446.0" cy="163.1" r="4.5"/>
+<text class="mut" x="150" y="202">Peak 656 · 55% win · 215 games</text>
 </svg>
