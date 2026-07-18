@@ -5,7 +5,7 @@
 <rect width="840" height="200" rx="20" fill="url(#gCS)"/>
 
 <text class="mut" x="30" y="36">CHESS.COM · @bappozl</text>
-<text class="mut" x="810" y="36" text-anchor="end">1490 games · updated every 6h</text>
+<text class="mut" x="810" y="36" text-anchor="end">1495 games · updated every 6h</text>
 <line class="peak" x1="30" y1="52" x2="810" y2="52" stroke-dasharray="0"/>
 <g>
 <text class="mut" x="40" y="86">BLITZ</text>
@@ -17,8 +17,8 @@
 <g>
 <text class="mut" x="240" y="86">RAPID</text>
 <text class="big" x="240" y="122" style="font-size:32px">1214</text>
-<text class="acc mid" x="240" y="146">▲ +58</text>
-<polyline class="ln thin draw" points="240.0,180.8 259.4,174.1 278.9,167.3 298.3,174.1 317.7,167.3 337.1,161.2 356.6,167.9 376.0,174.1"/>
+<text class="acc mid" x="240" y="146">▲ +24</text>
+<polyline class="ln thin draw" points="240.0,161.2 259.4,171.5 278.9,180.8 298.3,172.4 317.7,164.0 337.1,172.4 356.6,180.8 376.0,180.8"/>
 </g>
 <line class="peak" x1="415" y1="70" x2="415" y2="176" stroke-dasharray="0"/>
 <g>
