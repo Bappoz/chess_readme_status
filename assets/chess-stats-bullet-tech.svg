@@ -6,10 +6,10 @@
 <line class="grid" x1="44" y1="140" x2="446" y2="140"/><line class="grid" x1="44" y1="180" x2="446" y2="180"/>
 <line class="grid" x1="44" y1="52" x2="44" y2="188"/><line class="grid" x1="245" y1="52" x2="245" y2="188"/><line class="grid" x1="446" y1="52" x2="446" y2="188"/>
 <text class="mut mono" x="24" y="30">BULLET.RATING</text>
-<text class="big mono" x="446" y="34" text-anchor="end" style="font-size:28px">574</text>
-<text class="down mono mid" x="446" y="52" text-anchor="end">▼ -82</text>
-<polyline class="ln draw" points="44.0,66.4 101.4,96.5 158.9,121.5 216.3,146.5 273.7,173.6 331.1,146.5 388.6,122.5 446.0,148.5"/>
-<circle class="acc" cx="158.9" cy="121.5" r="2.6"/><circle class="acc" cx="273.7" cy="173.6" r="2.6"/><circle class="acc" cx="388.6" cy="122.5" r="2.6"/>
-<circle class="acc dot" cx="446.0" cy="148.5" r="4.5"/>
+<text class="big mono" x="446" y="34" text-anchor="end" style="font-size:28px">611</text>
+<text class="down mono mid" x="446" y="52" text-anchor="end">▼ -45</text>
+<polyline class="ln draw" points="44.0,66.4 88.7,96.5 133.3,121.5 178.0,146.5 222.7,173.6 267.3,146.5 312.0,122.5 356.7,148.5 401.3,132.5 446.0,111.5"/>
+<circle class="acc" cx="133.3" cy="121.5" r="2.6"/><circle class="acc" cx="222.7" cy="173.6" r="2.6"/><circle class="acc" cx="312.0" cy="122.5" r="2.6"/><circle class="acc" cx="401.3" cy="132.5" r="2.6"/>
+<circle class="acc dot" cx="446.0" cy="111.5" r="4.5"/>
 <text class="mut mono" x="44" y="202">a1</text><text class="mut mono" x="245" y="202" text-anchor="middle">d4</text><text class="mut mono" x="446" y="202" text-anchor="end">h8</text>
 </svg>

@@ -11,8 +11,8 @@
 <ellipse class="acc glow" cx="92" cy="112" rx="60" ry="60" filter="url(#bC)"/>
 <text class="acc float ser" x="92" y="166" text-anchor="middle" style="font-size:150px">♞</text>
 <text class="mut" x="196" y="50">BLITZ</text>
-<text class="big ser" x="196" y="98" style="font-size:52px">686</text>
-<text class="down mid" x="196" y="122">▼ -67</text>
-<text class="mut" x="196" y="150">624 games · 51% win</text>
-<polyline class="ln draw" points="196.0,192.4 210.0,192.4 224.0,185.5 238.0,178.9 252.0,172.6 266.0,178.6 280.0,172.6 294.0,166.9 308.0,171.9 322.0,166.6"/>
+<text class="big ser" x="196" y="98" style="font-size:52px">670</text>
+<text class="down mid" x="196" y="122">▼ -61</text>
+<text class="mut" x="196" y="150">629 games · 51% win</text>
+<polyline class="ln draw" points="196.0,192.4 210.0,179.8 224.0,167.9 238.0,178.5 252.0,167.2 266.0,179.2 280.0,166.6 294.0,177.2 308.0,167.9 322.0,177.8"/>
 </svg>
