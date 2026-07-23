@@ -3,10 +3,10 @@
 <style>text{fill:#241f16}.bg{fill:#f8f2e6}.acc{fill:#a9762a}.ln{stroke:#a9762a}.area{fill:#a9762a;opacity:.07}.peak{stroke:#a9762a;opacity:.3}.chip{fill:#a9762a;opacity:.14}.down{fill:#b26038}.rule{stroke:#e0d5bf}svg{font-family:'Space Grotesk',system-ui,sans-serif}.lbl{font-weight:600;font-size:11px;letter-spacing:.16em}.big{font-weight:700;font-size:34px;letter-spacing:-.02em}.mid{font-weight:600;font-size:14px}.mut{font-weight:500;font-size:11px;opacity:.5}.ser{font-family:'Instrument Serif',serif;font-weight:400;letter-spacing:0}.mono{font-family:'JetBrains Mono',monospace}.ln{fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}.thin{stroke-width:1.6}.draw{stroke-dasharray:1200;stroke-dashoffset:1200;animation:draw 2.3s cubic-bezier(.6,.05,.2,1) forwards .25s}.dot{animation:pulse 2s ease-in-out infinite}.glow{animation:glow 3.4s ease-in-out infinite}.float{animation:float 6.5s ease-in-out infinite}.shim{animation:shim 3s ease-in-out infinite}@keyframes draw{to{stroke-dashoffset:0}}@keyframes pulse{0%,100%{r:4.5;opacity:1}50%{r:8;opacity:.45}}@keyframes glow{0%,100%{opacity:.14}50%{opacity:.34}}@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}@keyframes shim{0%,100%{opacity:.5}50%{opacity:1}}</style>
 <rect class="bg" width="470" height="210" rx="20"/>
 <text class="mut" x="30" y="40" style="letter-spacing:.22em">RAPID · RATING HISTORY</text>
-<text class="acc ser" x="30" y="86" style="font-size:52px">1189</text>
-<text class="acc mid" x="140" y="84">▲ +10</text>
+<text class="acc ser" x="30" y="86" style="font-size:52px">1205</text>
+<text class="acc mid" x="140" y="84">▲ +2</text>
 <line class="rule" x1="30" y1="104" x2="440" y2="104"/>
-<polyline class="ln thin draw" points="44.0,185.8 65.2,170.9 86.3,156.0 107.5,142.3 128.6,128.6 149.8,142.3 170.9,128.6 192.1,116.2 213.3,129.9 234.4,142.3 255.6,131.1 276.7,119.9 297.9,131.1 319.1,142.3 340.2,142.3 361.4,153.5 382.5,163.4 403.7,173.4 424.8,183.3 446.0,173.4"/>
-<circle class="acc dot" cx="446.0" cy="173.4" r="3.5"/>
-<text class="mut" x="30" y="200">55% win · 660 games · last 20 games</text>
+<polyline class="ln thin draw" points="44.0,157.4 65.2,143.3 86.3,129.1 107.5,143.3 128.6,129.1 149.8,116.2 170.9,130.4 192.1,143.3 213.3,131.7 234.4,120.0 255.6,131.7 276.7,143.3 297.9,143.3 319.1,154.9 340.2,165.2 361.4,175.5 382.5,185.8 403.7,175.5 424.8,163.9 446.0,154.9"/>
+<circle class="acc dot" cx="446.0" cy="154.9" r="3.5"/>
+<text class="mut" x="30" y="200">56% win · 662 games · last 20 games</text>
 </svg>
