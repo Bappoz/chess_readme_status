@@ -4,7 +4,7 @@
 <style>text{fill:#241f16}.bg{fill:#f8f2e6}.acc{fill:#a9762a}.ln{stroke:#a9762a}.area{fill:#a9762a;opacity:.07}.peak{stroke:#a9762a;opacity:.3}.chip{fill:#a9762a;opacity:.14}.down{fill:#b26038}.rule{stroke:#e0d5bf}svg{font-family:'Space Grotesk',system-ui,sans-serif}.lbl{font-weight:600;font-size:11px;letter-spacing:.16em}.big{font-weight:700;font-size:34px;letter-spacing:-.02em}.mid{font-weight:600;font-size:14px}.mut{font-weight:500;font-size:11px;opacity:.5}.ser{font-family:'Instrument Serif',serif;font-weight:400;letter-spacing:0}.mono{font-family:'JetBrains Mono',monospace}.ln{fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}.thin{stroke-width:1.6}.draw{stroke-dasharray:1200;stroke-dashoffset:1200;animation:draw 2.3s cubic-bezier(.6,.05,.2,1) forwards .25s}.dot{animation:pulse 2s ease-in-out infinite}.glow{animation:glow 3.4s ease-in-out infinite}.float{animation:float 6.5s ease-in-out infinite}.shim{animation:shim 3s ease-in-out infinite}@keyframes draw{to{stroke-dashoffset:0}}@keyframes pulse{0%,100%{r:4.5;opacity:1}50%{r:8;opacity:.45}}@keyframes glow{0%,100%{opacity:.14}50%{opacity:.34}}@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}@keyframes shim{0%,100%{opacity:.5}50%{opacity:1}}</style>
 <rect class="bg" width="840" height="200" rx="20"/>
 
-<text class="mut" x="30" y="36" style="letter-spacing:.22em">CHESS.COM · @bappozl · 1513 GAMES</text>
+<text class="mut" x="30" y="36" style="letter-spacing:.22em">CHESS.COM · @bappozl · 1514 GAMES</text>
 <line class="rule" x1="30" y1="50" x2="810" y2="50"/>
 <g>
 <text class="mut" x="40" y="84">BLITZ</text>
@@ -15,9 +15,9 @@
 <line class="rule" x1="215" y1="70" x2="215" y2="168"/>
 <g>
 <text class="mut" x="240" y="84">RAPID</text>
-<text class="acc ser" x="240" y="128" style="font-size:44px">1210</text>
-<text class="down mid" x="240" y="152">▼ -4</text>
-<polyline class="ln thin draw" points="240.0,176.9 259.4,180.8 278.9,176.9 298.3,172.5 317.7,169.0 337.1,164.6 356.6,161.2 376.0,166.6"/>
+<text class="acc ser" x="240" y="128" style="font-size:44px">1218</text>
+<text class="down mid" x="240" y="152">▼ -7</text>
+<polyline class="ln thin draw" points="240.0,180.8 259.4,176.9 278.9,172.5 298.3,169.0 317.7,164.6 337.1,161.2 356.6,166.6 376.0,162.7"/>
 </g>
 <line class="rule" x1="415" y1="70" x2="415" y2="168"/>
 <g>
