@@ -7,7 +7,7 @@
 <text class="mut mono" x="26" y="44">bullet.rating</text>
 <circle class="acc dot" cx="120" cy="40" r="4"/>
 <text class="big mono acc shim" x="26" y="104" style="font-size:52px">611</text>
-<text class="down mid mono" x="26" y="134">▼ -45 · win 55%</text>
-<polyline class="ln thin draw" points="26.0,171.1 58.0,176.1 90.0,180.3 122.0,184.4 154.0,188.9 186.0,184.4 218.0,180.4 250.0,184.8 282.0,182.1 314.0,178.6"/><circle class="acc" cx="90.0" cy="180.3" r="2.5"/><circle class="acc" cx="154.0" cy="188.9" r="2.5"/><circle class="acc" cx="218.0" cy="180.4" r="2.5"/><circle class="acc" cx="282.0" cy="182.1" r="2.5"/><circle class="acc dot" cx="314.0" cy="178.6" r="4"/>
+<text class="acc mid mono" x="26" y="134">▲ +62 · win 55%</text>
+<polyline class="ln thin draw" points="26.0,188.9 83.6,181.2 141.2,174.2 198.8,181.7 256.4,177.1 314.0,171.1"/><circle class="acc" cx="83.6" cy="181.2" r="2.5"/><circle class="acc" cx="141.2" cy="174.2" r="2.5"/><circle class="acc" cx="198.8" cy="181.7" r="2.5"/><circle class="acc" cx="256.4" cy="177.1" r="2.5"/><circle class="acc dot" cx="314.0" cy="171.1" r="4"/>
 <text class="mut mono" x="314" y="200" text-anchor="end">n=217</text>
 </svg>

@@ -12,7 +12,7 @@
 <text class="acc float ser" x="92" y="166" text-anchor="middle" style="font-size:150px">♟</text>
 <text class="mut" x="196" y="50">BULLET</text>
 <text class="big ser" x="196" y="98" style="font-size:52px">611</text>
-<text class="down mid" x="196" y="122">▼ -45</text>
+<text class="acc mid" x="196" y="122">▲ +62</text>
 <text class="mut" x="196" y="150">217 games · 55% win</text>
-<polyline class="ln draw" points="196.0,166.6 210.0,173.8 224.0,179.9 238.0,185.9 252.0,192.4 266.0,185.9 280.0,180.1 294.0,186.4 308.0,182.5 322.0,177.4"/>
+<polyline class="ln draw" points="196.0,192.4 221.2,181.2 246.4,171.1 271.6,182.0 296.8,175.3 322.0,166.6"/>
 </svg>

@@ -3,10 +3,10 @@
 <style>text{fill:#f3efe6}.bg{fill:#141210}.acc{fill:#d8a24a}.ln{stroke:#d8a24a}.area{fill:#d8a24a;opacity:.05}.peak{stroke:#d8a24a;opacity:.28}.chip{fill:#d8a24a;opacity:.14}.down{fill:#c56a4a}.rule{stroke:#3a352c}svg{font-family:'Space Grotesk',system-ui,sans-serif}.lbl{font-weight:600;font-size:11px;letter-spacing:.16em}.big{font-weight:700;font-size:34px;letter-spacing:-.02em}.mid{font-weight:600;font-size:14px}.mut{font-weight:500;font-size:11px;opacity:.5}.ser{font-family:'Instrument Serif',serif;font-weight:400;letter-spacing:0}.mono{font-family:'JetBrains Mono',monospace}.ln{fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}.thin{stroke-width:1.6}.draw{stroke-dasharray:1200;stroke-dashoffset:1200;animation:draw 2.3s cubic-bezier(.6,.05,.2,1) forwards .25s}.dot{animation:pulse 2s ease-in-out infinite}.glow{animation:glow 3.4s ease-in-out infinite}.float{animation:float 6.5s ease-in-out infinite}.shim{animation:shim 3s ease-in-out infinite}@keyframes draw{to{stroke-dashoffset:0}}@keyframes pulse{0%,100%{r:4.5;opacity:1}50%{r:8;opacity:.45}}@keyframes glow{0%,100%{opacity:.14}50%{opacity:.34}}@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}@keyframes shim{0%,100%{opacity:.5}50%{opacity:1}}</style>
 <rect class="bg" width="470" height="210" rx="20"/>
 <text class="mut" x="30" y="40" style="letter-spacing:.22em">BLITZ · RATING HISTORY</text>
-<text class="acc ser" x="30" y="86" style="font-size:52px">684</text>
-<text class="down mid" x="140" y="84">▼ -21</text>
+<text class="acc ser" x="30" y="86" style="font-size:52px">686</text>
+<text class="acc mid" x="140" y="84">▲ +33</text>
 <line class="rule" x1="30" y1="104" x2="440" y2="104"/>
-<polyline class="ln thin draw" points="44.0,116.2 65.2,132.7 86.3,152.0 107.5,170.7 128.6,185.8 149.8,185.8 170.9,170.7 192.1,156.2 213.3,142.4 234.4,155.5 255.6,142.4 276.7,130.0 297.9,141.0 319.1,129.3 340.2,141.7 361.4,128.6 382.5,139.6 403.7,130.0 424.8,140.3 446.0,130.7"/>
-<circle class="acc dot" cx="446.0" cy="130.7" r="3.5"/>
-<text class="mut" x="30" y="200">51% win · 630 games · last 20 games</text>
+<polyline class="ln thin draw" points="44.0,149.9 65.2,169.7 86.3,185.8 107.5,185.8 128.6,169.7 149.8,154.3 170.9,139.6 192.1,153.6 213.3,139.6 234.4,126.4 255.6,138.2 276.7,125.7 297.9,138.9 319.1,125.0 340.2,136.7 361.4,126.4 382.5,137.4 403.7,127.2 424.8,116.2 446.0,125.7"/>
+<circle class="acc dot" cx="446.0" cy="125.7" r="3.5"/>
+<text class="mut" x="30" y="200">51% win · 632 games · last 20 games</text>
 </svg>

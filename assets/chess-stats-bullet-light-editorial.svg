@@ -4,9 +4,9 @@
 <rect class="bg" width="470" height="210" rx="20"/>
 <text class="mut" x="30" y="40" style="letter-spacing:.22em">BULLET · RATING HISTORY</text>
 <text class="acc ser" x="30" y="86" style="font-size:52px">611</text>
-<text class="down mid" x="140" y="84">▼ -45</text>
+<text class="acc mid" x="140" y="84">▲ +62</text>
 <line class="rule" x1="30" y1="104" x2="440" y2="104"/>
-<polyline class="ln thin draw" points="44.0,116.2 88.7,135.7 133.3,152.0 178.0,168.2 222.7,185.8 267.3,168.2 312.0,152.6 356.7,169.5 401.3,159.1 446.0,145.5"/>
-<circle class="acc dot" cx="446.0" cy="145.5" r="3.5"/>
-<text class="mut" x="30" y="200">55% win · 217 games · last 10 games</text>
+<polyline class="ln thin draw" points="44.0,185.8 124.4,155.5 204.8,128.5 285.2,157.7 365.6,139.8 446.0,116.2"/>
+<circle class="acc dot" cx="446.0" cy="116.2" r="3.5"/>
+<text class="mut" x="30" y="200">55% win · 217 games · last 6 games</text>
 </svg>
