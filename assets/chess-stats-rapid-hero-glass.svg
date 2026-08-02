@@ -10,9 +10,9 @@
 <rect class="panel" x="18" y="120" width="304" height="72" rx="14"/>
 <rect class="stroke" x="18" y="120" width="304" height="72" rx="14"/>
 <text class="mut" x="30" y="52">RAPID RATING</text>
-<text class="big" x="30" y="102" style="font-size:50px">1196</text>
-<text class="down mid" x="222" y="102">▼ -1</text>
+<text class="big" x="30" y="102" style="font-size:50px">1203</text>
+<text class="acc mid" x="222" y="102">▲ +14</text>
 <text class="mut" x="34" y="150">PEAK</text><text class="mid" x="34" y="176">1235</text>
-<text class="mut" x="170" y="150">WIN</text><text class="mid" x="170" y="176">55%</text>
-<text class="mut" x="290" y="150" text-anchor="end">GAMES</text><text class="mid" x="290" y="176" text-anchor="end">676</text>
+<text class="mut" x="170" y="150">WIN</text><text class="mid" x="170" y="176">56%</text>
+<text class="mut" x="290" y="150" text-anchor="end">GAMES</text><text class="mid" x="290" y="176" text-anchor="end">677</text>
 </svg>

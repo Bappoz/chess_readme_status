@@ -6,10 +6,10 @@
 <line class="grid" x1="44" y1="140" x2="446" y2="140"/><line class="grid" x1="44" y1="180" x2="446" y2="180"/>
 <line class="grid" x1="44" y1="52" x2="44" y2="188"/><line class="grid" x1="245" y1="52" x2="245" y2="188"/><line class="grid" x1="446" y1="52" x2="446" y2="188"/>
 <text class="mut mono" x="24" y="30">RAPID.RATING</text>
-<text class="big mono" x="446" y="34" text-anchor="end" style="font-size:28px">1196</text>
-<text class="down mono mid" x="446" y="52" text-anchor="end">▼ -1</text>
-<polyline class="ln draw" points="44.0,135.5 65.2,154.5 86.3,173.6 107.5,154.5 128.6,133.1 149.8,116.4 170.9,95.0 192.1,78.3 213.3,104.5 234.4,85.5 255.6,66.4 276.7,92.6 297.9,71.2 319.1,92.6 340.2,104.5 361.4,92.6 382.5,76.0 403.7,97.4 424.8,118.8 446.0,137.9"/>
-<circle class="acc" cx="149.8" cy="116.4" r="2.6"/><circle class="acc" cx="255.6" cy="66.4" r="2.6"/><circle class="acc" cx="361.4" cy="92.6" r="2.6"/>
-<circle class="acc dot" cx="446.0" cy="137.9" r="4.5"/>
+<text class="big mono" x="446" y="34" text-anchor="end" style="font-size:28px">1203</text>
+<text class="acc mono mid" x="446" y="52" text-anchor="end">▲ +14</text>
+<polyline class="ln draw" points="44.0,154.5 65.2,173.6 86.3,154.5 107.5,133.1 128.6,116.4 149.8,95.0 170.9,78.3 192.1,104.5 213.3,85.5 234.4,66.4 255.6,92.6 276.7,71.2 297.9,92.6 319.1,104.5 340.2,92.6 361.4,76.0 382.5,97.4 403.7,118.8 424.8,137.9 446.0,121.2"/>
+<circle class="acc" cx="149.8" cy="95.0" r="2.6"/><circle class="acc" cx="255.6" cy="92.6" r="2.6"/><circle class="acc" cx="361.4" cy="76.0" r="2.6"/>
+<circle class="acc dot" cx="446.0" cy="121.2" r="4.5"/>
 <text class="mut mono" x="44" y="202">a1</text><text class="mut mono" x="245" y="202" text-anchor="middle">d4</text><text class="mut mono" x="446" y="202" text-anchor="end">h8</text>
 </svg>
