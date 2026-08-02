@@ -6,10 +6,10 @@
 <ellipse class="acc glow" cx="60" cy="150" rx="60" ry="60" filter="url(#bF2)"/>
 <text class="acc float ser" x="58" y="188" text-anchor="middle" style="font-size:120px">♟</text>
 <text class="mut" x="150" y="40">BULLET RATING</text>
-<text class="big" x="150" y="80" style="font-size:38px">611</text>
-<text class="acc mid" x="270" y="80">▲ +62</text>
-<polygon class="area" points="150.0,178.1 209.2,150.1 268.4,125.3 327.6,152.2 386.8,135.6 446.0,113.9 446.0,182 150.0,182"/>
-<polyline class="ln draw" points="150.0,178.1 209.2,150.1 268.4,125.3 327.6,152.2 386.8,135.6 446.0,113.9"/>
+<text class="big" x="150" y="80" style="font-size:38px">657</text>
+<text class="acc mid" x="270" y="80">▲ +108</text>
+<polygon class="area" points="150.0,178.1 192.3,162.1 234.6,147.8 276.9,163.3 319.1,153.7 361.4,141.2 403.7,125.8 446.0,113.9 446.0,182 150.0,182"/>
+<polyline class="ln draw" points="150.0,178.1 192.3,162.1 234.6,147.8 276.9,163.3 319.1,153.7 361.4,141.2 403.7,125.8 446.0,113.9"/>
 <circle class="acc dot" cx="446.0" cy="113.9" r="4.5"/>
-<text class="mut" x="150" y="202">Peak 656 · 55% win · 217 games</text>
+<text class="mut" x="150" y="202">Peak 657 · 56% win · 219 games</text>
 </svg>
