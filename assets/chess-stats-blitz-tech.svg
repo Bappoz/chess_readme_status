@@ -6,10 +6,10 @@
 <line class="grid" x1="44" y1="140" x2="446" y2="140"/><line class="grid" x1="44" y1="180" x2="446" y2="180"/>
 <line class="grid" x1="44" y1="52" x2="44" y2="188"/><line class="grid" x1="245" y1="52" x2="245" y2="188"/><line class="grid" x1="446" y1="52" x2="446" y2="188"/>
 <text class="mut mono" x="24" y="30">BLITZ.RATING</text>
-<text class="big mono" x="446" y="34" text-anchor="end" style="font-size:28px">686</text>
-<text class="acc mono mid" x="446" y="52" text-anchor="end">▲ +33</text>
-<polyline class="ln draw" points="44.0,118.3 65.2,148.8 86.3,173.6 107.5,173.6 128.6,148.8 149.8,125.1 170.9,102.5 192.1,123.9 213.3,102.5 234.4,82.2 255.6,100.3 276.7,81.1 297.9,101.4 319.1,80.0 340.2,98.0 361.4,82.2 382.5,99.1 403.7,83.3 424.8,66.4 446.0,81.1"/>
-<circle class="acc" cx="149.8" cy="125.1" r="2.6"/><circle class="acc" cx="255.6" cy="100.3" r="2.6"/><circle class="acc" cx="361.4" cy="82.2" r="2.6"/>
-<circle class="acc dot" cx="446.0" cy="81.1" r="4.5"/>
+<text class="big mono" x="446" y="34" text-anchor="end" style="font-size:28px">673</text>
+<text class="acc mono mid" x="446" y="52" text-anchor="end">▲ +47</text>
+<polyline class="ln draw" points="44.0,148.8 65.2,173.6 86.3,173.6 107.5,148.8 128.6,125.1 149.8,102.5 170.9,123.9 192.1,102.5 213.3,82.2 234.4,100.3 255.6,81.1 276.7,101.4 297.9,80.0 319.1,98.0 340.2,82.2 361.4,99.1 382.5,83.3 403.7,66.4 424.8,81.1 446.0,95.8"/>
+<circle class="acc" cx="149.8" cy="102.5" r="2.6"/><circle class="acc" cx="255.6" cy="81.1" r="2.6"/><circle class="acc" cx="361.4" cy="99.1" r="2.6"/>
+<circle class="acc dot" cx="446.0" cy="95.8" r="4.5"/>
 <text class="mut mono" x="44" y="202">a1</text><text class="mut mono" x="245" y="202" text-anchor="middle">d4</text><text class="mut mono" x="446" y="202" text-anchor="end">h8</text>
 </svg>

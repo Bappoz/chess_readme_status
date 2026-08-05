@@ -9,9 +9,9 @@
 <ellipse class="acc glow" cx="120" cy="120" rx="96" ry="88" filter="url(#bF)"/>
 <text class="float ser" x="120" y="196" text-anchor="middle" style="font-size:210px" fill="url(#pF)">♛</text>
 <text class="mut" x="238" y="58">RAPID</text>
-<text class="big" x="238" y="104" style="font-size:52px">1203</text>
+<text class="big" x="238" y="104" style="font-size:52px">1195</text>
 <text class="acc mid" x="238" y="130">▲ +14</text>
 <line class="peak" x1="238" y1="150" x2="352" y2="150" stroke-dasharray="4 5"/>
-<text class="mut" x="238" y="176">Peak 1235 · 56% win</text>
-<text class="mut" x="238" y="194">677 games</text>
+<text class="mut" x="238" y="176">Peak 1235 · 55% win</text>
+<text class="mut" x="238" y="194">678 games</text>
 </svg>
