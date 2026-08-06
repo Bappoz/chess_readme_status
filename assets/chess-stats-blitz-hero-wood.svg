@@ -12,7 +12,7 @@
 <text class="acc float ser" x="92" y="166" text-anchor="middle" style="font-size:150px">♞</text>
 <text class="mut" x="196" y="50">BLITZ</text>
 <text class="big ser" x="196" y="98" style="font-size:52px">673</text>
-<text class="acc mid" x="196" y="122">▲ +47</text>
-<text class="mut" x="196" y="150">633 games · 51% win</text>
-<polyline class="ln draw" points="196.0,177.4 210.0,192.4 224.0,176.6 238.0,189.9 252.0,178.2 266.0,190.8 280.0,179.1 294.0,166.6 308.0,177.4 322.0,188.3"/>
+<text class="acc mid" x="196" y="122">▲ +69</text>
+<text class="mut" x="196" y="150">635 games · 51% win</text>
+<polyline class="ln draw" points="196.0,174.5 210.0,185.1 224.0,175.8 238.0,185.8 252.0,176.5 266.0,166.6 280.0,175.2 294.0,183.8 308.0,192.4 322.0,183.8"/>
 </svg>

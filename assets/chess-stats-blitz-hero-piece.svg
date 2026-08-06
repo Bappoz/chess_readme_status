@@ -10,8 +10,8 @@
 <text class="float ser" x="120" y="196" text-anchor="middle" style="font-size:210px" fill="url(#pF)">♞</text>
 <text class="mut" x="238" y="58">BLITZ</text>
 <text class="big" x="238" y="104" style="font-size:52px">673</text>
-<text class="acc mid" x="238" y="130">▲ +47</text>
+<text class="acc mid" x="238" y="130">▲ +69</text>
 <line class="peak" x1="238" y1="150" x2="352" y2="150" stroke-dasharray="4 5"/>
 <text class="mut" x="238" y="176">Peak 937 · 51% win</text>
-<text class="mut" x="238" y="194">633 games</text>
+<text class="mut" x="238" y="194">635 games</text>
 </svg>

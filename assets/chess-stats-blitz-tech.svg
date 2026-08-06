@@ -7,9 +7,9 @@
 <line class="grid" x1="44" y1="52" x2="44" y2="188"/><line class="grid" x1="245" y1="52" x2="245" y2="188"/><line class="grid" x1="446" y1="52" x2="446" y2="188"/>
 <text class="mut mono" x="24" y="30">BLITZ.RATING</text>
 <text class="big mono" x="446" y="34" text-anchor="end" style="font-size:28px">673</text>
-<text class="acc mono mid" x="446" y="52" text-anchor="end">▲ +47</text>
-<polyline class="ln draw" points="44.0,148.8 65.2,173.6 86.3,173.6 107.5,148.8 128.6,125.1 149.8,102.5 170.9,123.9 192.1,102.5 213.3,82.2 234.4,100.3 255.6,81.1 276.7,101.4 297.9,80.0 319.1,98.0 340.2,82.2 361.4,99.1 382.5,83.3 403.7,66.4 424.8,81.1 446.0,95.8"/>
-<circle class="acc" cx="149.8" cy="102.5" r="2.6"/><circle class="acc" cx="255.6" cy="81.1" r="2.6"/><circle class="acc" cx="361.4" cy="99.1" r="2.6"/>
+<text class="acc mono mid" x="446" y="52" text-anchor="end">▲ +69</text>
+<polyline class="ln draw" points="44.0,173.6 65.2,148.8 86.3,125.1 107.5,102.5 128.6,123.9 149.8,102.5 170.9,82.2 192.1,100.3 213.3,81.1 234.4,101.4 255.6,80.0 276.7,98.0 297.9,82.2 319.1,99.1 340.2,83.3 361.4,66.4 382.5,81.1 403.7,95.8 424.8,110.4 446.0,95.8"/>
+<circle class="acc" cx="149.8" cy="102.5" r="2.6"/><circle class="acc" cx="255.6" cy="80.0" r="2.6"/><circle class="acc" cx="361.4" cy="66.4" r="2.6"/>
 <circle class="acc dot" cx="446.0" cy="95.8" r="4.5"/>
 <text class="mut mono" x="44" y="202">a1</text><text class="mut mono" x="245" y="202" text-anchor="middle">d4</text><text class="mut mono" x="446" y="202" text-anchor="end">h8</text>
 </svg>
