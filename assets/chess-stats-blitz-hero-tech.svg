@@ -7,7 +7,7 @@
 <text class="mut mono" x="26" y="44">blitz.rating</text>
 <circle class="acc dot" cx="120" cy="40" r="4"/>
 <text class="big mono acc shim" x="26" y="104" style="font-size:52px">699</text>
-<text class="acc mid mono" x="26" y="134">▲ +52 · win 51%</text>
-<polyline class="ln thin draw" points="26.0,177.5 58.0,184.3 90.0,177.9 122.0,171.1 154.0,177.0 186.0,183.0 218.0,188.9 250.0,183.0 282.0,176.6 314.0,171.1"/><circle class="acc" cx="90.0" cy="177.9" r="2.5"/><circle class="acc" cx="154.0" cy="177.0" r="2.5"/><circle class="acc" cx="218.0" cy="188.9" r="2.5"/><circle class="acc" cx="282.0" cy="176.6" r="2.5"/><circle class="acc dot" cx="314.0" cy="171.1" r="4"/>
+<text class="acc mid mono" x="26" y="134">▲ +30 · win 51%</text>
+<polyline class="ln thin draw" points="26.0,183.0 58.0,188.9 90.0,183.0 122.0,176.6 154.0,171.1 186.0,171.1 218.0,171.1 250.0,171.1 282.0,171.1 314.0,171.1"/><circle class="acc" cx="90.0" cy="183.0" r="2.5"/><circle class="acc" cx="154.0" cy="171.1" r="2.5"/><circle class="acc" cx="218.0" cy="171.1" r="2.5"/><circle class="acc" cx="282.0" cy="171.1" r="2.5"/><circle class="acc dot" cx="314.0" cy="171.1" r="4"/>
 <text class="mut mono" x="314" y="200" text-anchor="end">n=637</text>
 </svg>
