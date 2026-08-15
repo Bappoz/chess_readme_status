@@ -10,9 +10,9 @@
 <rect class="panel" x="18" y="120" width="304" height="72" rx="14"/>
 <rect class="stroke" x="18" y="120" width="304" height="72" rx="14"/>
 <text class="mut" x="30" y="52">BLITZ RATING</text>
-<text class="big" x="30" y="102" style="font-size:50px">699</text>
-<text class="acc mid" x="222" y="102">▲ +30</text>
+<text class="big" x="30" y="102" style="font-size:50px">675</text>
+<text class="acc mid" x="222" y="102">▲ +7</text>
 <text class="mut" x="34" y="150">PEAK</text><text class="mid" x="34" y="176">937</text>
 <text class="mut" x="170" y="150">WIN</text><text class="mid" x="170" y="176">51%</text>
-<text class="mut" x="290" y="150" text-anchor="end">GAMES</text><text class="mid" x="290" y="176" text-anchor="end">637</text>
+<text class="mut" x="290" y="150" text-anchor="end">GAMES</text><text class="mid" x="290" y="176" text-anchor="end">639</text>
 </svg>
