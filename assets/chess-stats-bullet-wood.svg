@@ -9,12 +9,12 @@
 <text class="acc ser" x="30" y="42" style="font-size:22px">♟</text>
 <text class="mut" x="58" y="30">BULLET</text>
 <text class="mid" x="58" y="47">Rating history</text>
-<text class="big ser" x="446" y="44" text-anchor="end" style="font-size:38px">686</text>
-<text class="acc mid" x="446" y="62" text-anchor="end">▲ +137</text>
+<text class="big ser" x="446" y="44" text-anchor="end" style="font-size:38px">713</text>
+<text class="acc mid" x="446" y="62" text-anchor="end">▲ +164</text>
 <line class="peak" x1="44" y1="52" x2="446" y2="52" stroke-dasharray="4 5"/>
 <text class="mut" x="245" y="46" text-anchor="middle" style="font-size:9px;letter-spacing:.1em">PEAK 722</text>
-<polygon class="area" points="44.0,176.3 70.8,161.4 97.6,148.1 124.4,162.5 151.2,153.6 178.0,142.0 204.8,127.7 231.6,116.6 258.4,127.1 285.2,117.7 312.0,106.1 338.8,97.3 365.6,87.9 392.4,80.7 419.2,91.2 446.0,100.6 446.0,182 44.0,182"/>
-<polyline class="ln draw" points="44.0,176.3 70.8,161.4 97.6,148.1 124.4,162.5 151.2,153.6 178.0,142.0 204.8,127.7 231.6,116.6 258.4,127.1 285.2,117.7 312.0,106.1 338.8,97.3 365.6,87.9 392.4,80.7 419.2,91.2 446.0,100.6"/>
-<circle class="acc dot" cx="446.0" cy="100.6" r="4.5"/>
-<text class="mut" x="24" y="200">Peak 722 · 56% win · 227 games · last 16</text>
+<polygon class="area" points="44.0,176.3 66.3,161.4 88.7,148.1 111.0,162.5 133.3,153.6 155.7,142.0 178.0,127.7 200.3,116.6 222.7,127.1 245.0,117.7 267.3,106.1 289.7,97.3 312.0,87.9 334.3,80.7 356.7,91.2 379.0,100.6 401.3,93.4 423.7,92.9 446.0,85.7 446.0,182 44.0,182"/>
+<polyline class="ln draw" points="44.0,176.3 66.3,161.4 88.7,148.1 111.0,162.5 133.3,153.6 155.7,142.0 178.0,127.7 200.3,116.6 222.7,127.1 245.0,117.7 267.3,106.1 289.7,97.3 312.0,87.9 334.3,80.7 356.7,91.2 379.0,100.6 401.3,93.4 423.7,92.9 446.0,85.7"/>
+<circle class="acc dot" cx="446.0" cy="85.7" r="4.5"/>
+<text class="mut" x="24" y="200">Peak 722 · 56% win · 230 games · last 19</text>
 </svg>

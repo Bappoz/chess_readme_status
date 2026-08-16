@@ -8,13 +8,13 @@
 <rect width="470" height="210" rx="20" fill="url(#gE2)"/>
 <ellipse class="acc glow" cx="410" cy="80" rx="80" ry="60" filter="url(#bE2)"/>
 <text class="mut" x="26" y="34">BULLET · RATING HISTORY</text>
-<text class="big" x="446" y="40" text-anchor="end" style="font-size:30px">686</text>
-<text class="acc mid" x="446" y="58" text-anchor="end">▲ +137</text>
+<text class="big" x="446" y="40" text-anchor="end" style="font-size:30px">713</text>
+<text class="acc mid" x="446" y="58" text-anchor="end">▲ +164</text>
 <rect class="panel" x="18" y="66" width="434" height="128" rx="14"/>
 <rect class="stroke" x="18" y="66" width="434" height="128" rx="14"/>
 <line class="peak" x1="44" y1="82" x2="446" y2="82" stroke-dasharray="4 5"/>
 <text class="mut" x="44" y="78" style="font-size:9px">PEAK 722</text>
-<polygon class="area" points="44.0,174.8 70.8,161.1 97.6,149.0 124.4,162.1 151.2,154.0 178.0,143.4 204.8,130.2 231.6,120.1 258.4,129.7 285.2,121.1 312.0,110.5 338.8,102.4 365.6,93.8 392.4,87.3 419.2,96.9 446.0,105.5 446.0,182 44.0,182"/>
-<polyline class="ln draw" points="44.0,174.8 70.8,161.1 97.6,149.0 124.4,162.1 151.2,154.0 178.0,143.4 204.8,130.2 231.6,120.1 258.4,129.7 285.2,121.1 312.0,110.5 338.8,102.4 365.6,93.8 392.4,87.3 419.2,96.9 446.0,105.5"/>
-<circle class="acc dot" cx="446.0" cy="105.5" r="4.5"/>
+<polygon class="area" points="44.0,174.8 66.3,161.1 88.7,149.0 111.0,162.1 133.3,154.0 155.7,143.4 178.0,130.2 200.3,120.1 222.7,129.7 245.0,121.1 267.3,110.5 289.7,102.4 312.0,93.8 334.3,87.3 356.7,96.9 379.0,105.5 401.3,98.9 423.7,98.4 446.0,91.8 446.0,182 44.0,182"/>
+<polyline class="ln draw" points="44.0,174.8 66.3,161.1 88.7,149.0 111.0,162.1 133.3,154.0 155.7,143.4 178.0,130.2 200.3,120.1 222.7,129.7 245.0,121.1 267.3,110.5 289.7,102.4 312.0,93.8 334.3,87.3 356.7,96.9 379.0,105.5 401.3,98.9 423.7,98.4 446.0,91.8"/>
+<circle class="acc dot" cx="446.0" cy="91.8" r="4.5"/>
 </svg>

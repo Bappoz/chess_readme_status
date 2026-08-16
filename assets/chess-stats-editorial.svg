@@ -4,13 +4,13 @@
 <style>text{fill:#f3efe6}.bg{fill:#141210}.acc{fill:#d8a24a}.ln{stroke:#d8a24a}.area{fill:#d8a24a;opacity:.05}.peak{stroke:#d8a24a;opacity:.28}.chip{fill:#d8a24a;opacity:.14}.down{fill:#c56a4a}.rule{stroke:#3a352c}svg{font-family:'Space Grotesk',system-ui,sans-serif}.lbl{font-weight:600;font-size:11px;letter-spacing:.16em}.big{font-weight:700;font-size:34px;letter-spacing:-.02em}.mid{font-weight:600;font-size:14px}.mut{font-weight:500;font-size:11px;opacity:.5}.ser{font-family:'Instrument Serif',serif;font-weight:400;letter-spacing:0}.mono{font-family:'JetBrains Mono',monospace}.ln{fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}.thin{stroke-width:1.6}.draw{stroke-dasharray:1200;stroke-dashoffset:1200;animation:draw 2.3s cubic-bezier(.6,.05,.2,1) forwards .25s}.dot{animation:pulse 2s ease-in-out infinite}.glow{animation:glow 3.4s ease-in-out infinite}.float{animation:float 6.5s ease-in-out infinite}.shim{animation:shim 3s ease-in-out infinite}@keyframes draw{to{stroke-dashoffset:0}}@keyframes pulse{0%,100%{r:4.5;opacity:1}50%{r:8;opacity:.45}}@keyframes glow{0%,100%{opacity:.14}50%{opacity:.34}}@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}@keyframes shim{0%,100%{opacity:.5}50%{opacity:1}}</style>
 <rect class="bg" width="840" height="200" rx="20"/>
 
-<text class="mut" x="30" y="36" style="letter-spacing:.22em">CHESS.COM · @bappozl · 1551 GAMES</text>
+<text class="mut" x="30" y="36" style="letter-spacing:.22em">CHESS.COM · @bappozl · 1557 GAMES</text>
 <line class="rule" x1="30" y1="50" x2="810" y2="50"/>
 <g>
 <text class="mut" x="40" y="84">BLITZ</text>
-<text class="acc ser" x="40" y="128" style="font-size:44px">675</text>
-<text class="acc mid" x="40" y="152">▲ +7</text>
-<polyline class="ln thin draw" points="40.0,161.2 59.4,161.2 78.9,161.2 98.3,161.2 117.7,161.2 137.1,161.2 156.6,171.0 176.0,180.8"/>
+<text class="acc ser" x="40" y="128" style="font-size:44px">709</text>
+<text class="acc mid" x="40" y="152">▲ +24</text>
+<polyline class="ln thin draw" points="40.0,167.0 59.4,167.0 78.9,167.0 98.3,173.9 117.7,180.8 137.1,173.9 156.6,167.0 176.0,161.2"/>
 </g>
 <line class="rule" x1="215" y1="70" x2="215" y2="168"/>
 <g>
@@ -22,9 +22,9 @@
 <line class="rule" x1="415" y1="70" x2="415" y2="168"/>
 <g>
 <text class="mut" x="440" y="84">BULLET</text>
-<text class="acc ser" x="440" y="128" style="font-size:44px">686</text>
-<text class="acc mid" x="440" y="152">▲ +137</text>
-<polyline class="ln thin draw" points="440.0,180.8 459.4,176.8 478.9,171.9 498.3,168.2 517.7,164.2 537.1,161.2 556.6,165.6 576.0,169.6"/>
+<text class="acc ser" x="440" y="128" style="font-size:44px">713</text>
+<text class="acc mid" x="440" y="152">▲ +164</text>
+<polyline class="ln thin draw" points="440.0,177.5 459.4,168.3 478.9,161.2 498.3,171.5 517.7,180.8 537.1,173.7 556.6,173.2 576.0,166.1"/>
 </g>
 <line class="rule" x1="615" y1="70" x2="615" y2="168"/>
 <g>
