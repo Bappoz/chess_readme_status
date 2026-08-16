@@ -6,8 +6,8 @@
 <line class="grid" x1="113" y1="0" x2="113" y2="210"/><line class="grid" x1="226" y1="0" x2="226" y2="210"/>
 <text class="mut mono" x="26" y="44">blitz.rating</text>
 <circle class="acc dot" cx="120" cy="40" r="4"/>
-<text class="big mono acc shim" x="26" y="104" style="font-size:52px">709</text>
-<text class="acc mid mono" x="26" y="134">▲ +24 · win 51%</text>
-<polyline class="ln thin draw" points="26.0,176.3 58.0,176.3 90.0,176.3 122.0,176.3 154.0,176.3 186.0,182.6 218.0,188.9 250.0,182.6 282.0,176.3 314.0,171.1"/><circle class="acc" cx="90.0" cy="176.3" r="2.5"/><circle class="acc" cx="154.0" cy="176.3" r="2.5"/><circle class="acc" cx="218.0" cy="188.9" r="2.5"/><circle class="acc" cx="282.0" cy="176.3" r="2.5"/><circle class="acc dot" cx="314.0" cy="171.1" r="4"/>
-<text class="mut mono" x="314" y="200" text-anchor="end">n=642</text>
+<text class="big mono acc shim" x="26" y="104" style="font-size:52px">720</text>
+<text class="acc mid mono" x="26" y="134">▲ +50 · win 51%</text>
+<polyline class="ln thin draw" points="26.0,179.4 58.0,179.4 90.0,179.4 122.0,179.4 154.0,184.2 186.0,188.9 218.0,184.2 250.0,179.4 282.0,175.4 314.0,171.1"/><circle class="acc" cx="90.0" cy="179.4" r="2.5"/><circle class="acc" cx="154.0" cy="184.2" r="2.5"/><circle class="acc" cx="218.0" cy="184.2" r="2.5"/><circle class="acc" cx="282.0" cy="175.4" r="2.5"/><circle class="acc dot" cx="314.0" cy="171.1" r="4"/>
+<text class="mut mono" x="314" y="200" text-anchor="end">n=643</text>
 </svg>
