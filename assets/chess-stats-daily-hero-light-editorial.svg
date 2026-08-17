@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg viewBox="0 0 340 210" width="340" height="210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="DAILY hero">
-<style>text{fill:#241f16}.bg{fill:#f8f2e6}.acc{fill:#a9762a}.ln{stroke:#a9762a}.area{fill:#a9762a;opacity:.07}.peak{stroke:#a9762a;opacity:.3}.chip{fill:#a9762a;opacity:.14}.down{fill:#b26038}.rule{stroke:#e0d5bf}svg{font-family:'Space Grotesk',system-ui,sans-serif}.lbl{font-weight:600;font-size:11px;letter-spacing:.16em}.big{font-weight:700;font-size:34px;letter-spacing:-.02em}.mid{font-weight:600;font-size:14px}.mut{font-weight:500;font-size:11px;opacity:.5}.ser{font-family:'Instrument Serif',serif;font-weight:400;letter-spacing:0}.mono{font-family:'JetBrains Mono',monospace}.ln{fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}.thin{stroke-width:1.6}.draw{stroke-dasharray:1;stroke-dashoffset:0;animation:draw 2.3s cubic-bezier(.6,.05,.2,1) .25s backwards}.dot{animation:pulse 2s ease-in-out infinite}.glow{animation:glow 3.4s ease-in-out infinite}.float{animation:float 6.5s ease-in-out infinite}.shim{animation:shim 3s ease-in-out infinite}@keyframes draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}@keyframes pulse{0%,100%{r:4.5;opacity:1}50%{r:8;opacity:.45}}@keyframes glow{0%,100%{opacity:.14}50%{opacity:.34}}@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}@keyframes shim{0%,100%{opacity:.5}50%{opacity:1}}</style>
-<rect class="bg" width="340" height="210" rx="20"/>
-<text class="mut" x="30" y="52" style="letter-spacing:.24em">DAILY RATING</text>
-<text class="acc ser" x="26" y="140" style="font-size:104px">313</text>
-<line class="rule" x1="30" y1="162" x2="310" y2="162"/>
-<text class="mid" x="30" y="188">Peak —</text>
-<text class="mut mid" x="310" y="188" text-anchor="end">—</text>
+<svg viewBox="0 0 340 210" width="340" height="210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="DAILY rating 313, 0% win rate over 1 games">
+<style>svg{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif}text{fill:#221d15;white-space:pre}.bg{fill:#f8f2e6}.acc{fill:#9a6a1e}.win{fill:#0d8659}.draw{fill:#7c7f85}.loss{fill:#c0332f}.lbl{font-size:10px;font-weight:600;letter-spacing:.18em;fill:#7a7164}.cap{font-size:10.5px;font-weight:500;fill:#7a7164}.num{font-family:Georgia,'Times New Roman',Times,serif;font-weight:700;letter-spacing:-.02em}.tick{font-size:9px;font-weight:500;fill:#7a7164;opacity:.75}.dl{font-size:10px;font-weight:600}.rule{stroke:#e5dac4;stroke-width:1;fill:none}.grid{stroke:#e5dac4;stroke-width:1;fill:none;opacity:.7}.ln{fill:none;stroke:#9a6a1e;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.ring{stroke:#f8f2e6;stroke-width:2}.hollow{fill:none;stroke-width:1.5}.sq{fill:#221d15;opacity:.035}</style>
+<rect class="bg" width="340" height="210" rx="16"/>
+
+<g class="acc" transform="translate(23.0,21.8) scale(0.2000)"><path d="M46 4h8v10h10v8H54v12h-8V22H36v-8h10V4zM50 40c-13 0-24 8-24 19 0 6 4 11 10 14l-6 9h40l-6-9c6-3 10-8 10-14 0-11-11-19-24-19zM26 84h48c4.4 0 8 3.6 8 8v4H18v-4c0-4.4 3.6-8 8-8z"/></g>
+<text class="lbl" x="49" y="38">DAILY</text>
+<text class="num" x="26" y="98" style="font-size:60px">313</text>
+<text class="cap" x="26" y="122">no recent games</text>
+<rect x="26.0" y="134" width="288.0" height="3" rx="1.5" fill="#9a6a1e" opacity="0.15"/>
+
+<line class="rule" x1="26" y1="188" x2="314" y2="188"/>
+<text class="cap" x="26" y="203">0% win · 1 game</text>
+<text class="cap" x="314" y="203" text-anchor="end">peak —</text>
 </svg>

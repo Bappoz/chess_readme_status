@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg viewBox="0 0 340 210" width="340" height="210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="BLITZ hero">
-<defs>
-<filter id="bE" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="20"/></filter>
-<radialGradient id="gE" cx="30%" cy="0%" r="90%"><stop offset="0" stop-color="#1b2550"/><stop offset="1" stop-color="#0c1225"/></radialGradient>
-</defs>
-<style>text{fill:#e7eaf6}.bg{fill:#0c1225}.acc{fill:#8098ff}.ln{stroke:#8098ff}.area{fill:#8098ff;opacity:.14}.peak{stroke:#8098ff;opacity:.3}.chip{fill:#8098ff;opacity:.14}.down{fill:#e0715a}.panel{fill:#fff;opacity:.045}.stroke{stroke:#fff;opacity:.08;fill:none}svg{font-family:'Space Grotesk',system-ui,sans-serif}.lbl{font-weight:600;font-size:11px;letter-spacing:.16em}.big{font-weight:700;font-size:34px;letter-spacing:-.02em}.mid{font-weight:600;font-size:14px}.mut{font-weight:500;font-size:11px;opacity:.5}.ser{font-family:'Instrument Serif',serif;font-weight:400;letter-spacing:0}.mono{font-family:'JetBrains Mono',monospace}.ln{fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}.thin{stroke-width:1.6}.draw{stroke-dasharray:1;stroke-dashoffset:0;animation:draw 2.3s cubic-bezier(.6,.05,.2,1) .25s backwards}.dot{animation:pulse 2s ease-in-out infinite}.glow{animation:glow 3.4s ease-in-out infinite}.float{animation:float 6.5s ease-in-out infinite}.shim{animation:shim 3s ease-in-out infinite}@keyframes draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}@keyframes pulse{0%,100%{r:4.5;opacity:1}50%{r:8;opacity:.45}}@keyframes glow{0%,100%{opacity:.14}50%{opacity:.34}}@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}@keyframes shim{0%,100%{opacity:.5}50%{opacity:1}}</style>
-<rect width="340" height="210" rx="20" fill="url(#gE)"/>
-<ellipse class="acc glow" cx="150" cy="96" rx="90" ry="60" filter="url(#bE)"/>
-<rect class="panel" x="18" y="120" width="304" height="72" rx="14"/>
-<rect class="stroke" x="18" y="120" width="304" height="72" rx="14"/>
-<text class="mut" x="30" y="52">BLITZ RATING</text>
-<text class="big" x="30" y="102" style="font-size:50px">720</text>
-<text class="acc mid" x="222" y="102">▲ +50</text>
-<text class="mut" x="34" y="150">PEAK</text><text class="mid" x="34" y="176">937</text>
-<text class="mut" x="170" y="150">WIN</text><text class="mid" x="170" y="176">51%</text>
-<text class="mut" x="290" y="150" text-anchor="end">GAMES</text><text class="mid" x="290" y="176" text-anchor="end">643</text>
+<svg viewBox="0 0 340 210" width="340" height="210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="BLITZ rating 720, 51% win rate over 643 games">
+<style>svg{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif}text{fill:#e9ecf7;white-space:pre}.bg{fill:#0c1225}.acc{fill:#8098ff}.win{fill:#1baf7a}.draw{fill:#8b8f96}.loss{fill:#d03b3b}.lbl{font-size:10px;font-weight:600;letter-spacing:.18em;fill:#8790ab}.cap{font-size:10.5px;font-weight:500;fill:#8790ab}.num{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;font-weight:700;letter-spacing:-.02em}.tick{font-size:9px;font-weight:500;fill:#8790ab;opacity:.75}.dl{font-size:10px;font-weight:600}.rule{stroke:#1e2643;stroke-width:1;fill:none}.grid{stroke:#1e2643;stroke-width:1;fill:none;opacity:.7}.ln{fill:none;stroke:#8098ff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.ring{stroke:#0c1225;stroke-width:2}.hollow{fill:none;stroke-width:1.5}.sq{fill:#e9ecf7;opacity:.035}</style>
+<rect class="bg" width="340" height="210" rx="16"/>
+<defs><linearGradient id="gp" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e9ecf7" stop-opacity="0"/><stop offset="1" stop-color="#e9ecf7" stop-opacity=".05"/></linearGradient></defs><rect width="340" height="210" fill="url(#gp)"/>
+<g class="acc" transform="translate(23.0,21.8) scale(0.2000)"><path fill-rule="evenodd" d="M66 5l-4 17c9 10 16 27 16 58H34c0-8-1-14-4-20-6 3-13 2-16-2-3-3-3-8 0-12 3-5 6-10 10-14 6-6 13-10 21-11 7-1 14 0 21 4zM37.4 39a3.4 3.4 0 1 0-6.8 0 3.4 3.4 0 1 0 6.8 0zM24 82h52c3.9 0 7 3.1 7 7v7H17v-7c0-3.9 3.1-7 7-7z"/></g>
+<text class="lbl" x="49" y="38">BLITZ</text>
+<text class="num" x="26" y="96" style="font-size:55px">720</text>
+<path fill="#1baf7a" d="M30 115L34 121H26Z"/><text class="dl" x="42" y="122" fill="#1baf7a">+50</text><text class="cap" x="69.8" y="122">last 20</text>
+<rect x="26.0" y="134" width="144.5" height="3" rx="1.5" fill="#8098ff" opacity="1"/><rect x="172.5" y="134" width="7.0" height="3" rx="1.5" fill="#8098ff" opacity="0.4"/><rect x="181.4" y="134" width="132.6" height="3" rx="1.5" fill="#8098ff" opacity="0.15"/>
+<path class="ln" style="stroke-width:1.6" d="M26.0 172.0C28.5 171.2 36.1 168.8 41.2 167.1C46.2 165.4 51.3 162.0 56.3 161.9C61.4 161.7 66.4 164.9 71.5 166.4C76.5 167.9 81.6 169.4 86.6 170.9C91.7 172.5 96.7 175.5 101.8 175.5C106.8 175.5 111.9 172.5 116.9 170.9C122.0 169.4 127.1 167.6 132.1 166.0C137.2 164.5 142.2 162.6 147.3 161.9C152.3 161.2 157.4 161.9 162.4 161.9C167.5 161.9 172.5 161.9 177.6 161.9C182.6 161.9 187.7 161.9 192.7 161.9C197.8 161.9 202.8 161.9 207.9 161.9C212.9 161.9 218.0 161.2 223.1 161.9C228.1 162.6 233.2 164.7 238.2 166.0C243.3 167.4 248.3 170.2 253.4 170.2C258.4 170.2 263.5 167.4 268.5 166.0C273.6 164.7 278.6 163.1 283.7 161.9C288.7 160.6 293.8 159.6 298.8 158.4C303.9 157.1 311.5 155.2 314.0 154.5"/><circle class="acc ring" cx="314.0" cy="154.5" r="2.6"/>
+<line class="rule" x1="26" y1="188" x2="314" y2="188"/>
+<text class="cap" x="26" y="203">51% win · 643 games</text>
+<text class="cap" x="314" y="203" text-anchor="end">peak 937</text>
 </svg>

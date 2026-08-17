@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg viewBox="0 0 470 210" width="470" height="210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="DAILY rating history">
-<defs>
-<linearGradient id="wC2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2c1e14"/><stop offset="1" stop-color="#1c120b"/></linearGradient>
-</defs>
-<style>text{fill:#f1e6d2}.bg{fill:#241811}.acc{fill:#e7bd6b}.ln{stroke:#e7bd6b}.area{fill:#e7bd6b;opacity:.12}.peak{stroke:#e7bd6b;opacity:.32}.chip{fill:#e7bd6b;opacity:.14}.down{fill:#d98a5a}.sq{fill:#fff;opacity:.045}svg{font-family:'Space Grotesk',system-ui,sans-serif}.lbl{font-weight:600;font-size:11px;letter-spacing:.16em}.big{font-weight:700;font-size:34px;letter-spacing:-.02em}.mid{font-weight:600;font-size:14px}.mut{font-weight:500;font-size:11px;opacity:.5}.ser{font-family:'Instrument Serif',serif;font-weight:400;letter-spacing:0}.mono{font-family:'JetBrains Mono',monospace}.ln{fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}.thin{stroke-width:1.6}.draw{stroke-dasharray:1;stroke-dashoffset:0;animation:draw 2.3s cubic-bezier(.6,.05,.2,1) .25s backwards}.dot{animation:pulse 2s ease-in-out infinite}.glow{animation:glow 3.4s ease-in-out infinite}.float{animation:float 6.5s ease-in-out infinite}.shim{animation:shim 3s ease-in-out infinite}@keyframes draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}@keyframes pulse{0%,100%{r:4.5;opacity:1}50%{r:8;opacity:.45}}@keyframes glow{0%,100%{opacity:.14}50%{opacity:.34}}@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}@keyframes shim{0%,100%{opacity:.5}50%{opacity:1}}</style>
-<rect width="470" height="210" rx="20" fill="url(#wC2)"/>
-<rect class="sq" x="24" y="150" width="26" height="26"/><rect class="sq" x="76" y="150" width="26" height="26"/><rect class="sq" x="50" y="176" width="26" height="26"/>
-<g class="acc" transform="translate(26.0,21.0) scale(0.2400)"><path d="M46 4h8v10h10v8H54v12h-8V22H36v-8h10V4zM50 40c-13 0-24 8-24 19 0 6 4 11 10 14l-6 9h40l-6-9c6-3 10-8 10-14 0-11-11-19-24-19zM26 84h48c4.4 0 8 3.6 8 8v4H18v-4c0-4.4 3.6-8 8-8z"/></g>
-<text class="mut" x="58" y="30">DAILY</text>
-<text class="mid" x="58" y="47">Rating history</text>
-<text class="big ser" x="446" y="44" text-anchor="end" style="font-size:38px">313</text>
-<text class="mut mid" x="446" y="62" text-anchor="end">—</text>
-<line class="peak" x1="44" y1="52" x2="446" y2="52" stroke-dasharray="4 5"/>
-<text class="mut" x="245" y="46" text-anchor="middle" style="font-size:9px;letter-spacing:.1em">PEAK —</text>
+<svg viewBox="0 0 470 210" width="470" height="210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="DAILY rating history, currently 313, 0% win rate over 1 games">
+<style>svg{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif}text{fill:#f3e8d5;white-space:pre}.bg{fill:#241811}.acc{fill:#e7bd6b}.win{fill:#1baf7a}.draw{fill:#8b8f96}.loss{fill:#d03b3b}.lbl{font-size:10px;font-weight:600;letter-spacing:.18em;fill:#a5917a}.cap{font-size:10.5px;font-weight:500;fill:#a5917a}.num{font-family:Georgia,'Times New Roman',Times,serif;font-weight:700;letter-spacing:-.02em}.tick{font-size:9px;font-weight:500;fill:#a5917a;opacity:.75}.dl{font-size:10px;font-weight:600}.rule{stroke:#3a2a1e;stroke-width:1;fill:none}.grid{stroke:#3a2a1e;stroke-width:1;fill:none;opacity:.7}.ln{fill:none;stroke:#e7bd6b;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.ring{stroke:#241811;stroke-width:2}.hollow{fill:none;stroke-width:1.5}.sq{fill:#f3e8d5;opacity:.035}</style>
+<rect class="bg" width="470" height="210" rx="16"/>
+<rect class="sq" x="0" y="132" width="26" height="26"/><rect class="sq" x="52" y="132" width="26" height="26"/><rect class="sq" x="104" y="132" width="26" height="26"/><rect class="sq" x="156" y="132" width="26" height="26"/><rect class="sq" x="208" y="132" width="26" height="26"/><rect class="sq" x="260" y="132" width="26" height="26"/><rect class="sq" x="26" y="158" width="26" height="26"/><rect class="sq" x="78" y="158" width="26" height="26"/><rect class="sq" x="130" y="158" width="26" height="26"/><rect class="sq" x="182" y="158" width="26" height="26"/><rect class="sq" x="234" y="158" width="26" height="26"/><rect class="sq" x="286" y="158" width="26" height="26"/><rect class="sq" x="0" y="184" width="26" height="26"/><rect class="sq" x="52" y="184" width="26" height="26"/><rect class="sq" x="104" y="184" width="26" height="26"/><rect class="sq" x="156" y="184" width="26" height="26"/><rect class="sq" x="208" y="184" width="26" height="26"/><rect class="sq" x="260" y="184" width="26" height="26"/>
+<g class="acc" transform="translate(24.0,22.8) scale(0.2000)"><path d="M46 4h8v10h10v8H54v12h-8V22H36v-8h10V4zM50 40c-13 0-24 8-24 19 0 6 4 11 10 14l-6 9h40l-6-9c6-3 10-8 10-14 0-11-11-19-24-19zM26 84h48c4.4 0 8 3.6 8 8v4H18v-4c0-4.4 3.6-8 8-8z"/></g>
+<text class="lbl" x="50" y="39">DAILY</text>
+<text class="cap" x="50" y="55">Rating history</text>
+<text class="num" x="444" y="48" text-anchor="end" style="font-size:36px">313</text>
 
+<text class="cap" x="60" y="116">Not enough games to chart</text>
 
-
-<text class="mut" x="24" y="200">Peak — · 0% win · 1 games · last 0</text>
+<rect x="364" y="165" width="8" height="8" rx="1.5" fill="#e7bd6b"/><text class="tick" x="376" y="172">W</text><rect x="392" y="165" width="8" height="8" rx="1.5" fill="#e7bd6b" opacity=".34"/><text class="tick" x="404" y="172">D</text><rect x="420.6" y="165.6" width="6.8" height="6.8" rx="1.2" fill="none" stroke="#a5917a" stroke-width="1.2" opacity=".55"/><text class="tick" x="432" y="172">L</text>
+<line class="rule" x1="26" y1="186" x2="444" y2="186"/>
+<text class="cap" x="26" y="202">0% win · 1 game</text>
+<text class="cap" x="444" y="202" text-anchor="end">peak —</text>
 </svg>

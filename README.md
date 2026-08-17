@@ -6,9 +6,9 @@ Chess.com stats for your GitHub profile, auto-updated via Actions — no server 
 
 - **Free** — GitHub Actions + static SVG, no server
 - **Auto-updates** — runs every 6 hours
-- **8 styles** — premium, editorial, wood, tech, glass, piece, light, light-editorial
+- **13 styles** — premium, editorial, wood, tech, glass, piece, light, light-editorial, chess, matrix, midnight, neon, ocean
 - **3 card types** — summary (all 4 modes), line chart, hero card
-- **72 SVGs** — all styles × all card types generated automatically
+- **117 SVGs** — all styles × all card types generated automatically
 
 ## Quick Start
 
@@ -47,7 +47,7 @@ chess-stats-{mode}-hero-{style}.svg      # hero card, other style
 
 **`{mode}`**: `blitz` · `rapid` · `bullet` · `daily`
 
-**`{style}`**: `editorial` · `wood` · `tech` · `glass` · `piece` · `light` · `light-editorial`
+**`{style}`**: `editorial` · `wood` · `tech` · `glass` · `piece` · `light` · `light-editorial` · `chess` · `matrix` · `midnight` · `neon` · `ocean`
 
 _(omit style for the default `premium` dark)_
 

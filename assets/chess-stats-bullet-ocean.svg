@@ -1,30 +1,21 @@
-<svg width="480" height="200" viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="ag" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#2ecc71" stop-opacity="0.2"/>
-      <stop offset="100%" stop-color="#2ecc71" stop-opacity="0"/>
-    </linearGradient>
-    <clipPath id="cc"><rect x="52" y="48" width="404" height="124"/></clipPath>
-  </defs>
-  <style>@keyframes p{0%,100%{r:4;opacity:.5}50%{r:9;opacity:0}}.pr{animation:p 2.5s ease-in-out infinite}</style>
-  <rect width="480" height="200" fill="#0c2d48" rx="10"/>
-  <rect x="1" y="1" width="478" height="198" fill="none" stroke="#2471a3" rx="10" stroke-opacity="0.5"/>
-  <text x="24" y="22" fill="#bdc3c7" font-size="10" font-weight="500" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" letter-spacing="1.5">BULLET RATING</text>
-  <text x="456" y="22" fill="#ecf0f1" font-size="18" font-weight="600" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="end">549</text>
-  <text x="456" y="38" fill="#e74c3c" font-size="11" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="end">-107</text>
-  
-  <line x1="52" y1="48.0" x2="456" y2="48.0" stroke="#2471a3" stroke-width="1" stroke-dasharray="3,6"/>
-  <text x="44" y="51.5" fill="#85929e" font-size="9" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="end">672</text>
-  <line x1="52" y1="89.3" x2="456" y2="89.3" stroke="#2471a3" stroke-width="1" stroke-dasharray="3,6"/>
-  <text x="44" y="92.8" fill="#85929e" font-size="9" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="end">626</text>
-  <line x1="52" y1="130.7" x2="456" y2="130.7" stroke="#2471a3" stroke-width="1" stroke-dasharray="3,6"/>
-  <text x="44" y="134.2" fill="#85929e" font-size="9" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="end">579</text>
-  <line x1="52" y1="172.0" x2="456" y2="172.0" stroke="#2471a3" stroke-width="1" stroke-dasharray="3,6"/>
-  <text x="44" y="175.5" fill="#85929e" font-size="9" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="end">533</text>
-  <path d="M 52.00 62.31 C 68.83 66.76 119.33 80.88 153.00 89.05 C 186.67 97.22 220.33 103.91 254.00 111.34 C 287.67 118.77 321.33 125.90 355.00 133.62 C 388.67 141.35 439.17 153.68 456.00 157.69 L 456.00,172.00 L 52.00,172.00 Z" fill="url(#ag)" clip-path="url(#cc)"/>
-  <path d="M 52.00 62.31 C 68.83 66.76 119.33 80.88 153.00 89.05 C 186.67 97.22 220.33 103.91 254.00 111.34 C 287.67 118.77 321.33 125.90 355.00 133.62 C 388.67 141.35 439.17 153.68 456.00 157.69" fill="none" stroke="#2ecc71" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" clip-path="url(#cc)"/>
-  <circle cx="456.0" cy="157.7" r="4" fill="none" stroke="#2ecc71" stroke-width="1" class="pr"/>
-  <circle cx="456.0" cy="157.7" r="2.5" fill="#0c2d48" stroke="#2ecc71" stroke-width="1.5"/>
-  <text x="24" y="192" fill="#85929e" font-size="9" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">@bappozl</text>
-  <text x="456" y="192" fill="#85929e" font-size="9" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="end">last 5 games</text>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 470 210" width="470" height="210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="BULLET rating history, currently 751, 56% win rate over 254 games">
+<style>svg{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif}text{fill:#e0f0f6;white-space:pre}.bg{fill:#071a24}.acc{fill:#38b6d6}.win{fill:#1baf7a}.draw{fill:#8b8f96}.loss{fill:#d03b3b}.lbl{font-size:10px;font-weight:600;letter-spacing:.18em;fill:#77949f}.cap{font-size:10.5px;font-weight:500;fill:#77949f}.num{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;font-weight:700;letter-spacing:-.02em}.tick{font-size:9px;font-weight:500;fill:#77949f;opacity:.75}.dl{font-size:10px;font-weight:600}.rule{stroke:#12303d;stroke-width:1;fill:none}.grid{stroke:#12303d;stroke-width:1;fill:none;opacity:.7}.ln{fill:none;stroke:#38b6d6;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.ring{stroke:#071a24;stroke-width:2}.hollow{fill:none;stroke-width:1.5}.sq{fill:#e0f0f6;opacity:.035}</style>
+<rect class="bg" width="470" height="210" rx="16"/>
+<defs><linearGradient id="gp" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e0f0f6" stop-opacity="0"/><stop offset="1" stop-color="#e0f0f6" stop-opacity=".05"/></linearGradient></defs><rect width="470" height="210" fill="url(#gp)"/>
+<g class="acc" transform="translate(24.0,22.8) scale(0.2000)"><path d="M50 8c-8.8 0-16 7.2-16 16 0 5.2 2.5 9.9 6.4 12.8-2.1 1.2-3.9 2.8-5.3 4.7h29.8c-1.4-1.9-3.2-3.5-5.3-4.7C63.5 33.9 66 29.2 66 24c0-8.8-7.2-16-16-16zM37 46c.6 13.6-2.4 24.5-9 32.7h44c-6.6-8.2-9.6-19.1-9-32.7H37zM24 82h52c3.9 0 7 3.1 7 7v7H17v-7c0-3.9 3.1-7 7-7z"/></g>
+<text class="lbl" x="50" y="39">BULLET</text>
+<text class="cap" x="50" y="55">Rating history</text>
+<text class="num" x="444" y="48" text-anchor="end" style="font-size:36px">751</text>
+<path fill="#1baf7a" d="M414 61L418 67H410Z"/><text class="dl" x="444" y="68" text-anchor="end" fill="#1baf7a">+48</text>
+<line class="grid" x1="60" y1="84" x2="444" y2="84"/><line class="grid" x1="60" y1="148" x2="444" y2="148"/>
+<text class="tick" x="52" y="87" text-anchor="end">751</text>
+<text class="tick" x="52" y="151" text-anchor="end">703</text>
+<path class="ln" d="M60.0 141.8C63.4 139.8 73.5 130.0 80.2 130.0C86.9 130.0 93.7 141.8 100.4 141.8C107.2 141.8 113.9 133.7 120.6 130.0C127.4 126.2 134.1 122.8 140.8 119.2C147.6 115.6 154.3 111.9 161.1 108.5C167.8 105.1 174.5 98.6 181.3 98.8C188.0 99.0 194.7 109.4 201.5 109.5C208.2 109.7 214.9 102.9 221.7 99.9C228.4 96.8 235.2 91.3 241.9 91.3C248.6 91.3 255.4 100.1 262.1 99.9C268.8 99.7 275.6 90.6 282.3 90.2C289.1 89.8 295.8 95.0 302.5 97.7C309.3 100.4 316.0 106.1 322.7 106.3C329.5 106.5 336.2 98.6 342.9 98.8C349.7 99.0 356.4 104.5 363.2 107.4C369.9 110.3 376.6 116.0 383.4 116.0C390.1 116.0 396.8 110.3 403.6 107.4C410.3 104.5 417.1 101.7 423.8 98.8C430.5 95.9 440.6 91.6 444.0 90.2"/>
+<circle class="acc ring" cx="444.0" cy="90.2" r="3.8"/>
+<rect x="26.6" y="164.6" width="7.3" height="7.3" rx="1.2" fill="none" stroke="#77949f" stroke-width="1.2" opacity=".55"/><rect x="37.9" y="164" width="8.5" height="8.5" rx="1.5" fill="#38b6d6"/><rect x="50.4" y="164.6" width="7.3" height="7.3" rx="1.2" fill="none" stroke="#77949f" stroke-width="1.2" opacity=".55"/><rect x="61.7" y="164" width="8.5" height="8.5" rx="1.5" fill="#38b6d6"/><rect x="73.6" y="164" width="8.5" height="8.5" rx="1.5" fill="#38b6d6"/><rect x="85.5" y="164" width="8.5" height="8.5" rx="1.5" fill="#38b6d6"/><rect x="97.4" y="164" width="8.5" height="8.5" rx="1.5" fill="#38b6d6"/><rect x="109.9" y="164.6" width="7.3" height="7.3" rx="1.2" fill="none" stroke="#77949f" stroke-width="1.2" opacity=".55"/><rect x="121.2" y="164" width="8.5" height="8.5" rx="1.5" fill="#38b6d6"/><rect x="133.1" y="164" width="8.5" height="8.5" rx="1.5" fill="#38b6d6"/><rect x="145.6" y="164.6" width="7.3" height="7.3" rx="1.2" fill="none" stroke="#77949f" stroke-width="1.2" opacity=".55"/><rect x="156.9" y="164" width="8.5" height="8.5" rx="1.5" fill="#38b6d6"/><rect x="169.4" y="164.6" width="7.3" height="7.3" rx="1.2" fill="none" stroke="#77949f" stroke-width="1.2" opacity=".55"/><rect x="181.3" y="164.6" width="7.3" height="7.3" rx="1.2" fill="none" stroke="#77949f" stroke-width="1.2" opacity=".55"/><rect x="192.6" y="164" width="8.5" height="8.5" rx="1.5" fill="#38b6d6"/><rect x="205.1" y="164.6" width="7.3" height="7.3" rx="1.2" fill="none" stroke="#77949f" stroke-width="1.2" opacity=".55"/><rect x="217.0" y="164.6" width="7.3" height="7.3" rx="1.2" fill="none" stroke="#77949f" stroke-width="1.2" opacity=".55"/><rect x="228.3" y="164" width="8.5" height="8.5" rx="1.5" fill="#38b6d6"/><rect x="240.2" y="164" width="8.5" height="8.5" rx="1.5" fill="#38b6d6"/><rect x="252.1" y="164" width="8.5" height="8.5" rx="1.5" fill="#38b6d6"/>
+<rect x="364" y="165" width="8" height="8" rx="1.5" fill="#38b6d6"/><text class="tick" x="376" y="172">W</text><rect x="392" y="165" width="8" height="8" rx="1.5" fill="#38b6d6" opacity=".34"/><text class="tick" x="404" y="172">D</text><rect x="420.6" y="165.6" width="6.8" height="6.8" rx="1.2" fill="none" stroke="#77949f" stroke-width="1.2" opacity=".55"/><text class="tick" x="432" y="172">L</text>
+<line class="rule" x1="26" y1="186" x2="444" y2="186"/>
+<text class="cap" x="26" y="202">56% win · 254 games</text>
+<text class="cap" x="444" y="202" text-anchor="end">peak 751</text>
 </svg>

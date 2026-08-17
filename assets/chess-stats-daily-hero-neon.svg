@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 340 210" width="340" height="210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="DAILY rating 313, 0% win rate over 1 games">
+<style>svg{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif}text{fill:#f0e9f8;white-space:pre}.bg{fill:#0c0a12}.acc{fill:#c85cf0}.win{fill:#1baf7a}.draw{fill:#8b8f96}.loss{fill:#d03b3b}.lbl{font-size:10px;font-weight:600;letter-spacing:.18em;fill:#8d84a0}.cap{font-size:10.5px;font-weight:500;fill:#8d84a0}.num{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;font-weight:700;letter-spacing:-.02em}.tick{font-size:9px;font-weight:500;fill:#8d84a0;opacity:.75}.dl{font-size:10px;font-weight:600}.rule{stroke:#201b2c;stroke-width:1;fill:none}.grid{stroke:#201b2c;stroke-width:1;fill:none;opacity:.7}.ln{fill:none;stroke:#c85cf0;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.ring{stroke:#0c0a12;stroke-width:2}.hollow{fill:none;stroke-width:1.5}.sq{fill:#f0e9f8;opacity:.035}</style>
+<rect class="bg" width="340" height="210" rx="16"/>
+
+<g class="acc" transform="translate(23.0,21.8) scale(0.2000)"><path d="M46 4h8v10h10v8H54v12h-8V22H36v-8h10V4zM50 40c-13 0-24 8-24 19 0 6 4 11 10 14l-6 9h40l-6-9c6-3 10-8 10-14 0-11-11-19-24-19zM26 84h48c4.4 0 8 3.6 8 8v4H18v-4c0-4.4 3.6-8 8-8z"/></g>
+<text class="lbl" x="49" y="38">DAILY</text>
+<text class="num" x="26" y="96" style="font-size:55px">313</text>
+<text class="cap" x="26" y="122">no recent games</text>
+<rect x="26.0" y="134" width="288.0" height="3" rx="1.5" fill="#c85cf0" opacity="0.15"/>
+
+<line class="rule" x1="26" y1="188" x2="314" y2="188"/>
+<text class="cap" x="26" y="203">0% win · 1 game</text>
+<text class="cap" x="314" y="203" text-anchor="end">peak —</text>
+</svg>

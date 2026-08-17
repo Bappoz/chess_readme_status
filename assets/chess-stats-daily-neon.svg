@@ -1,7 +1,17 @@
-<svg width="480" height="200" viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg">
-  <rect width="480" height="200" fill="#0a0a1a" rx="10"/>
-  <rect x="1" y="1" width="478" height="198" fill="none" stroke="#00ffff33" rx="10" stroke-opacity="0.5"/>
-  <text x="240" y="88" fill="#008888" font-size="10" font-weight="500" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="middle" letter-spacing="1.5">DAILY</text>
-  <text x="240" y="110" fill="#00ffff" font-size="14" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="middle">No rating data yet</text>
-  <text x="240" y="130" fill="#008888" font-size="10" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" text-anchor="middle">Play games to see your history</text>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 470 210" width="470" height="210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="DAILY rating history, currently 313, 0% win rate over 1 games">
+<style>svg{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif}text{fill:#f0e9f8;white-space:pre}.bg{fill:#0c0a12}.acc{fill:#c85cf0}.win{fill:#1baf7a}.draw{fill:#8b8f96}.loss{fill:#d03b3b}.lbl{font-size:10px;font-weight:600;letter-spacing:.18em;fill:#8d84a0}.cap{font-size:10.5px;font-weight:500;fill:#8d84a0}.num{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;font-weight:700;letter-spacing:-.02em}.tick{font-size:9px;font-weight:500;fill:#8d84a0;opacity:.75}.dl{font-size:10px;font-weight:600}.rule{stroke:#201b2c;stroke-width:1;fill:none}.grid{stroke:#201b2c;stroke-width:1;fill:none;opacity:.7}.ln{fill:none;stroke:#c85cf0;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.ring{stroke:#0c0a12;stroke-width:2}.hollow{fill:none;stroke-width:1.5}.sq{fill:#f0e9f8;opacity:.035}</style>
+<rect class="bg" width="470" height="210" rx="16"/>
+
+<g class="acc" transform="translate(24.0,22.8) scale(0.2000)"><path d="M46 4h8v10h10v8H54v12h-8V22H36v-8h10V4zM50 40c-13 0-24 8-24 19 0 6 4 11 10 14l-6 9h40l-6-9c6-3 10-8 10-14 0-11-11-19-24-19zM26 84h48c4.4 0 8 3.6 8 8v4H18v-4c0-4.4 3.6-8 8-8z"/></g>
+<text class="lbl" x="50" y="39">DAILY</text>
+<text class="cap" x="50" y="55">Rating history</text>
+<text class="num" x="444" y="48" text-anchor="end" style="font-size:36px">313</text>
+
+<text class="cap" x="60" y="116">Not enough games to chart</text>
+
+<rect x="364" y="165" width="8" height="8" rx="1.5" fill="#c85cf0"/><text class="tick" x="376" y="172">W</text><rect x="392" y="165" width="8" height="8" rx="1.5" fill="#c85cf0" opacity=".34"/><text class="tick" x="404" y="172">D</text><rect x="420.6" y="165.6" width="6.8" height="6.8" rx="1.2" fill="none" stroke="#8d84a0" stroke-width="1.2" opacity=".55"/><text class="tick" x="432" y="172">L</text>
+<line class="rule" x1="26" y1="186" x2="444" y2="186"/>
+<text class="cap" x="26" y="202">0% win · 1 game</text>
+<text class="cap" x="444" y="202" text-anchor="end">peak —</text>
 </svg>
