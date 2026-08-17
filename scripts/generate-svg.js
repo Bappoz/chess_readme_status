@@ -8,8 +8,25 @@ const CACHE_MAX_AGE = 7 * 24 * 60 * 60 * 1000;
 
 // ─── Design config ──────────────────────────────────────────────────────────
 
-const MODE_PIECES = { blitz: "♞", rapid: "♛", bullet: "♟", daily: "♚" };
+// Peças desenhadas em <path> num quadro 100×100 (base assentada em y=96).
+// Os glyphs Unicode (♞♛♟♚, U+265A-F) só existem em fontes de símbolos que a
+// maioria dos renderizadores não resolve — viravam tofu ("No Glyph") em 32 dos
+// 72 cards. Path é determinístico e independente das fontes da máquina.
+const MODE_PIECES = {
+  blitz: `<path fill-rule="evenodd" d="M66 5l-4 17c9 10 16 27 16 58H34c0-8-1-14-4-20-6 3-13 2-16-2-3-3-3-8 0-12 3-5 6-10 10-14 6-6 13-10 21-11 7-1 14 0 21 4zM37.4 39a3.4 3.4 0 1 0-6.8 0 3.4 3.4 0 1 0 6.8 0zM24 82h52c3.9 0 7 3.1 7 7v7H17v-7c0-3.9 3.1-7 7-7z"/>`,
+  rapid: `<path d="M18 22a6 6 0 1 1 0 12 6 6 0 0 1 0-12zm64 0a6 6 0 1 1 0 12 6 6 0 0 1 0-12zM50 6a6 6 0 1 1 0 12 6 6 0 0 1 0-12zM22 36l8 26h40l8-26-14 14-14-22-14 22zM28 66h44c1.6 0 3 1.3 3 3v5c0 1.6-1.4 3-3 3H28c-1.6 0-3-1.4-3-3v-5c0-1.7 1.4-3 3-3zM26 80h48c4.4 0 8 3.6 8 8v8H18v-8c0-4.4 3.6-8 8-8z"/>`,
+  bullet: `<path d="M50 8c-8.8 0-16 7.2-16 16 0 5.2 2.5 9.9 6.4 12.8-2.1 1.2-3.9 2.8-5.3 4.7h29.8c-1.4-1.9-3.2-3.5-5.3-4.7C63.5 33.9 66 29.2 66 24c0-8.8-7.2-16-16-16zM37 46c.6 13.6-2.4 24.5-9 32.7h44c-6.6-8.2-9.6-19.1-9-32.7H37zM24 82h52c3.9 0 7 3.1 7 7v7H17v-7c0-3.9 3.1-7 7-7z"/>`,
+  daily: `<path d="M46 4h8v10h10v8H54v12h-8V22H36v-8h10V4zM50 40c-13 0-24 8-24 19 0 6 4 11 10 14l-6 9h40l-6-9c6-3 10-8 10-14 0-11-11-19-24-19zM26 84h48c4.4 0 8 3.6 8 8v4H18v-4c0-4.4 3.6-8 8-8z"/>`,
+};
 const MODE_LABELS = { blitz: "BLITZ", rapid: "RAPID", bullet: "BULLET", daily: "DAILY" };
+
+// Desenha a peça com altura `h`, centrada em `cx`, assentada na baseline `y`.
+function pieceMark(mode, cx, y, h, cls = "acc", attrs = "") {
+  const s = h / 100;
+  const tx = (cx - 50 * s).toFixed(1);
+  const ty = (y - 96 * s).toFixed(1);
+  return `<g class="${cls}" ${attrs}transform="translate(${tx},${ty}) scale(${s.toFixed(4)})">${MODE_PIECES[mode]}</g>`;
+}
 
 const STYLES = {
   premium:           { text:"#e9eaec", bg:"#111317", acc:"#8ac054", down:"#d9694a", areaOp:".13", peakOp:".3",  chipOp:".14", extra:"" },
@@ -45,12 +62,15 @@ function buildCSS(styleName) {
     `.mono{font-family:'JetBrains Mono',monospace}`,
     `.ln{fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}`,
     `.thin{stroke-width:1.6}`,
-    `.draw{stroke-dasharray:1200;stroke-dashoffset:1200;animation:draw 2.3s cubic-bezier(.6,.05,.2,1) forwards .25s}`,
+    // Estado base = traçado completo (dashoffset 0). A animação parte do
+    // escondido via `from` + `backwards`, então renderizador que ignora CSS
+    // animation mostra a linha inteira em vez de nada.
+    `.draw{stroke-dasharray:1;stroke-dashoffset:0;animation:draw 2.3s cubic-bezier(.6,.05,.2,1) .25s backwards}`,
     `.dot{animation:pulse 2s ease-in-out infinite}`,
     `.glow{animation:glow 3.4s ease-in-out infinite}`,
     `.float{animation:float 6.5s ease-in-out infinite}`,
     `.shim{animation:shim 3s ease-in-out infinite}`,
-    `@keyframes draw{to{stroke-dashoffset:0}}`,
+    `@keyframes draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}`,
     `@keyframes pulse{0%,100%{r:4.5;opacity:1}50%{r:8;opacity:.45}}`,
     `@keyframes glow{0%,100%{opacity:.14}50%{opacity:.34}}`,
     `@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}`,
@@ -101,7 +121,6 @@ function winPct(wins, losses, draws) {
 
 function renderHero(data, mode, styleName) {
   const css = buildCSS(styleName);
-  const piece = MODE_PIECES[mode];
   const label = MODE_LABELS[mode];
   const { rating, best, wins, losses, draws, history } = data;
   const total = wins + losses + draws;
@@ -125,7 +144,7 @@ function renderHero(data, mode, styleName) {
 
   if (styleName === "wood") {
     const miniPts = chartPoints(history.slice(-10), 196, 322, 165, 194);
-    const miniLine = miniPts.length > 1 ? `<polyline class="ln draw" points="${pline(miniPts)}"/>` : "";
+    const miniLine = miniPts.length > 1 ? `<polyline class="ln draw" pathLength="1" points="${pline(miniPts)}"/>` : "";
     return `<?xml version="1.0" encoding="UTF-8"?>
 <svg viewBox="0 0 340 210" width="340" height="210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${label} hero">
 <defs>
@@ -137,7 +156,7 @@ function renderHero(data, mode, styleName) {
 <rect class="sq" x="0" y="140" width="34" height="34"/><rect class="sq" x="68" y="140" width="34" height="34"/>
 <rect class="sq" x="34" y="174" width="34" height="34"/><rect class="sq" x="102" y="174" width="34" height="34"/>
 <ellipse class="acc glow" cx="92" cy="112" rx="60" ry="60" filter="url(#bC)"/>
-<text class="acc float ser" x="92" y="166" text-anchor="middle" style="font-size:150px">${piece}</text>
+${pieceMark(mode, 92, 168, 112, "acc float")}
 <text class="mut" x="196" y="50">${label}</text>
 <text class="big ser" x="196" y="98" style="font-size:52px">${r}</text>
 <text class="${tr.cls} mid" x="196" y="122">${tr.str}</text>
@@ -148,7 +167,7 @@ ${miniLine}
 
   if (styleName === "tech") {
     const techPts = chartPoints(history.slice(-10), 26, 314, 170, 190);
-    const techLine = techPts.length > 1 ? `<polyline class="ln thin draw" points="${pline(techPts)}"/>` : "";
+    const techLine = techPts.length > 1 ? `<polyline class="ln thin draw" pathLength="1" points="${pline(techPts)}"/>` : "";
     const step = Math.max(1, Math.floor(techPts.length / 4));
     const nodes = techPts
       .filter((_, i) => i > 0 && i < techPts.length - 1 && i % step === 0)
@@ -201,7 +220,7 @@ ${techLine}${nodes}${last ? `<circle class="acc dot" cx="${last.x.toFixed(1)}" c
 <style>${css}</style>
 <rect class="bg" width="380" height="210" rx="20"/>
 <ellipse class="acc glow" cx="120" cy="120" rx="96" ry="88" filter="url(#bF)"/>
-<text class="float ser" x="120" y="196" text-anchor="middle" style="font-size:210px" fill="url(#pF)">${piece}</text>
+${pieceMark(mode, 120, 196, 158, "float", `fill="url(#pF)" `)}
 <text class="mut" x="238" y="58">${label}</text>
 <text class="big" x="238" y="104" style="font-size:52px">${r}</text>
 <text class="${tr.cls} mid" x="238" y="130">${tr.str}</text>
@@ -213,7 +232,7 @@ ${techLine}${nodes}${last ? `<circle class="acc dot" cx="${last.x.toFixed(1)}" c
 
   // premium / light (1A / 1H)
   const miniPts = chartPoints(history.slice(-10), 196, 322, 165, 194);
-  const miniLine = miniPts.length > 1 ? `<polyline class="ln draw" points="${pline(miniPts)}"/>` : "";
+  const miniLine = miniPts.length > 1 ? `<polyline class="ln draw" pathLength="1" points="${pline(miniPts)}"/>` : "";
   const fid = styleName === "light" ? "bL" : "bA";
   return `<?xml version="1.0" encoding="UTF-8"?>
 <svg viewBox="0 0 340 210" width="340" height="210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${label} hero">
@@ -221,7 +240,7 @@ ${techLine}${nodes}${last ? `<circle class="acc dot" cx="${last.x.toFixed(1)}" c
 <style>${css}</style>
 <rect class="bg" width="340" height="210" rx="20"/>
 <ellipse class="acc glow" cx="94" cy="118" rx="66" ry="66" filter="url(#${fid})"/>
-<text class="acc float ser" x="94" y="170" text-anchor="middle" style="font-size:152px">${piece}</text>
+${pieceMark(mode, 94, 172, 114, "acc float")}
 <text class="mut" x="196" y="50">${label}</text>
 <text class="big" x="196" y="94" style="font-size:46px">${r}</text>
 <text class="${tr.cls} mid" x="196" y="120">${tr.str}</text>
@@ -234,7 +253,6 @@ ${miniLine}
 
 function renderLine(data, mode, styleName) {
   const css = buildCSS(styleName);
-  const piece = MODE_PIECES[mode];
   const label = MODE_LABELS[mode];
   const { rating, best, wins, losses, draws, history } = data;
   const total = wins + losses + draws;
@@ -255,7 +273,7 @@ function renderLine(data, mode, styleName) {
 <text class="acc ser" x="30" y="86" style="font-size:52px">${r}</text>
 <text class="${tr.cls} mid" x="140" y="84">${tr.str}</text>
 <line class="rule" x1="30" y1="104" x2="440" y2="104"/>
-${pts.length > 1 ? `<polyline class="ln thin draw" points="${pline(pts)}"/>` : ""}
+${pts.length > 1 ? `<polyline class="ln thin draw" pathLength="1" points="${pline(pts)}"/>` : ""}
 ${lastPt ? `<circle class="acc dot" cx="${lastPt.x.toFixed(1)}" cy="${lastPt.y.toFixed(1)}" r="3.5"/>` : ""}
 <text class="mut" x="30" y="200">${wp}% win · ${total} games · last ${last20.length} games</text>
 </svg>`;
@@ -272,7 +290,7 @@ ${lastPt ? `<circle class="acc dot" cx="${lastPt.x.toFixed(1)}" cy="${lastPt.y.t
 <style>${css}</style>
 <rect width="470" height="210" rx="20" fill="url(#wC2)"/>
 <rect class="sq" x="24" y="150" width="26" height="26"/><rect class="sq" x="76" y="150" width="26" height="26"/><rect class="sq" x="50" y="176" width="26" height="26"/>
-<text class="acc ser" x="30" y="42" style="font-size:22px">${piece}</text>
+${pieceMark(mode, 38, 44, 24, "acc")}
 <text class="mut" x="58" y="30">${label}</text>
 <text class="mid" x="58" y="47">Rating history</text>
 <text class="big ser" x="446" y="44" text-anchor="end" style="font-size:38px">${r}</text>
@@ -280,7 +298,7 @@ ${lastPt ? `<circle class="acc dot" cx="${lastPt.x.toFixed(1)}" cy="${lastPt.y.t
 <line class="peak" x1="44" y1="52" x2="446" y2="52" stroke-dasharray="4 5"/>
 <text class="mut" x="245" y="46" text-anchor="middle" style="font-size:9px;letter-spacing:.1em">PEAK ${b}</text>
 ${pts.length > 1 ? `<polygon class="area" points="${areaPts(pts, 182)}"/>` : ""}
-${pts.length > 1 ? `<polyline class="ln draw" points="${pline(pts)}"/>` : ""}
+${pts.length > 1 ? `<polyline class="ln draw" pathLength="1" points="${pline(pts)}"/>` : ""}
 ${lastPt ? `<circle class="acc dot" cx="${lastPt.x.toFixed(1)}" cy="${lastPt.y.toFixed(1)}" r="4.5"/>` : ""}
 <text class="mut" x="24" y="200">Peak ${b} · ${wp}% win · ${total} games · last ${last20.length}</text>
 </svg>`;
@@ -304,7 +322,7 @@ ${lastPt ? `<circle class="acc dot" cx="${lastPt.x.toFixed(1)}" cy="${lastPt.y.t
 <text class="mut mono" x="24" y="30">${mode.toUpperCase()}.RATING</text>
 <text class="big mono" x="446" y="34" text-anchor="end" style="font-size:28px">${r}</text>
 <text class="${tr.cls} mono mid" x="446" y="52" text-anchor="end">${tr.str}</text>
-${pts.length > 1 ? `<polyline class="ln draw" points="${pline(pts)}"/>` : ""}
+${pts.length > 1 ? `<polyline class="ln draw" pathLength="1" points="${pline(pts)}"/>` : ""}
 ${nodes}
 ${lastPt ? `<circle class="acc dot" cx="${lastPt.x.toFixed(1)}" cy="${lastPt.y.toFixed(1)}" r="4.5"/>` : ""}
 <text class="mut mono" x="44" y="202">a1</text><text class="mut mono" x="245" y="202" text-anchor="middle">d4</text><text class="mut mono" x="446" y="202" text-anchor="end">h8</text>
@@ -331,7 +349,7 @@ ${lastPt ? `<circle class="acc dot" cx="${lastPt.x.toFixed(1)}" cy="${lastPt.y.t
 <line class="peak" x1="44" y1="82" x2="446" y2="82" stroke-dasharray="4 5"/>
 <text class="mut" x="44" y="78" style="font-size:9px">PEAK ${b}</text>
 ${pts.length > 1 ? `<polygon class="area" points="${areaPts(pts, 182)}"/>` : ""}
-${pts.length > 1 ? `<polyline class="ln draw" points="${pline(pts)}"/>` : ""}
+${pts.length > 1 ? `<polyline class="ln draw" pathLength="1" points="${pline(pts)}"/>` : ""}
 ${lastPt ? `<circle class="acc dot" cx="${lastPt.x.toFixed(1)}" cy="${lastPt.y.toFixed(1)}" r="4.5"/>` : ""}
 </svg>`;
   }
@@ -345,12 +363,12 @@ ${lastPt ? `<circle class="acc dot" cx="${lastPt.x.toFixed(1)}" cy="${lastPt.y.t
 <style>${css}</style>
 <rect class="bg" width="470" height="210" rx="20"/>
 <ellipse class="acc glow" cx="60" cy="150" rx="60" ry="60" filter="url(#bF2)"/>
-<text class="acc float ser" x="58" y="188" text-anchor="middle" style="font-size:120px">${piece}</text>
+${pieceMark(mode, 58, 190, 90, "acc float")}
 <text class="mut" x="150" y="40">${label} RATING</text>
 <text class="big" x="150" y="80" style="font-size:38px">${r}</text>
 <text class="${tr.cls} mid" x="270" y="80">${tr.str}</text>
 ${pts.length > 1 ? `<polygon class="area" points="${areaPts(pts, 182)}"/>` : ""}
-${pts.length > 1 ? `<polyline class="ln draw" points="${pline(pts)}"/>` : ""}
+${pts.length > 1 ? `<polyline class="ln draw" pathLength="1" points="${pline(pts)}"/>` : ""}
 ${lastPt ? `<circle class="acc dot" cx="${lastPt.x.toFixed(1)}" cy="${lastPt.y.toFixed(1)}" r="4.5"/>` : ""}
 <text class="mut" x="150" y="202">Peak ${b} · ${wp}% win · ${total} games</text>
 </svg>`;
@@ -364,7 +382,7 @@ ${lastPt ? `<circle class="acc dot" cx="${lastPt.x.toFixed(1)}" cy="${lastPt.y.t
 <style>${css}</style>
 <rect class="bg" width="470" height="210" rx="20"/>
 <rect class="chip" x="24" y="20" width="30" height="30" rx="9"/>
-<text class="acc ser" x="39" y="42" text-anchor="middle" style="font-size:19px">${piece}</text>
+${pieceMark(mode, 39, 43, 21, "acc")}
 <text class="mut" x="66" y="30">${label}</text>
 <text class="mid" x="66" y="47">Rating history</text>
 <text class="big" x="446" y="42" text-anchor="end">${r}</text>
@@ -372,7 +390,7 @@ ${lastPt ? `<circle class="acc dot" cx="${lastPt.x.toFixed(1)}" cy="${lastPt.y.t
 <line class="peak" x1="44" y1="52" x2="446" y2="52" stroke-dasharray="4 5"/>
 <text class="mut" x="245" y="46" text-anchor="middle" style="font-size:9px;letter-spacing:.1em">PEAK ${b}</text>
 ${pts.length > 1 ? `<polygon class="area" points="${areaPts(pts, 182)}"/>` : ""}
-${pts.length > 1 ? `<polyline class="ln draw" points="${pline(pts)}"/>` : ""}
+${pts.length > 1 ? `<polyline class="ln draw" pathLength="1" points="${pline(pts)}"/>` : ""}
 ${lastPt ? `<circle class="acc dot" cx="${lastPt.x.toFixed(1)}" cy="${lastPt.y.toFixed(1)}" r="4.5"/>` : ""}
 <text class="mut" x="24" y="200">Peak ${b} · ${wp}% win · ${total} games · last ${last20.length}</text>
 </svg>`;
@@ -401,7 +419,7 @@ function renderSummary(allData, styleName, username) {
     const d = allData[mode];
     const tr = trendOf(d.history, d.rating);
     const miniPts = chartPoints(d.history.slice(-8), x0, x1, 160, 182);
-    const miniLine = miniPts.length > 1 ? `<polyline class="ln thin draw" points="${pline(miniPts)}"/>` : "";
+    const miniLine = miniPts.length > 1 ? `<polyline class="ln thin draw" pathLength="1" points="${pline(miniPts)}"/>` : "";
     const rating = d.rating || "—";
     const divEl = divX
       ? isEd

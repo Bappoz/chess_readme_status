@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg viewBox="0 0 840 200" width="840" height="200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Chess.com stats summary">
 
-<style>text{fill:#f3efe6}.bg{fill:#141210}.acc{fill:#d8a24a}.ln{stroke:#d8a24a}.area{fill:#d8a24a;opacity:.05}.peak{stroke:#d8a24a;opacity:.28}.chip{fill:#d8a24a;opacity:.14}.down{fill:#c56a4a}.rule{stroke:#3a352c}svg{font-family:'Space Grotesk',system-ui,sans-serif}.lbl{font-weight:600;font-size:11px;letter-spacing:.16em}.big{font-weight:700;font-size:34px;letter-spacing:-.02em}.mid{font-weight:600;font-size:14px}.mut{font-weight:500;font-size:11px;opacity:.5}.ser{font-family:'Instrument Serif',serif;font-weight:400;letter-spacing:0}.mono{font-family:'JetBrains Mono',monospace}.ln{fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}.thin{stroke-width:1.6}.draw{stroke-dasharray:1200;stroke-dashoffset:1200;animation:draw 2.3s cubic-bezier(.6,.05,.2,1) forwards .25s}.dot{animation:pulse 2s ease-in-out infinite}.glow{animation:glow 3.4s ease-in-out infinite}.float{animation:float 6.5s ease-in-out infinite}.shim{animation:shim 3s ease-in-out infinite}@keyframes draw{to{stroke-dashoffset:0}}@keyframes pulse{0%,100%{r:4.5;opacity:1}50%{r:8;opacity:.45}}@keyframes glow{0%,100%{opacity:.14}50%{opacity:.34}}@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}@keyframes shim{0%,100%{opacity:.5}50%{opacity:1}}</style>
+<style>text{fill:#f3efe6}.bg{fill:#141210}.acc{fill:#d8a24a}.ln{stroke:#d8a24a}.area{fill:#d8a24a;opacity:.05}.peak{stroke:#d8a24a;opacity:.28}.chip{fill:#d8a24a;opacity:.14}.down{fill:#c56a4a}.rule{stroke:#3a352c}svg{font-family:'Space Grotesk',system-ui,sans-serif}.lbl{font-weight:600;font-size:11px;letter-spacing:.16em}.big{font-weight:700;font-size:34px;letter-spacing:-.02em}.mid{font-weight:600;font-size:14px}.mut{font-weight:500;font-size:11px;opacity:.5}.ser{font-family:'Instrument Serif',serif;font-weight:400;letter-spacing:0}.mono{font-family:'JetBrains Mono',monospace}.ln{fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}.thin{stroke-width:1.6}.draw{stroke-dasharray:1;stroke-dashoffset:0;animation:draw 2.3s cubic-bezier(.6,.05,.2,1) .25s backwards}.dot{animation:pulse 2s ease-in-out infinite}.glow{animation:glow 3.4s ease-in-out infinite}.float{animation:float 6.5s ease-in-out infinite}.shim{animation:shim 3s ease-in-out infinite}@keyframes draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}@keyframes pulse{0%,100%{r:4.5;opacity:1}50%{r:8;opacity:.45}}@keyframes glow{0%,100%{opacity:.14}50%{opacity:.34}}@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}@keyframes shim{0%,100%{opacity:.5}50%{opacity:1}}</style>
 <rect class="bg" width="840" height="200" rx="20"/>
 
 <text class="mut" x="30" y="36" style="letter-spacing:.22em">CHESS.COM · @bappozl · 1582 GAMES</text>
@@ -10,21 +10,21 @@
 <text class="mut" x="40" y="84">BLITZ</text>
 <text class="acc ser" x="40" y="128" style="font-size:44px">720</text>
 <text class="acc mid" x="40" y="152">▲ +50</text>
-<polyline class="ln thin draw" points="40.0,170.3 59.4,170.3 78.9,175.6 98.3,180.8 117.7,175.6 137.1,170.3 156.6,166.0 176.0,161.2"/>
+<polyline class="ln thin draw" pathLength="1" points="40.0,170.3 59.4,170.3 78.9,175.6 98.3,180.8 117.7,175.6 137.1,170.3 156.6,166.0 176.0,161.2"/>
 </g>
 <line class="rule" x1="215" y1="70" x2="215" y2="168"/>
 <g>
 <text class="mut" x="240" y="84">RAPID</text>
 <text class="acc ser" x="240" y="128" style="font-size:44px">1175</text>
 <text class="down mid" x="240" y="152">▼ -43</text>
-<polyline class="ln thin draw" points="240.0,162.1 259.4,167.7 278.9,161.2 298.3,167.7 317.7,165.9 337.1,164.0 356.6,172.4 376.0,180.8"/>
+<polyline class="ln thin draw" pathLength="1" points="240.0,162.1 259.4,167.7 278.9,161.2 298.3,167.7 317.7,165.9 337.1,164.0 356.6,172.4 376.0,180.8"/>
 </g>
 <line class="rule" x1="415" y1="70" x2="415" y2="168"/>
 <g>
 <text class="mut" x="440" y="84">BULLET</text>
 <text class="acc ser" x="440" y="128" style="font-size:44px">743</text>
 <text class="acc mid" x="440" y="152">▲ +29</text>
-<polyline class="ln thin draw" points="440.0,161.2 459.4,166.9 478.9,173.5 498.3,167.7 517.7,174.3 537.1,180.8 556.6,174.3 576.0,167.7"/>
+<polyline class="ln thin draw" pathLength="1" points="440.0,161.2 459.4,166.9 478.9,173.5 498.3,167.7 517.7,174.3 537.1,180.8 556.6,174.3 576.0,167.7"/>
 </g>
 <line class="rule" x1="615" y1="70" x2="615" y2="168"/>
 <g>
