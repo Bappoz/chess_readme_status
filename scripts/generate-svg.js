@@ -497,24 +497,16 @@ async function fetchChessStats(username) {
   return response.json();
 }
 
+// Falha aqui precisa propagar: engolir o erro gera card sem histórico, que o
+// workflow commitaria por cima do bom.
 async function fetchGameArchives(username) {
-  try {
-    const response = await fetchWithRetry(`https://api.chess.com/pub/player/${username}/games/archives`);
-    return response.json();
-  } catch (error) {
-    console.error(`  Failed to fetch archives: ${error.message}`);
-    return { archives: [] };
-  }
+  const response = await fetchWithRetry(`https://api.chess.com/pub/player/${username}/games/archives`);
+  return response.json();
 }
 
 async function fetchMonthGames(archiveUrl) {
-  try {
-    const response = await fetchWithRetry(archiveUrl);
-    return response.json();
-  } catch (error) {
-    console.error(`  Failed to fetch month games: ${error.message}`);
-    return { games: [] };
-  }
+  const response = await fetchWithRetry(archiveUrl);
+  return response.json();
 }
 
 // Resultados de empate da API do Chess.com; "win" é vitória e todo o resto
@@ -589,9 +581,15 @@ async function main() {
         if (monthData.games?.length) allGames = allGames.concat(monthData.games);
       }
       console.log(`  Total games loaded: ${allGames.length}\n`);
+      // A lista de arquivos só contém meses com partidas: nenhum jogo aqui
+      // significa resposta vazia da API, não conta sem jogos.
+      if (recentArchives.length && !allGames.length) {
+        throw new Error(`Archives listed ${recentArchives.length} month(s) but returned no games`);
+      }
     } catch (error) {
       console.error(`ERROR: Failed to fetch game history — ${error.message}`);
       if (cache?.allGames) { allGames = cache.allGames; console.log("  Using cached game history\n"); }
+      else throw error;
     }
   } else if (cache?.allGames) {
     allGames = cache.allGames;
