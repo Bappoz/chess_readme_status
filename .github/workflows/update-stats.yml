@@ -16,6 +16,10 @@ on:
       - "scripts/**"
       - ".github/workflows/**"
 
+concurrency:
+  group: update-stats
+  cancel-in-progress: false
+
 jobs:
   update-stats:
     name: Gerar SVG de Estatísticas
@@ -50,35 +54,52 @@ jobs:
 
       - name: 🎨 Gerar SVG com estatísticas
         env:
-          CHESS_USERNAME: ${{ vars['CHESS_USERNAME'] }}
-          CHESS_THEME: ${{ vars['CHESS_THEME'] }}
+          CHESS_USERNAME: ${{ vars.CHESS_USERNAME }}
         run: |
-          echo "Starting stats generation..."
-          npm run generate
-          echo "Stats generation completed!"
+          if [ -z "$CHESS_USERNAME" ]; then
+            echo "::warning::CHESS_USERNAME não está definido em Settings → Variables; usando o fallback do script."
+          fi
+          npm run generate 2>&1 | tee /tmp/generate.log
+          # tee mascara o status do node; sem isso a falha da API passa batido.
+          exit "${PIPESTATUS[0]}"
         timeout-minutes: 5
-        continue-on-error: false
 
       - name: 📊 Verificar mudanças
         id: verify-changes
         run: |
-          if git diff --quiet -- assets/; then
+          # git add antes do diff: --cached também enxerga arquivo novo
+          # (estilo/modo novo), que `git diff` sozinho ignoraria.
+          git add -A assets/
+          if git diff --cached --quiet; then
             echo "changed=false" >> $GITHUB_OUTPUT
-            echo "No changes detected"
           else
             echo "changed=true" >> $GITHUB_OUTPUT
-            echo "Changes detected in SVG files"
-            git diff --stat assets/
+            git diff --cached --stat
           fi
+
+      - name: 🧾 Resumo do run
+        if: always()
+        run: |
+          {
+            echo "### Dados puxados da API"
+            echo '```'
+            grep -E "^User:|Rapid:|Total games loaded:|data points" /tmp/generate.log 2>/dev/null \
+              || echo "gerador não chegou a produzir saída"
+            echo '```'
+            case "${{ steps.verify-changes.outputs.changed }}" in
+              true)  echo "**SVGs alterados** — commit feito." ;;
+              false) echo "**Sem alteração** — a API respondeu, mas ratings e histórico continuam iguais ao último commit." ;;
+              *)     echo "**Falha antes da comparação** — veja os logs do passo de geração." ;;
+            esac
+          } >> "$GITHUB_STEP_SUMMARY"
 
       - name: 💾 Commit e Push
         if: steps.verify-changes.outputs.changed == 'true'
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add assets/*.svg 2>/dev/null || true
-          git add assets/.cache.json 2>/dev/null || true
-          git commit -m "📊 Atualiza estatísticas do Chess.com [skip ci]" || exit 0
+          # assets/ já foi staged no passo de verificação.
+          git commit -m "📊 Atualiza estatísticas do Chess.com [skip ci]"
 
           # Tentar push com retry
           max_attempts=3
