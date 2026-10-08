@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 340 210" width="340" height="210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="BLITZ rating 811, 51% win rate over 716 games">
+<style>svg{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif}text{fill:#e6edf3;white-space:pre}.bg{fill:#0d1117;stroke:#30363d;stroke-width:2}.acc{fill:#81b64c}.win{fill:#1baf7a}.draw{fill:#8b8f96}.loss{fill:#d03b3b}.lbl{font-size:10px;font-weight:600;letter-spacing:.18em;fill:#8b949e}.cap{font-size:10.5px;font-weight:500;fill:#8b949e}.num{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;font-weight:700;letter-spacing:-.02em}.tick{font-size:9px;font-weight:500;fill:#8b949e;opacity:.75}.dl{font-size:10px;font-weight:600}.rule{stroke:#30363d;stroke-width:1;fill:none}.grid{stroke:#30363d;stroke-width:1;fill:none;opacity:.7}.ln{fill:none;stroke:#81b64c;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.ring{stroke:#0d1117;stroke-width:2}.hollow{fill:none;stroke-width:1.5}.sq{fill:#e6edf3;opacity:.035}</style>
+<rect class="bg" width="340" height="210" rx="16"/>
+
+<g class="acc" transform="translate(23.0,21.8) scale(0.2000)"><path fill-rule="evenodd" d="M54 6L50 19C40 21 31 27 24 36L13 51C10 55 11 60 15 63L20 66C24 68 28 67 31 64L40 56C45 58 50 57 54 54C54 64 46 70 40 79H72C73 56 70 36 62 22L65 7L59 15zM41.2 36a3.2 3.2 0 1 0-6.4 0 3.2 3.2 0 1 0 6.4 0z"/><path d="M70 14C80 30 84 54 83 79H76.5C77 55 74 36 66.5 23z"/><path d="M24 82h52a7 7 0 0 1 7 7v7H17v-7a7 7 0 0 1 7-7z"/></g>
+<text class="lbl" x="49" y="38">BLITZ</text>
+<text class="num" x="26" y="96" style="font-size:55px">811</text>
+<path fill="#1baf7a" d="M30 115L34 121H26Z"/><text class="dl" x="42" y="122" fill="#1baf7a">+11</text><text class="cap" x="69.8" y="122">last 20</text>
+<rect x="26.0" y="134" width="145.6" height="3" rx="1.5" fill="#81b64c" opacity="1"/><rect x="173.6" y="134" width="7.7" height="3" rx="1.5" fill="#81b64c" opacity="0.4"/><rect x="183.3" y="134" width="130.7" height="3" rx="1.5" fill="#81b64c" opacity="0.15"/>
+<path class="ln" style="stroke-width:1.6" d="M26.0 161.1C28.5 161.1 36.1 160.3 41.2 161.1C46.2 161.9 51.3 164.3 56.3 165.9C61.4 167.5 66.4 169.1 71.5 170.7C76.5 172.3 81.6 175.5 86.6 175.5C91.7 175.5 96.7 172.4 101.8 170.7C106.8 169.0 111.9 165.5 116.9 165.3C122.0 165.1 127.1 169.6 132.1 169.5C137.2 169.4 142.2 164.7 147.3 164.7C152.3 164.7 157.4 167.8 162.4 169.5C167.5 171.2 172.5 174.9 177.6 174.9C182.6 174.9 187.7 171.2 192.7 169.5C197.8 167.8 202.8 164.8 207.9 164.7C212.9 164.6 218.0 167.4 223.1 168.9C228.1 170.4 233.2 173.7 238.2 173.7C243.3 173.7 248.3 170.5 253.4 168.9C258.4 167.3 263.5 165.7 268.5 164.1C273.6 162.5 278.6 160.9 283.7 159.3C288.7 157.7 293.8 155.3 298.8 154.5C303.9 153.7 311.5 154.5 314.0 154.5"/><circle class="acc ring" cx="314.0" cy="154.5" r="2.6"/>
+<line class="rule" x1="26" y1="188" x2="314" y2="188"/>
+<text class="cap" x="26" y="203">51% win · 716 games</text>
+<text class="cap" x="314" y="203" text-anchor="end">peak 937</text>
+</svg>
