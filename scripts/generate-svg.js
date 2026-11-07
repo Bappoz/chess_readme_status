@@ -67,6 +67,11 @@ const DARK_STATUS = { win: "#1baf7a", draw: "#8b8f96", loss: "#d03b3b" };
 const LIGHT_STATUS = { win: "#0d8659", draw: "#7c7f85", loss: "#c0332f" };
 
 const STYLES = {
+  claude: {
+    mode: "dark", surf: "#17120F", ink: "#F5EDE5", ink2: "#B9A79B", rule: "#3B2C26",
+    acc: "#E88B5A", edge: "#3B2C26", face: FACE_SANS, display: FACE_SERIF, trait: "editorial",
+    syntax: { kw: "#E88B5A", str: "#A8C5AA", num: "#A8C8DE", prop: "#F5EDE5", typ: "#C76B42" },
+  },
   premium: {
     mode: "dark", surf: "#111317", ink: "#f4f5f7", ink2: "#8d949d", rule: "#22262d",
     acc: "#8ac054", face: FACE_SANS, display: FACE_SANS, trait: "plain",
