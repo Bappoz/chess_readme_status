@@ -10,8 +10,11 @@ test('Claude covers the complete premium card matrix with self-contained SVGs', 
     assert.ok(files.includes(name.replace('-claude.svg', '.svg')), name);
     const svg = fs.readFileSync(`assets/${name}`, 'utf8');
     assert.match(svg, /<svg\b/);
-    assert.match(svg, /#17120F/);
-    assert.match(svg, /#F5EDE5/);
+    // Bare intentionally inherits light/dark page colors.
+    if (name !== "chess-bare-claude.svg") {
+      assert.match(svg, /#17120F/);
+      assert.match(svg, /#F5EDE5/);
+    }
     assert.doesNotMatch(svg, /<script|<foreignObject|@import/);
   }
 });
